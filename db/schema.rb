@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812180938) do
+ActiveRecord::Schema.define(version: 20150812190433) do
 
   create_table "candidates", force: :cascade do |t|
     t.string   "name"
@@ -63,9 +63,10 @@ ActiveRecord::Schema.define(version: 20150812180938) do
     t.string   "password_digest"
     t.string   "username"
     t.string   "avatar"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "slug"
+    t.boolean  "admin",           default: false
   end
 
   add_index "employers", ["slug"], name: "index_employers_on_slug", unique: true
@@ -82,5 +83,28 @@ ActiveRecord::Schema.define(version: 20150812180938) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "jobs", force: :cascade do |t|
+    t.string   "title"
+    t.string   "skills"
+    t.text     "description"
+    t.string   "email"
+    t.string   "url"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "country"
+    t.string   "position_type"
+    t.string   "pay_rate"
+    t.string   "job_length"
+    t.string   "travel_required"
+    t.string   "employer_id"
+    t.string   "candidate_id"
+    t.string   "slug"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "jobs", ["slug"], name: "index_jobs_on_slug", unique: true
 
 end
