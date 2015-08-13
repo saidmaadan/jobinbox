@@ -1,6 +1,7 @@
 class Employer < ActiveRecord::Base
+	mount_uploader :avatar, AvatarUploader
+	mount_uploader :logo, LogoUploader
 	has_secure_password
-	mount_uploader :avatar, ImageUploader
   
   extend FriendlyId
   friendly_id :username, use: :slugged
@@ -17,6 +18,25 @@ class Employer < ActiveRecord::Base
                      uniqueness: { case_sensitive: false }
 
   has_many :jobs
+
+  before_create {generate_token(:auth_token)}
+
+  def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    EmployerMailer.password_reset(self).deliver
+  end
+
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while Employer.exists?(column => self[column])
+  end
+
+  def gravatar_id
+    Digest::MD5::hexdigest(email.downcase)
+  end
 
   def self.authenticate(email_or_username, password)
     employer = Employer.find_by(email: email_or_username) || Employer.find_by(username: email_or_username)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812190433) do
+ActiveRecord::Schema.define(version: 20150812235325) do
 
   create_table "candidates", force: :cascade do |t|
     t.string   "name"
@@ -63,10 +63,23 @@ ActiveRecord::Schema.define(version: 20150812190433) do
     t.string   "password_digest"
     t.string   "username"
     t.string   "avatar"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "slug"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",               default: false
+    t.text     "headlines"
+    t.text     "company_description"
+    t.string   "industry"
+    t.string   "company_size"
+    t.string   "logo"
+    t.string   "linkedin"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "instagram"
+    t.string   "phone_number"
+    t.string   "skype_id"
+    t.string   "location"
+    t.string   "zip_code"
   end
 
   add_index "employers", ["slug"], name: "index_employers_on_slug", unique: true

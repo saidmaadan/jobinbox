@@ -1,0 +1,22 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.navbar-inverse .navbar-brand {
+  color: #fd7700;
+}
+.navbar-inverse {
+  background-color: #fff;
+  border-color: #ddd;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #ddd;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #fd7700;
+}
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: #000;
+}
+.navbar-inverse .navbar-brand:hover {
+  color: #000;
+}

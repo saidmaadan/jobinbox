@@ -1,1 +1,16 @@
 <%# add navigation links to this file %>
+<% if current_candidate %>
+<li><%= link_to "Employers", register_path %></li>
+<li><%= link_to current_candidate.name, current_candidate %></li>
+<li><%= link_to "Account Setting", edit_candidate_path(current_candidate) %></li>
+<li><%= link_to 'Sign Out', session_path, method: :delete %></li>
+<% elsif current_employer %>
+<li><%= link_to "Candidates", signup_path %></li>
+<li><%= link_to current_employer.name, current_employer %></li>
+<li><%= link_to "Account Setting", edit_employer_path(current_employer) %></li>
+<li><%= link_to 'Sign Out', session_path, method: :delete %></li>
+<% else %>
+<li><%= link_to "Employers", register_path %></li>
+<li><%= link_to "Candidates", signup_path %></li>
+<li><%= link_to "Sign In", signin_path %></li>
+<% end %>

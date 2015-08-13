@@ -1,5 +1,27 @@
 Rails.application.routes.draw do
+
+  get '/about' =>'pages#about'
+
+  get '/terms' =>'pages#terms'
+
+  get '/privacy' =>'pages#privacy'
+
+  get '/faq' =>'pages#faq'
+
+  get "signin" => "sessions#new"
+  resource :session
+  get "signup" => "candidates#new", as: "signup"
   resources :candidates
+
+  get "register" => "employers#new", as: "register"
+  resources :employers 
+
+  resources :jobs
+
+  root "pages#home"
+
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
