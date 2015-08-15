@@ -1,0 +1,189 @@
+<div class='container'><br><br>
+  <div class='row'>
+  	<div class='col-sm-4 hidden-xs'>
+  		<ul class="nav nav-tabs nav-stacked" role="tablist">
+			  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+		    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+		    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+		    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+			</ul>
+  	</div>
+  	<div class='col-sm-8 hidden-xs well'>
+  		<div class="tab-content">
+			  <div role="tabpanel" class="tab-pane active" id="home">
+			  	<%= form_for(@candidate) do |f| %>
+					  <%= render "shared/errors", object: @candidate %>
+
+					      <div class="form-group">
+					        <%= f.text_field :name, size: 50, autofocus: true, placeholder: "Your Full Name", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					          <%= f.text_field :username, size: 50,
+					                    placeholder: "Username Alphanumeric characters only!", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					        <%= f.email_field :email_address, size: 50, placeholder: "Email Address", class: "form-control" %>
+					      </div>
+
+					     <div class="form-group">
+					        <%= f.password_field :password, size: 50, placeholder: "Password 8 or more characters", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					        <%= f.password_field :password_confirmation, size: 50, placeholder: "Confirm Password", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					        <% if @candidate.new_record? %>
+					          <%= f.submit "Create Account", class: "btn btn-info" %>
+					        <% else %>
+					          <%= f.submit "Update Account", class: "btn btn-info" %>
+					        <% end %>
+					      </div>
+					<% end %>
+
+			  </div>
+			  <div role="tabpanel" class="tab-pane" id="profile">
+			  	<%= form_for(@candidate) do |f| %>
+					  <%= render "shared/errors", object: @candidate %>
+
+					      <div class="form-group">
+					        <%= f.text_field :name, size: 50, autofocus: true, placeholder: "Your Full Name", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					          <%= f.text_field :username, size: 50,
+					                    placeholder: "Username Alphanumeric characters only!", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					        <%= f.email_field :email_address, size: 50, placeholder: "Email Address", class: "form-control" %>
+					      </div>
+
+					     <div class="form-group">
+					        <%= f.password_field :password, size: 50, placeholder: "Password 8 or more characters", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					        <%= f.password_field :password_confirmation, size: 50, placeholder: "Confirm Password", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					        <% if @candidate.new_record? %>
+					          <%= f.submit "Create Account", class: "btn btn-info" %>
+					        <% else %>
+					          <%= f.submit "Update Account", class: "btn btn-info" %>
+					        <% end %>
+					      </div>
+					<% end %>
+
+			  </div>
+			  <div role="tabpanel" class="tab-pane" id="messages">
+			  	<%= form_for(@candidate) do |f| %>
+					  <%= render "shared/errors", object: @candidate %>
+
+					      <div class="form-group">
+					        <%= f.text_field :name, size: 50, autofocus: true, placeholder: "Your Full Name", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					          <%= f.text_field :username, size: 50,
+					                    placeholder: "Username Alphanumeric characters only!", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					        <%= f.email_field :email_address, size: 50, placeholder: "Email Address", class: "form-control" %>
+					      </div>
+
+					     <div class="form-group">
+					        <%= f.password_field :password, size: 50, placeholder: "Password 8 or more characters", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					        <%= f.password_field :password_confirmation, size: 50, placeholder: "Confirm Password", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					        <% if @candidate.new_record? %>
+					          <%= f.submit "Create Account", class: "btn btn-info" %>
+					        <% else %>
+					          <%= f.submit "Update Account", class: "btn btn-info" %>
+					        <% end %>
+					      </div>
+					<% end %>
+
+			  </div>
+			  <div role="tabpanel" class="tab-pane" id="settings">
+			  	<%= form_for(@candidate) do |f| %>
+					  <%= render "shared/errors", object: @candidate %>
+
+					      <div class="form-group">
+					        <%= f.text_field :name, size: 50, autofocus: true, placeholder: "Your Full Name", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					          <%= f.text_field :username, size: 50,
+					                    placeholder: "Username Alphanumeric characters only!", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					        <%= f.email_field :email_address, size: 50, placeholder: "Email Address", class: "form-control" %>
+					      </div>
+
+					     <div class="form-group">
+					        <%= f.password_field :password, size: 50, placeholder: "Password 8 or more characters", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					        <%= f.password_field :password_confirmation, size: 50, placeholder: "Confirm Password", class: "form-control" %>
+					      </div>
+					      <div class="form-group">
+					        <%= f.email_field :email_address, size: 50, placeholder: "Email Address", class: "form-control" %>
+					      </div>
+
+					     <div class="form-group">
+					        <%= f.password_field :password, size: 50, placeholder: "Password 8 or more characters", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					        <%= f.password_field :password_confirmation, size: 50, placeholder: "Confirm Password", class: "form-control" %>
+					      </div>
+
+					      <div class="form-group">
+					        <% if @candidate.new_record? %>
+					          <%= f.submit "Create Account", class: "btn btn-info" %>
+					        <% else %>
+					          <%= f.submit "Update Account", class: "btn btn-info" %>
+					        <% end %>
+					      </div>
+					<% end %>
+
+			  </div>
+			</div>
+  	</div>
+  	<br><br>
+	</div>
+
+
+	 <div class='row'>
+  	<div class='hidden-lg hidden-md hidden-sm col-xs-12'>
+  		<ul class="nav nav-tabs" role="tablist">
+			  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+		    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+		    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+		    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+			</ul>
+  	</div>
+  	<div class='hidden-md hidden-sm col-xs-12'>
+  		<div class="tab-content">
+			  <div role="tabpanel" class="tab-pane active" id="home"></div>
+			  <div role="tabpanel" class="tab-pane" id="profile"></div>
+			  <div role="tabpanel" class="tab-pane" id="messages"></div>
+			  <div role="tabpanel" class="tab-pane" id="settings"></div>
+			</div>
+  	</div>
+  <br><br>
+</div>
+</div>

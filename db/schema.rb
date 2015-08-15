@@ -32,8 +32,6 @@ ActiveRecord::Schema.define(version: 20150812235325) do
     t.string   "github_url"
     t.string   "dribbble_url"
     t.string   "facebook_url"
-    t.string   "provider"
-    t.string   "uid"
     t.string   "auth_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
@@ -43,6 +41,9 @@ ActiveRecord::Schema.define(version: 20150812235325) do
     t.string   "job_type"
     t.string   "languages"
     t.string   "how_heard"
+    t.string   "image_url"
+    t.string   "provider"
+    t.string   "uid"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "admin",                  default: false

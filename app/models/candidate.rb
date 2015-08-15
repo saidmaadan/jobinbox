@@ -9,7 +9,7 @@ class Candidate < ActiveRecord::Base
   validates :password, length: { minimum: 8, allow_blank: true }
 
   validates :name, presence: true
-  validates :email, presence: true,
+  validates :email_address, presence: true,
                   format: /\A\S+@\S+\z/,
                   uniqueness: { case_sensitive: false }
 
@@ -33,17 +33,53 @@ class Candidate < ActiveRecord::Base
   end
 
   def gravatar_id
-    Digest::MD5::hexdigest(email.downcase)
+    Digest::MD5::hexdigest(email_address.downcase)
   end
 
 
-  def self.authenticate(email_or_username, password)
-    candidate = Candidate.find_by(email: email_or_username) || Candidate.find_by(username: email_or_username)
+  def self.authenticate(email_address_or_username, password)
+    candidate = Candidate.find_by(email_address: email_address_or_username) || Candidate.find_by(username: email_address_or_username)
     candidate && candidate.authenticate(password)
   end
 
   def should_generate_new_friendly_id?
     	new_record?
   	end
+
+  class << self
+    def from_omniauth(auth_hash)
+      candidate = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
+      candidate.name = auth_hash['info']['name.parameterize']
+      # candidate.email_address = auth_hash['info']['email_address']
+      # candidate.username = auth_hash['info']['nickname']
+      # candidate.headline = auth_hash['info']['headline']
+      candidate.city = get_social_location_for candidate.provider, auth_hash['info']['location']
+      candidate.image_url = auth_hash['info']['image']
+      candidate.linkedin_url = get_social_url_for candidate.provider, auth_hash['info']['urls']
+      candidate.save!
+      candidate
+    end
+
+    private
+
+    def get_social_location_for(provider, location_hash)
+      case provider
+        when 'linkedin'
+          location_hash['name']
+        else
+          location_hash
+      end
+    end
+
+    def get_social_url_for(provider, urls_hash)
+      case provider
+        when 'linkedin'
+          urls_hash['public_profile']
+        else
+          urls_hash[provider.capitalize]
+      end
+    end
+  end
+
 
 end

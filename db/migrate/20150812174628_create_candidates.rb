@@ -19,8 +19,6 @@ class CreateCandidates < ActiveRecord::Migration
       t.string :github_url
       t.string :dribbble_url
       t.string :facebook_url
-      t.string :provider
-      t.string :uid
       t.string :auth_token
       t.string :password_reset_token
       t.datetime :password_reset_sent_at
@@ -30,6 +28,11 @@ class CreateCandidates < ActiveRecord::Migration
       t.string :job_type
       t.string :languages
       t.string :how_heard
+      t.string :image_url
+      t.string :provider
+      t.string :uid
+      
+
 
       t.timestamps null: false
     end

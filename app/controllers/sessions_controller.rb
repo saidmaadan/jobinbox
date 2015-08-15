@@ -3,7 +3,12 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		if employer = Employer.authenticate(params[:email], params[:password])
+		# if  @candidate = Candidate.from_omniauth(request.env['omniauth.auth'])
+	 #    session[:candidate_id] = @candidate.id
+	 #    redirect_to edit_candidate_path
+  #     #flash[:success] = "Welcome, #{@candidate.name}!"
+  #    end
+		if employer = Employer.authenticate(params[:email_address], params[:password])
 			# session[:employer_id] = employer.id
 			if params[:remember_me]
         cookies.permanent[:auth_token] = employer.auth_token
@@ -14,7 +19,7 @@ class SessionsController < ApplicationController
 			redirect_to(session[:intended_url] || employer)
 			session[:intended_url] = nil
 		elsif
-			candidate = Candidate.authenticate(params[:email], params[:password])
+			candidate = Candidate.authenticate(params[:email_address], params[:password])
 			# session[:candidate_id] = candidate.id
 			if params[:remember_me]
         cookies.permanent[:auth_token] = candidate.auth_token
@@ -31,7 +36,9 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
-		cookies.delete(:auth_token)
+		if current_candidate
+			session.delete(:candidate_id) || cookies.delete(:auth_token)
+		end
 		redirect_to root_url, notice: "You have signed out!"
 		# if session[:candidate_id] = nil || session[:employer_id] = nil
 	 #  end

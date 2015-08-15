@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   get '/faq' =>'pages#faq'
 
   get "signin" => "sessions#new"
+  get '/auth/:provider/callback' => 'sessions#create'
   resource :session
   get "signup" => "candidates#new", as: "signup"
+  get "candidates/:id/editprofile" => "candidates#editprofile", as: "profile/info"
   resources :candidates
 
   get "register" => "employers#new", as: "register"
