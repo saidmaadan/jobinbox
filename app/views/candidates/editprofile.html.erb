@@ -2,162 +2,315 @@
   <div class='row'>
   	<div class='col-sm-4 hidden-xs'>
   		<ul class="nav nav-tabs nav-stacked" role="tablist">
-			  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-		    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-		    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-		    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+			  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Personal Info</a></li>
+		    <li role="presentation"><a href="#bio" aria-controls="bio" role="tab" data-toggle="tab">Bio</a></li>
+		    <li role="presentation"><a href="#resume" aria-controls="resume" role="tab" data-toggle="tab">Resume and Links</a></li>
+		    <li role="presentation"><a href="#project-imagess" aria-controls="project-images" role="tab" data-toggle="tab">Settings</a></li>
 			</ul>
   	</div>
-  	<div class='col-sm-8 hidden-xs well'>
+  	<div class='col-sm-8  well'>
   		<div class="tab-content">
 			  <div role="tabpanel" class="tab-pane active" id="home">
-			  	<%= form_for(@candidate) do |f| %>
+			 	
+			  	<%= form_for @candidate, :html => { :multipart => true } do |f| %>
 					  <%= render "shared/errors", object: @candidate %>
+					  	<div class='row'>
+					  		<div class='col-xs-12 text-center'>
+					  			<p>Profile Photo</p>
+					  		</div><br>
+					  		<div class='col-xs-12'>
+					  			<div class='row'>
+					  				<div class='col-sm-1'></div>
+							  		<div class='col-sm-4 col-xs-5'>
+							  			<% if @candidate.avatar %>
+												<%= image_tag @candidate.avatar_url, class: "image_edit_profile" %>
+											<% else %>
+												<%= profile_image_for@candidate, class: "image_edit_profile" %></p>
+											<% end %>
+							  		</div>
+							  		<div class='col-sm-6 col-xs-7'><br>
+							  			<p>Profile photo add personality to your page.
+											</p>
+											<small>Click on save button to update your profile photo</small>
+											<p><%= f.file_field :avatar, class: "form-control"  %></p>
+							  		</div>
+							  		<div class='col-sm-1'></div>
+							  	</div>
+					  		</div>
+					  	</div><br>
+					  		
 
 					      <div class="form-group">
-					        <%= f.text_field :name, size: 50, autofocus: true, placeholder: "Your Full Name", class: "form-control" %>
+					      	<div class='row'>
+					      		<div class='col-sm-3'>
+					      			<%= f.label :name %>
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			<%= f.text_field :name, size: 50, class: "form-control" %>
+					      		</div>
+					      	</div>
 					      </div>
 
 					      <div class="form-group">
-					          <%= f.text_field :username, size: 50,
-					                    placeholder: "Username Alphanumeric characters only!", class: "form-control" %>
+					      	<div class='row'>
+					      		<div class='col-sm-3'>
+					      			<%= f.label :city, "Location:" %>
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			<%= f.text_field :city, size: 50, class: "form-control" %>
+					      		</div>
+					      	</div>
 					      </div>
 
 					      <div class="form-group">
-					        <%= f.email_field :email_address, size: 50, placeholder: "Email Address", class: "form-control" %>
+					      	<div class='row'>
+					      		<div class='col-sm-3'>
+					      			<%= f.label :phone, "Phone*" %>
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			<%= f.text_field :phone, size: 50, class: "form-control" %>
+					      		</div>
+					      	</div>
 					      </div>
 
-					     <div class="form-group">
-					        <%= f.password_field :password, size: 50, placeholder: "Password 8 or more characters", class: "form-control" %>
-					      </div>
 
 					      <div class="form-group">
-					        <%= f.password_field :password_confirmation, size: 50, placeholder: "Confirm Password", class: "form-control" %>
-					      </div>
-
-					      <div class="form-group">
-					        <% if @candidate.new_record? %>
-					          <%= f.submit "Create Account", class: "btn btn-info" %>
-					        <% else %>
-					          <%= f.submit "Update Account", class: "btn btn-info" %>
-					        <% end %>
+					        <div class='row'>
+					      		<div class='col-sm-3'>
+					      		
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			<%= f.submit "Save", class: "btn btn-info" %>
+					      		</div>
+					      	</div>
+					          
+					        
 					      </div>
 					<% end %>
 
 			  </div>
-			  <div role="tabpanel" class="tab-pane" id="profile">
+			  <div role="tabpanel" class="tab-pane" id="bio">
 			  	<%= form_for(@candidate) do |f| %>
 					  <%= render "shared/errors", object: @candidate %>
 
 					      <div class="form-group">
-					        <%= f.text_field :name, size: 50, autofocus: true, placeholder: "Your Full Name", class: "form-control" %>
+					      	<div class='row'>
+					      		<div class='col-sm-3'>
+					      			<%= f.label :headline %>
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			<%= f.text_field :headline, class: "form-control" %>
+					      		</div>
+					      	</div>
 					      </div>
 
 					      <div class="form-group">
-					          <%= f.text_field :username, size: 50,
-					                    placeholder: "Username Alphanumeric characters only!", class: "form-control" %>
+					      	<div class='row'>
+					      		<div class='col-sm-3'>
+					      			<%= f.label :about, "Short bio" %>
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			<%= f.text_area :about, cols: 40, rows: 7, class: "form-control" %>
+					      		</div>
+					      	</div>
 					      </div>
 
 					      <div class="form-group">
-					        <%= f.email_field :email_address, size: 50, placeholder: "Email Address", class: "form-control" %>
-					      </div>
-
-					     <div class="form-group">
-					        <%= f.password_field :password, size: 50, placeholder: "Password 8 or more characters", class: "form-control" %>
-					      </div>
-
-					      <div class="form-group">
-					        <%= f.password_field :password_confirmation, size: 50, placeholder: "Confirm Password", class: "form-control" %>
-					      </div>
-
-					      <div class="form-group">
-					        <% if @candidate.new_record? %>
-					          <%= f.submit "Create Account", class: "btn btn-info" %>
-					        <% else %>
-					          <%= f.submit "Update Account", class: "btn btn-info" %>
-					        <% end %>
+					        <div class='row'>
+					      		<div class='col-sm-3'>
+					      		
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			<%= f.submit "Save", class: "btn btn-info" %>
+					      		</div>
+					      	</div>   
 					      </div>
 					<% end %>
 
 			  </div>
-			  <div role="tabpanel" class="tab-pane" id="messages">
-			  	<%= form_for(@candidate) do |f| %>
+			  
+			  <div role="tabpanel" class="tab-pane" id="resume">
+			  	<%= form_for @candidate, :html => { :multipart => true } do |f| %>
 					  <%= render "shared/errors", object: @candidate %>
-
-					      <div class="form-group">
-					        <%= f.text_field :name, size: 50, autofocus: true, placeholder: "Your Full Name", class: "form-control" %>
+					  		<div class='row'>
+						  		<div class='col-xs-12 text-center'>
+						  			<p>Social Links and Resume</p>
+						  		</div>
+						  	</div><br>
+					       <div class="form-group">
+					      	<div class='row'>
+					      		<div class='col-sm-3'>
+					      			<%= f.label :resume, "Résumé" %>
+					      		</div>
+					      		<div class='col-sm-5'>
+					      			<p><%= f.file_field :resume %></p>
+					      		</div>
+					      		<div class='col-sm-4'>
+					      			<p><%= link_to "resume.pdf", @candidate.resume_url, :target => "_blank" %></p>
+					      		</div>
+					      	</div>
 					      </div>
 
-					      <div class="form-group">
-					          <%= f.text_field :username, size: 50,
-					                    placeholder: "Username Alphanumeric characters only!", class: "form-control" %>
-					      </div>
+					      <div class='row'>
+					      		<div class='col-sm-3'>
+					      			<%= f.label :portfolio_url, "Personal Website" %>
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			<%= f.text_field :portfolio_url, class: "form-control" %>
+					      		</div>
+					     
+					      </div><br>
+
+					       <div class='row'>
+					      		<div class='col-sm-3'>
+					      			<%= f.label :projects_link, "PortFolio" %>
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			<%= f.text_field :projects_link, class: "form-control" %>
+					      		</div>
+					      	
+					      </div><br>
+
+					      
 
 					      <div class="form-group">
-					        <%= f.email_field :email_address, size: 50, placeholder: "Email Address", class: "form-control" %>
+					      	<div class='row'>
+					      		<div class='col-sm-3'>
+					      			<%= f.label :linkedin_url %>
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			 <div class="form-inline">
+											  <div class="form-group">
+											    <div class="input-group">
+											      <div class="input-group-addon">http://www.linkedin.com/in/</div>
+											      <%= f.text_field :linkedin_url, size: 50, class: "form-control", placeholder: "username" %>
+											     
+											    </div>
+											  </div>
+											 
+											</div>
+					      		</div>
+					      	</div>
+					      </div>
+
+					       <div class="form-group">
+					      	<div class='row'>
+					      		<div class='col-sm-3'>
+					      			<%= f.label :github_url %>
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			 <div class="form-inline">
+											  <div class="form-group">
+											    <div class="input-group">
+											      <div class="input-group-addon">http://www.github.com/</div>
+											      <%= f.text_field :github_url, size: 50, class: "form-control", placeholder: "username" %>
+											     
+											    </div>
+											  </div>
+											 
+											</div>
+					      		</div>
+					      	</div>
+					      </div>
+					     
+					      <div class="form-group">
+					      	<div class='row'>
+					      		<div class='col-sm-3'>
+					      			<%= f.label :facebook_url %>
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			 <div class="form-inline">
+											  <div class="form-group">
+											    <div class="input-group">
+											      <div class="input-group-addon">http://www.facebook.com/</div>
+											      <%= f.text_field :facebook_url, size: 50, class: "form-control", placeholder: "username" %>
+											     
+											    </div>
+											  </div>
+											 
+											</div>
+					      		</div>
+					      	</div>
 					      </div>
 
 					     <div class="form-group">
-					        <%= f.password_field :password, size: 50, placeholder: "Password 8 or more characters", class: "form-control" %>
+					      	<div class='row'>
+					      		<div class='col-sm-3'>
+					      			<%= f.label :twitter_url %>
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			 <div class="form-inline">
+											  <div class="form-group">
+											 
+											    <div class="input-group">
+											      <div class="input-group-addon">http://www.twitter.com/</div>
+											      <%= f.text_field :twitter_url, size: 50, class: "form-control", placeholder: "username" %>
+											     
+											    </div>
+											  </div>
+											 
+											</div>
+					      		</div>
+					      	</div>
 					      </div>
 
-					      <div class="form-group">
-					        <%= f.password_field :password_confirmation, size: 50, placeholder: "Confirm Password", class: "form-control" %>
+					       <div class="form-group">
+					      	<div class='row'>
+					      		<div class='col-sm-3'>
+					      			<%= f.label :dribbble_url %>
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			 <div class="form-inline">
+											  <div class="form-group">
+											    <div class="input-group">
+											      <div class="input-group-addon">http://www.dribbble.com/</div>
+											      <%= f.text_field :dribbble_url, size: 50, class: "form-control", placeholder: "username" %>
+											     
+											    </div>
+											  </div>
+											 
+											</div>
+					      		</div>
+					      	</div>
 					      </div>
-
 					      <div class="form-group">
-					        <% if @candidate.new_record? %>
-					          <%= f.submit "Create Account", class: "btn btn-info" %>
-					        <% else %>
-					          <%= f.submit "Update Account", class: "btn btn-info" %>
-					        <% end %>
-					      </div>
+					        <div class='row'>
+					      		<div class='col-sm-3'>
+					      		
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			<%= f.submit "Save", class: "btn btn-info" %>
+					      		</div>
+					      	</div>
+					      </div>    
 					<% end %>
 
 			  </div>
-			  <div role="tabpanel" class="tab-pane" id="settings">
-			  	<%= form_for(@candidate) do |f| %>
+
+			  <div role="tabpanel" class="tab-pane" id="project-imagess">
+			  	<%= form_for @candidate, :html => { :multipart => true } do |f| %>
 					  <%= render "shared/errors", object: @candidate %>
+					  		 <div class='row'>
+					      		<div class='col-sm-3'>
+					      			
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			<%= f.file_field :files, multiple: true %>
+					      		</div>
+					      	
+					      </div><br>
 
+					      
 					      <div class="form-group">
-					        <%= f.text_field :name, size: 50, autofocus: true, placeholder: "Your Full Name", class: "form-control" %>
-					      </div>
-
-					      <div class="form-group">
-					          <%= f.text_field :username, size: 50,
-					                    placeholder: "Username Alphanumeric characters only!", class: "form-control" %>
-					      </div>
-
-					      <div class="form-group">
-					        <%= f.email_field :email_address, size: 50, placeholder: "Email Address", class: "form-control" %>
-					      </div>
-
-					     <div class="form-group">
-					        <%= f.password_field :password, size: 50, placeholder: "Password 8 or more characters", class: "form-control" %>
-					      </div>
-
-					      <div class="form-group">
-					        <%= f.password_field :password_confirmation, size: 50, placeholder: "Confirm Password", class: "form-control" %>
-					      </div>
-					      <div class="form-group">
-					        <%= f.email_field :email_address, size: 50, placeholder: "Email Address", class: "form-control" %>
-					      </div>
-
-					     <div class="form-group">
-					        <%= f.password_field :password, size: 50, placeholder: "Password 8 or more characters", class: "form-control" %>
-					      </div>
-
-					      <div class="form-group">
-					        <%= f.password_field :password_confirmation, size: 50, placeholder: "Confirm Password", class: "form-control" %>
-					      </div>
-
-					      <div class="form-group">
-					        <% if @candidate.new_record? %>
-					          <%= f.submit "Create Account", class: "btn btn-info" %>
-					        <% else %>
-					          <%= f.submit "Update Account", class: "btn btn-info" %>
-					        <% end %>
-					      </div>
+					        <div class='row'>
+					      		<div class='col-sm-3'>
+					      		
+					      		</div>
+					      		<div class='col-sm-9'>
+					      			<%= f.submit "Save", class: "btn btn-info" %>
+					      		</div>
+					      	</div>
+					          
 					<% end %>
 
 			  </div>

@@ -2,10 +2,16 @@
 	<div class='row'>
 		<div class='col-md-3 col-sm-4 col-xs-12'>
 		<br>
-			<p><%= profile_image_for@candidate, class: "img-responsive" %></p>
+
+			<p>
+			<% if @candidate.avatar %>
+				<%= image_tag @candidate.avatar_url, class: 'img-responsive' %>
+			<% else %>
+				<%= profile_image_for@candidate, class: "img-responsive" %></p>
+			<% end %>
 			<%#= @candidate.image_url %>
 			<%#= @candidate.headline %>
-			<%#= @candidate.linkedin_url %>
+
 
 			
 			<div class="list-group">
@@ -22,7 +28,18 @@
 		<div class='col-md-6 col-sm-5 col-xs-12'>
 			<h2><%= @candidate.name %></h2>
 			<h4><%= @candidate.email_address %></h4>
+			Linkedin: <%= @candidate.linkedin_url %><br>
+			Twitter: <%= @candidate.twitter_url %>
 			<h4>Based in <%#= @candidate.city %></h4>
+			<div class="row">
+				<% if @candidate.screenimages_url %>
+					<% @candidate.screenimages_url.each do |screenimage| %>
+					<div class='col-sm-6'>
+						<%= image_tag screenimage %>
+					</div>
+					<% end %>
+				<% end %>
+			</div>
 		</div>
 		<div class='col-md-3 col-sm-3 col-xs-12'></div>
 	</div>

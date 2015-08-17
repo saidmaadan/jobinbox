@@ -5,7 +5,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
     storage :fog
@@ -28,7 +30,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  process :resize_to_fit => [200, 300]
+  process :resize_to_fit => [300, 300]
   # process :scale => [200, 300]
   #
   # def scale(width, height)

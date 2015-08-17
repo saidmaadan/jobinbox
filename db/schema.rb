@@ -11,50 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812235325) do
+ActiveRecord::Schema.define(version: 20150817053012) do
 
-  create_table "candidates", force: :cascade do |t|
-    t.string   "name"
-    t.string   "username"
-    t.string   "email_address"
-    t.string   "password_digest"
-    t.string   "phone"
-    t.text     "about"
-    t.string   "headline"
-    t.string   "experience"
-    t.string   "education"
-    t.string   "desired_salary"
-    t.string   "city"
-    t.string   "zip_code"
-    t.string   "country"
-    t.string   "linkedin_url"
-    t.string   "twitter_url"
-    t.string   "github_url"
-    t.string   "dribbble_url"
-    t.string   "facebook_url"
-    t.string   "auth_token"
-    t.string   "password_reset_token"
-    t.datetime "password_reset_sent_at"
-    t.string   "skype_id"
-    t.string   "availability"
-    t.string   "skills"
-    t.string   "job_type"
-    t.string   "languages"
-    t.string   "how_heard"
-    t.string   "image_url"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.boolean  "admin",                  default: false
-    t.string   "slug"
-    t.string   "avatar"
-    t.string   "resume"
-    t.string   "projects_link"
-    t.string   "portfolio_url"
-  end
-
-  add_index "candidates", ["slug"], name: "index_candidates_on_slug", unique: true
+# Could not dump table "candidates" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "employers", force: :cascade do |t|
     t.string   "company_name"

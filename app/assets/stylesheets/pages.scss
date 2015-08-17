@@ -1,6 +1,30 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body {
+  margin: 0 auto;
+  padding: 0;
+  font-family: ProximaNova, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 21px;
+  color: #4c4c4e;
+}
+h1, h2, h3, th {
+  font-family: ProximaNova, Arial, sans-serif;
+  /*font-weight: bolder;*/
+}
+h1 {
+  font-size: 41px;
+  line-height: 50px;
+}
+h2 {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
 .navbar-inverse .navbar-brand {
   color: #fd7700;
 }
@@ -30,6 +54,15 @@
 }
 img{
 	width: 100%;
+}
+.image_menu{
+	width: 20px;
+	height: 20px;
+}
+.image_edit_profile{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     color: #555555;

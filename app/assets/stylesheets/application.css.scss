@@ -13,3 +13,76 @@
  *= require_tree .
  *= require_self
  */
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+
+/**
+ * @license
+ * MyFonts Webfont Build ID 2781264, 2014-03-25T13:05:27-0400
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: Proxima Nova S Semibold Italic by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/s-semibold-it/
+ *
+ * Webfont: Proxima Nova A Light Italic by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/a-light-it/
+ *
+ * Webfont: Proxima Nova S Semibold by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/s-semibold/
+ *
+ * Webfont: Proxima Nova A Light by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/a-light/
+ *
+ * Webfont: Proxima Nova A Semibold Italic by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/a-semibold-it/
+ *
+ * Webfont: Proxima Nova A Semibold by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/a-semibold/
+ *
+ * Webfont: Proxima Nova S Light Italic by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/s-light-it/
+ *
+ * Webfont: Proxima Nova S Light by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/s-light/
+ *
+ * Webfont: Proxima Nova Light Italic by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/light-it/
+ *
+ * Webfont: Proxima Nova Light by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/light/
+ *
+ * Webfont: Proxima Nova Semibold Italic by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/semibold-it/
+ *
+ * Webfont: Proxima Nova Semibold by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/semibold/
+ *
+ *
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2781264
+ * Licensed pageviews: 59,091,400
+ * Webfonts copyright: Copyright (c) Mark Simonson, 2005. All rights reserved.
+ *
+ * Â© 2014 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+/*@import url("//hello.myfonts.net/count/2a7050");*/
+
+
+/*Proxima Nova Light Italic */
+@font-face {font-family: 'ProximaNova'; font-weight: normal; font-style: italic; src: url('webfonts/2A7050_8_0.eot');src: url('webfonts/2A7050_8_0.eot?#iefix') format('embedded-opentype'),url('webfonts/2A7050_8_0.woff') format('woff'),url('webfonts/2A7050_8_0.ttf') format('truetype');}
+
+/*Proxima Nova Light */
+@font-face {font-family: 'ProximaNova'; font-weight: normal; font-style: normal; src: url('webfonts/2A7050_9_0.eot');src: url('webfonts/2A7050_9_0.eot?#iefix') format('embedded-opentype'),url('webfonts/2A7050_9_0.woff') format('woff'),url('webfonts/2A7050_9_0.ttf') format('truetype');}
+
+/*Proxima Nova Semibold Italic */
+@font-face {font-family: 'ProximaNova'; font-weight: bold; font-style: italic; src: url('webfonts/2A7050_A_0.eot');src: url('webfonts/2A7050_A_0.eot?#iefix') format('embedded-opentype'),url('webfonts/2A7050_A_0.woff') format('woff'),url('webfonts/2A7050_A_0.ttf') format('truetype');}
+
+/*Proxima Nova Semibold */
+@font-face {font-family: 'ProximaNova'; font-weight: bold; font-style: normal; src: url('webfonts/2A7050_B_0.eot');src: url('webfonts/2A7050_B_0.eot?#iefix') format('embedded-opentype'),url('webfonts/2A7050_B_0.woff') format('woff'),url('webfonts/2A7050_B_0.ttf') format('truetype');}

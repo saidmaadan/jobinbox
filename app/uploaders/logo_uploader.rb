@@ -5,7 +5,9 @@ class LogoUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
     storage :fog

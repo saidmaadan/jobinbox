@@ -18,11 +18,13 @@ class ApplicationController < ActionController::Base
   end
 
   def current_candidate
-		@current_candidate ||= Candidate.find(session[:candidate_id]) if session[:candidate_id]
+  		@current_candidate ||= Candidate.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
+		#@current_candidate ||= Candidate.find(session[:candidate_id]) if session[:candidate_id]
 	end
 
 	def current_employer
-		@current_employer ||= Employer.find(session[:employer_id]) if session[:employer_id]
+		@current_employer ||= Employer.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
+		#@current_employer ||= Employer.find(session[:employer_id]) if session[:employer_id]
 	end
 
 	helper_method :current_candidate, :current_employer
