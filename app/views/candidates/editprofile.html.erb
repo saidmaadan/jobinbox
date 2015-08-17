@@ -146,7 +146,7 @@
 					      			<p><%= f.file_field :resume %></p>
 					      		</div>
 					      		<div class='col-sm-4'>
-					      			<p><%= link_to "resume.pdf", @candidate.resume_url, :target => "_blank" %></p>
+					      			<p><%= link_to "resume.pdf", @candidate.resume_url, :target => "_blank" if @candidate.resume_url %></p>
 					      		</div>
 					      	</div>
 					      </div>

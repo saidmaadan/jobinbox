@@ -4,7 +4,7 @@
 		<br>
 
 			<p>
-			<% if @candidate.avatar %>
+			<% if @candidate.avatar_url %>
 				<%= image_tag @candidate.avatar_url, class: 'img-responsive' %>
 			<% else %>
 				<%= profile_image_for@candidate, class: "img-responsive" %></p>
@@ -30,16 +30,8 @@
 			<h4><%= @candidate.email_address %></h4>
 			Linkedin: <%= @candidate.linkedin_url %><br>
 			Twitter: <%= @candidate.twitter_url %>
-			<h4>Based in <%#= @candidate.city %></h4>
-			<div class="row">
-				<% if @candidate.screenimages_url %>
-					<% @candidate.screenimages_url.each do |screenimage| %>
-					<div class='col-sm-6'>
-						<%= image_tag screenimage %>
-					</div>
-					<% end %>
-				<% end %>
-			</div>
+			<h4>Based in <%= @candidate.city %></h4>
+			
 		</div>
 		<div class='col-md-3 col-sm-3 col-xs-12'></div>
 	</div>

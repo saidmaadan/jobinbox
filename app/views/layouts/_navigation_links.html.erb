@@ -1,11 +1,11 @@
 <%# add navigation links to this file %>
 <% if current_candidate %>
-	<li >
-		<% if @candidate.avatar %>
-				<%= link_to (image_tag @candidate.avatar_url, class: "image_menu"), current_candidate %>
-			<% else %>
-				<%= link_to (profile_image_for@candidate, size: 20), current_candidate %></p>
-			<% end %>
+	<li>
+		<% if @candidate.avatar_url %>
+			<%= link_to (image_tag @candidate.avatar_url, class: "image_menu"), current_candidate %>
+		<% else %>
+			<%= link_to (profile_image_for@candidate, size: 20), current_candidate %></p>
+		<% end %>
 	</li>
 
   <li class="dropdown">

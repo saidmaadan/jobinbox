@@ -1,7 +1,6 @@
 class Candidate < ActiveRecord::Base
 	mount_uploader :avatar, AvatarUploader
 	mount_uploader :resume, ResumeUploader
-  mount_uploader :screenimages, ScreenimagesUploader
 	has_secure_password
   
   extend FriendlyId
