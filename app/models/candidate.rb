@@ -2,7 +2,7 @@ class Candidate < ActiveRecord::Base
 	mount_uploader :avatar, AvatarUploader
 	mount_uploader :resume, ResumeUploader
 	has_secure_password
-  
+
   extend FriendlyId
   friendly_id :username, use: :slugged
 
@@ -16,6 +16,8 @@ class Candidate < ActiveRecord::Base
   validates :username, presence: true,
                      format: /\A[A-Z0-9]+\z/i,
                      uniqueness: { case_sensitive: false }
+  
+  has_many :works
 
   before_create {generate_token(:auth_token)}
 

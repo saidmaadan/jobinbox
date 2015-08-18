@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150817053012) do
+ActiveRecord::Schema.define(version: 20150817212855) do
 
 # Could not dump table "candidates" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
+
+  create_table "educations", force: :cascade do |t|
+    t.string   "school"
+    t.string   "degree"
+    t.string   "year"
+    t.integer  "candidate_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "educations", ["candidate_id"], name: "index_educations_on_candidate_id"
 
   create_table "employers", force: :cascade do |t|
     t.string   "company_name"
@@ -80,5 +91,21 @@ ActiveRecord::Schema.define(version: 20150817053012) do
   end
 
   add_index "jobs", ["slug"], name: "index_jobs_on_slug", unique: true
+
+  create_table "works", force: :cascade do |t|
+    t.string   "company"
+    t.string   "position"
+    t.string   "start_month"
+    t.string   "start_year"
+    t.string   "end_month"
+    t.string   "end_year"
+    t.string   "status"
+    t.text     "description"
+    t.integer  "candidate_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "works", ["candidate_id"], name: "index_works_on_candidate_id"
 
 end

@@ -1,21 +1,19 @@
 # encoding: utf-8
 
-class ResumeUploader < CarrierWave::Uploader::Base
+class ScreenshotUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
   def extension_white_list
-    %w(pdf doc)
+    %w(jpg jpeg gif png)
   end
   # Choose what kind of storage to use for this uploader:
-   if Rails.env.production?
+  if Rails.env.production?
     storage :fog
   else
     storage :file
   end
-
-
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
@@ -31,7 +29,6 @@ class ResumeUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  #process :resize_to_fit => [200, 300]
   # process :scale => [200, 300]
   #
   # def scale(width, height)

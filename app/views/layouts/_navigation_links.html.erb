@@ -28,7 +28,7 @@
         </ul></li>
 <% elsif current_employer %>
 	<li >
-		<% if @employer.avatar %>
+		<% if @employer.avatar_url %>
 				<%= link_to (image_tag @employer.avatar_url, class: "image_menu"), current_employer %>
 			<% else %>
 				<%= link_to (profile_image_for@employer, size: 20), current_employer %></p>
@@ -45,15 +45,15 @@
       <li class="divider"></li>
       <li><%= link_to "Edit Profile", profile_info_path, class: 'fa fa-lock' %></li>
       <li class="divider"></li>
-        <li><%= link_to ' Sign Out', session_path, method: :delete, class: ' fa fa-cut ' %></li>
-        <% if current_employer_admin? %>
+      <li><%= link_to ' Sign Out', session_path, method: :delete, class: ' fa fa-cut ' %></li>
+      <% if current_employer_admin? %>
         <li class="divider"></li>
         <li><%= link_to ' Delete Account', @employer, 
             method: :delete, class: 'fa fa-warning ',
             data: { confirm: 'Are you sure you want to permanently delete your account?' } %></li>
-        <li class="divider"></li>
-        <% end %>
-        </ul></li>
+        
+      <% end %>
+      </ul></li>
 
 <% else %>
 	<li><%= link_to "Employers", register_path %></li>

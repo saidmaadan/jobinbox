@@ -1,0 +1,72 @@
+<div class='container'>
+	<div class='row'>
+		<div class='col-sm-1'></div>
+		<div class='col-sm-10'>
+			<%= form_for([@candidate, @work]) do |f| %>
+			<%= render "shared/errors", object: @work %>
+			<div class="row">
+				<div class='col-sm-6'>
+					<div class='form-group'>
+						<%= f.text_field :company, class: 'form-control', placeholder: 'Company Name' %>
+					</div>
+				</div>
+				<div class='col-sm-6'>
+					<div class='form-group'>
+						<%= f.text_field :position, class: 'form-control', placeholder: 'Position' %>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+						<div class='col-sm-2 col-xs-3'>
+							<div class='form-group'>
+								<%= f.text_field :start_month, class: 'form-control', placeholder: 'Mon' %>
+							</div>
+						</div>
+						<div class='col-sm-2 col-xs-3'>
+							<div class='form-group'>
+								<%= f.text_field :start_year, class: 'form-control', placeholder: 'Year' %>
+							</div>
+						</div>
+						<div class='col-sm-1 col-xs-1 text-center'> -- </div>
+						<div class='col-sm-2 col-xs-3'>
+							<div class='form-group'>
+								<%= f.text_field :end_month, class: 'form-control', placeholder: 'Mon' %>
+							</div>
+						</div>
+						<div class='col-sm-2 col-xs-3'>
+							<div class='form-group'>
+								<%= f.text_field :end_year, class: 'form-control', placeholder: 'Year' %>
+							</div>
+						</div>
+						<div class='col-sm-2 col-xs-3'>
+							<div class='form-group'>
+								<%= f.text_field :status, class: 'form-control', placeholder: 'Status' %>
+							</div>
+						</div>
+					</div>
+
+
+			<div class="row">
+				
+				<div class='col-sm-10 text-center'>
+					<div class='form-group'>
+						<%= f.text_area :description, class: 'form-control', placeholder: 'Summary' %>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				
+				<div class='col-sm-10 text-center'>
+					<div class='form-group'>
+						<%= f.submit "ADD", class: 'btn btn-info' %>
+					</div>
+				</div>
+			</div>
+			
+
+			<% end %>
+		</div>
+		<div class='col-sm-1'></div>
+	</div>
+</div>

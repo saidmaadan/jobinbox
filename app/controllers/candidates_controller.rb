@@ -5,16 +5,20 @@ class CandidatesController < ApplicationController
 
 	def show
 		@candidate = Candidate.friendly.find(params[:id])
+		@work = Work.new
+		@work.candidate_id = @work_id
+		@works = Work.where(candidate_id: @candidate.id).order("created_at DESC")
 	end
 
 	def new
 		@candidate = Candidate.new
-		@candidate.screenimages = params[:files]
+		
 	end
 
 	def create
 		@candidate = Candidate.new(candidate_params)
 		if @candidate.save
+			
 			session[:candidate_id] = @candidate.id
 			redirect_to @candidate, notice: "Thanks for signing up as candidate"
 		else
@@ -28,6 +32,9 @@ class CandidatesController < ApplicationController
 
 	def editprofile
 		@candidate = Candidate.friendly.find(params[:id])
+		@work = Work.new
+		@work.candidate_id = @work_id
+		@works = Work.where(candidate_id: @candidate.id).order("created_at DESC")		
 	end
 
 
@@ -57,7 +64,7 @@ class CandidatesController < ApplicationController
 
 	def candidate_params
 		params.require(:candidate).permit(:name,:email_address,:password,:password_confirmation,:username,:about, :headline, :experience, :education, :desired_salary, :city, :zip_code, :country, :phone, :github_url, :twitter_url, :linkedin_url, :dribbble_url, :facebook_url, :provider, :uid, :auth_token, :skype_id, 
-			:availability, :skills, :job_type, :languages, :how_heard, :avatar, :resume, :project_link, :portfolio_url, :image_url)
+			:availability, :skills, :job_type, :languages, :how_heard, :avatar, :resume, :projects_link, :portfolio_url, :image_url)
 	end
 
 end

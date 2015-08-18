@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   resource :session
   get "signup" => "candidates#new", as: "signup"
   get "candidates/:id/editprofile" => "candidates#editprofile", as: "profile/info"
-  resources :candidates
+  resources :candidates do 
+    resources :works
+    resources :educations
+  end
 
   get "register" => "employers#new", as: "register"
   resources :employers 
