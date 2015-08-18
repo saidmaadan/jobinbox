@@ -1,7 +1,58 @@
 <div class='container'>
-  <div class='row'>
-  <br><br>
-   <h2>Update Your Profile</h2><br>
-     <%= render 'form' %>
+	<div class='row'>
+		<div class='col-md-3 col-sm-4 hidden-xs'>
+		<br>
+
+			<p>
+			<% if @candidate.avatar_url %>
+				<%= image_tag @candidate.avatar_url, class: 'img-responsive' %>
+			<% else %>
+				<%= profile_image_for@candidate, class: "img-responsive" %></p>
+			<% end %>
+			<%#= @candidate.image_url %>
+			<%#= @candidate.headline %>
+
+
+			
+			<div class="list-group">
+			  
+			  <% if  @candidate.resume_url %>
+			    <%= link_to "Résumé", @candidate.resume_url, :target => "_blank", class: "list-group-item active"  %>
+			  <% else %>
+			  	<%= link_to "Upload Résumé", profile_info_path+"#resume", class: "list-group-item active" %>
+			  <% end %>
+			  </a>
+			  
+			  <%= link_to "Personal Website", @candidate.portfolio_url, target: "_blank", class: "list-group-item" %>
+			  <%= link_to "Blog/PortFolio", @candidate.projects_link, target: "_blank", class: "list-group-item" %>
+			  <%= link_to "Linkedin", "http://linkedin.com/in/" + @candidate.linkedin_url, target: "_blank", class: "list-group-item" %>
+			  <%= link_to "Twitter", "http://twitter.com/" + @candidate.twitter_url, target: "_blank", class: "list-group-item" %>
+			  <%= link_to "Github", "http://github.com/" + @candidate.github_url, target: "_blank", class: "list-group-item" %>
+			  <%= link_to "Facebook", "http://facebook.com/" + @candidate.facebook_url, target: "_blank", class: "list-group-item" %>
+			  <%= link_to "Dribbble", "http://dribbble.com/" + @candidate.dribbble_url, target: "_blank", class: "list-group-item" %>
+			  <a href="#" class="list-group-item"><%= @candidate.linkedin_url %></a>
+			  <a href="#" class="list-group-item"><%= @candidate.linkedin_url %></a>
+			</div>
+
+		</div>
+		<div class='col-md-8 col-sm-8 col-xs-12 edit-works'>
+
+			<div class='edit-form well'>
+				<h2 class='text-center'>Update Your Account</h2><br>
+    			 <%= render 'form' %>
+			</div>
+		</div>
+		<div class='col-md-1'></div>
+	</div>
+ 	
 </div>
-</div>
+
+
+
+
+
+
+
+
+
+

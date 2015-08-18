@@ -34,7 +34,9 @@ class CandidatesController < ApplicationController
 		@candidate = Candidate.friendly.find(params[:id])
 		@work = Work.new
 		@work.candidate_id = @work_id
-		@works = Work.where(candidate_id: @candidate.id).order("created_at DESC")		
+		@works = Work.where(candidate_id: @candidate.id).order("created_at DESC")
+
+
 	end
 
 

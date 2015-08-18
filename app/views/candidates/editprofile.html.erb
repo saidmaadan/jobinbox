@@ -367,16 +367,16 @@
 							<h5><%= w.start_month %> <%= w.start_year %> — <%= w.end_month %> <%= w.end_year %></h5>
 						</div>
 						<div class='col-sm-2 col-xs-5'>
-							<%#= link_to "Edit", edit_candidate_work_path(@work) %> 
-							<%#= link_to 'Delete', candidate_work_path(@candidate), method: :delete, data: {confirm: "Are You Sure?"} %>
+							<%= link_to "Edit", edit_candidate_work_path(@candidate, w) %> 
+							<%= link_to 'Delete', candidate_work_path(@candidate, w), method: :delete, data: {confirm: "Are You Sure?"} %>
 							
 						</div>
 						<div class='col-sm-12 col-xs-12'>
 							<%= w.description %>
 						</div>
-					</div>
+					</div><br>	
 				<% end %>
-			<% end %>		
+			<% end %>	
 		</div>
 			
   	</div>

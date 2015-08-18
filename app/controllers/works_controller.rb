@@ -20,11 +20,12 @@ class WorksController < ApplicationController
 	end
 
 	def edit
-		@work = @candidate.works.find(params[:work_id])
+		# @candidate = Candidate.friendly.find(params[:id])
+		@work = Work.find(params[:id])
 	end
 
 	def update
-		@work = @candidate.works.find(params[:work_id])
+		@work = Work.find(params[:id])
 		if @work.update(work_params)
 			redirect_to candidate_path(@candidate), notice: "WorK Experience Updated"
 		else

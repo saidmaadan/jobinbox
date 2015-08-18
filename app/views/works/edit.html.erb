@@ -1,1 +1,115 @@
-<%= render "form" %>
+
+<div class='container'>
+	<div class='row'>
+		<div class='col-md-3 col-sm-4 hidden-xs'>
+		<br>
+
+			<p>
+			<% if @candidate.avatar_url %>
+				<%= image_tag @candidate.avatar_url, class: 'img-responsive' %>
+			<% else %>
+				<%= profile_image_for@candidate, class: "img-responsive" %></p>
+			<% end %>
+			<%#= @candidate.image_url %>
+			<%#= @candidate.headline %>
+
+
+			
+			<div class="list-group">
+			  
+			  <% if  @candidate.resume_url %>
+			    <%= link_to "Résumé", @candidate.resume_url, :target => "_blank", class: "list-group-item active"  %>
+			  <% else %>
+			  	<%= link_to "Upload Résumé", profile_info_path+"#resume", class: "list-group-item active" %>
+			  <% end %>
+			  </a>
+			  
+			  <%= link_to "Personal Website", @candidate.portfolio_url, target: "_blank", class: "list-group-item" %>
+			  <%= link_to "Blog/PortFolio", @candidate.projects_link, target: "_blank", class: "list-group-item" %>
+			  <%= link_to "Linkedin", "http://linkedin.com/in/" + @candidate.linkedin_url, target: "_blank", class: "list-group-item" %>
+			  <%= link_to "Twitter", "http://twitter.com/" + @candidate.twitter_url, target: "_blank", class: "list-group-item" %>
+			  <%= link_to "Github", "http://github.com/" + @candidate.github_url, target: "_blank", class: "list-group-item" %>
+			  <%= link_to "Facebook", "http://facebook.com/" + @candidate.facebook_url, target: "_blank", class: "list-group-item" %>
+			  <%= link_to "Dribbble", "http://dribbble.com/" + @candidate.dribbble_url, target: "_blank", class: "list-group-item" %>
+			  <a href="#" class="list-group-item"><%= @candidate.linkedin_url %></a>
+			  <a href="#" class="list-group-item"><%= @candidate.linkedin_url %></a>
+			</div>
+
+		</div>
+		<div class='col-md-8 col-sm-8 col-xs-12 edit-works'>
+
+			<div class='edit-form well'>
+				<h2 class='text-center'>Update your Job Experience at <%= @work.company %></h2>
+				<%= form_for([@candidate, @work]) do |f| %>
+					<%= render "shared/errors", object: @work %>
+					<div class="row">
+						<div class='col-sm-6'>
+							<div class='form-group'>
+								<%= f.text_field :company, class: 'form-control', placeholder: 'Company Name' %>
+							</div>
+						</div>
+						<div class='col-sm-6'>
+							<div class='form-group'>
+								<%= f.text_field :position, class: 'form-control', placeholder: 'Position' %>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+								<div class='col-sm-2 col-xs-4'>
+									<div class='form-group'>
+										<%= f.text_field :start_month, class: 'form-control', placeholder: 'Mon' %>
+									</div>
+								</div>
+								<div class='col-sm-2 col-xs-4'>
+									<div class='form-group'>
+										<%= f.text_field :start_year, class: 'form-control', placeholder: 'Year' %>
+									</div>
+								</div>
+								<div class='col-sm-1 hidden-xs text-center'> — </div>
+
+								<div class='col-sm-2 col-xs-4'>
+									<div class='form-group'>
+										<%= f.text_field :end_month, class: 'form-control', placeholder: 'Mon' %>
+									</div>
+								</div>
+								<div class='col-sm-2 col-xs-4'>
+									<div class='form-group'>
+										<%= f.text_field :end_year, class: 'form-control', placeholder: 'Year' %>
+									</div>
+								</div>
+								<div class='col-sm-2 col-xs-4'>
+									<div class='form-group'>
+										<%= f.text_field :status, class: 'form-control', placeholder: 'Status' %>
+									</div>
+								</div>
+							</div>
+
+
+					<div class="row">
+						
+						<div class='col-sm-12 text-center'>
+							<div class='form-group'>
+								<%= f.text_area :description, cols: 40, rows: 7, class: 'form-control', placeholder: 'Summary' %>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						
+						<div class='col-sm-10 text-center'>
+							<div class='form-group'>
+								<%= f.submit "ADD", class: 'btn btn-info' %>
+							</div>
+						</div>
+					</div>
+					
+
+				<% end %>
+			</div>
+		</div>
+		<div class='col-md-1'></div>
+	</div>
+ 	
+</div>
+
+
