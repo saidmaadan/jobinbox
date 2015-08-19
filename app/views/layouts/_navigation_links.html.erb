@@ -2,10 +2,10 @@
 <% if current_candidate %>
   <li>
    
-     <% if @candidate.avatar_url %>
+    <% if current_candidate.avatar_url %>
       <%= link_to (image_tag @candidate.avatar_url, class: "image_menu"), current_candidate %>
     <% else %>
-      <%= link_to (profile_image_for@candidate, size: 20), current_candidate %>
+      <%= link_to (profile_image_for current_candidate, size: 20), current_candidate %>
     <% end %>
     
   </li>
@@ -14,14 +14,15 @@
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars fa-lg"></i><span class="caret"></span></a>
       <ul class="dropdown-menu" role="menu">
       <li><%= link_to " Profile", current_candidate %></li> 
+      <%# if current_candidate?(@candidate) %>
+        <li><%= link_to " Edit Profile", profile_info_path(current_candidate) %></li>
+         <li class="divider"></li>
       
-      <li><%= link_to " Edit Profile", profile_info_path %></li>
-       <li class="divider"></li>
-      <% if current_candidate?(@candidate) %>
-          <li><%= link_to "Account Setting", edit_candidate_path(@candidate) %></li>
-      <% end %>
-       <li class="divider"></li>
-        <li><%= link_to ' Sign Out', session_path, method: :delete, class: ' fa fa-cut ' %></li>
+          <li><%= link_to "Account Setting", edit_candidate_path(current_candidate) %></li>
+      
+         <li class="divider"></li>
+          <li><%= link_to ' Sign Out', session_path, method: :delete, class: ' fa fa-cut ' %></li>
+        <%# end %>
         <% if current_candidate_admin? %>
         <li class="divider"></li>
         <li><%= link_to ' Delete Account', @candidate, 
@@ -31,13 +32,12 @@
         <% end %>
         </ul></li>
 
-
 <% elsif current_employer %>
   <li >
-    <% if @employer.avatar_url %>
+    <% if current_employer.avatar_url %>
         <%= link_to (image_tag @employer.avatar_url, class: "image_menu"), current_employer %>
       <% else %>
-        <%= link_to (profile_image_for@employer, size: 20), current_employer %></p>
+        <%= link_to (profile_image_for current_employer, size: 20), current_employer %></p>
       <% end %>
   </li>
 
@@ -52,14 +52,17 @@
       <li><%= link_to "Edit Profile", profile_info_path, class: 'fa fa-lock' %></li>
       <li class="divider"></li>
       <li><%= link_to ' Sign Out', session_path, method: :delete, class: ' fa fa-cut ' %></li>
-      <% if current_employer_admin? %>
-        <li class="divider"></li>
-        <li><%= link_to ' Delete Account', @employer, 
-            method: :delete, class: 'fa fa-warning ',
-            data: { confirm: 'Are you sure you want to permanently delete your account?' } %></li>
-        
+    
+    <% if current_employer_admin? %>
+      <li class="divider"></li>
+      <li><%= link_to ' Delete Account', @employer, 
+          method: :delete, class: 'fa fa-warning ',
+          data: { confirm: 'Are you sure you want to permanently delete your account?' } %></li>
+      
       <% end %>
       </ul></li>
+
+
 
 <% else %>
   <li><%= link_to "Employers", register_path %></li>

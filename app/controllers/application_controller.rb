@@ -2,13 +2,15 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  before_filter :expire_hsts
 
-  def require_signins
-  	unless current_employer
-  		session[:intended_url] = request.url
-  		redirect_to new_session_url, alert: "You need to sign in to have access"
-  	end
-  end
+  private
+  # def require_signins
+  # 	unless current_employer
+  # 		session[:intended_url] = request.url
+  # 		redirect_to new_session_url, alert: "You need to sign in to have access"
+  # 	end
+  # end
 
   def require_signin
   	unless current_candidate || current_employer
@@ -39,6 +41,20 @@ class ApplicationController < ActionController::Base
 
 	helper_method :current_candidate?, :current_employer?
 
+	def correct_candidate
+    @candidate = Candidate.friendly.find(params[:id])
+    unless current_candidate?(@candidate)
+      redirect_to root_url
+    end
+  end
+
+  def correct_candidate?
+     #current_candidate == correct_candidate
+     @correct_candidate == @candidate
+  end
+  helper_method :correct_candidate?
+
+
 	def require_admin
 	  unless current_candidate_admin? || current_employer_admin?
 	    redirect_to root_url, alert: "Unauthorized access!"
@@ -54,4 +70,8 @@ class ApplicationController < ActionController::Base
 	end
 
 	helper_method :current_employer_admin?, :current_candidate_admin?
+
+	def expire_hsts
+    response.headers["Strict-Transport-Security"] = 'max-age=0'
+  end
 end

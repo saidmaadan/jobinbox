@@ -1,4 +1,7 @@
 class CandidatesController < ApplicationController
+	before_action :require_signin, except: [:new, :create]
+  before_action :correct_candidate, only: [:edit, :update]
+  #before_action :require_admin, only: [:delete]
 	def index
 		@candidates = Candidate.all 
 	end
@@ -35,8 +38,6 @@ class CandidatesController < ApplicationController
 		@work = Work.new
 		@work.candidate_id = @work_id
 		@works = Work.where(candidate_id: @candidate.id).order("created_at DESC")
-
-
 	end
 
 
