@@ -16,25 +16,23 @@
 
 			
 			<div class="list-group">
-			  
-			  <% if  @candidate.resume_url %>
-			    <%= link_to "Résumé", @candidate.resume_url, :target => "_blank", class: "list-group-item active"  %>
+			   <% if  @candidate.resume_url %>
+			    <%= link_to "Résumé", @candidate.resume_url, :target => "_blank", class: "list-group-item active" if @candidate.resume_url  %>
 			  <% else %>
-			  	<%= link_to "Upload Résumé", profile_info_path+"#resume", class: "list-group-item active" %>
+			  	<%= link_to "Upload Résumé", profile_info_path+"#resume", class: "list-group-item active" if current_candidate?(@candidate) %>
 			  <% end %>
-			  </a>
+				
 			  
-			  <%= link_to "Personal Website", @candidate.portfolio_url, target: "_blank", class: "list-group-item" %>
-			  <%= link_to "Blog/PortFolio", @candidate.projects_link, target: "_blank", class: "list-group-item" %>
-			  <%= link_to "Linkedin", "http://linkedin.com/in/" + @candidate.linkedin_url, target: "_blank", class: "list-group-item" %>
-			  <%= link_to "Twitter", "http://twitter.com/" + @candidate.twitter_url, target: "_blank", class: "list-group-item" %>
-			  <%= link_to "Github", "http://github.com/" + @candidate.github_url, target: "_blank", class: "list-group-item" %>
-			  <%= link_to "Facebook", "http://facebook.com/" + @candidate.facebook_url, target: "_blank", class: "list-group-item" %>
-			  <%= link_to "Dribbble", "http://dribbble.com/" + @candidate.dribbble_url, target: "_blank", class: "list-group-item" %>
-			  <a href="#" class="list-group-item"><%= @candidate.linkedin_url %></a>
+			  
+			  <%= link_to "Personal Website", @candidate.portfolio_url, target: "_blank", class: "list-group-item" if @candidate.portfolio_url  %>
+			  <%= link_to "Blog/PortFolio", @candidate.projects_link, target: "_blank", class: "list-group-item" if @candidate.projects_link  %>
+			  <%= link_to "Linkedin", "http://linkedin.com/in/" + @candidate.linkedin_url, target: "_blank", class: "list-group-item" if @candidate.linkedin_url %>
+			  <%= link_to "Twitter", "http://twitter.com/" + @candidate.twitter_url, target: "_blank", class: "list-group-item" if @candidate.twitter_url %>
+			  <%= link_to "Github", "http://github.com/" + @candidate.github_url, target: "_blank", class: "list-group-item" if @candidate.github_url %>
+			  <%= link_to "Facebook", "http://facebook.com/" + @candidate.facebook_url, target: "_blank", class: "list-group-item" if @candidate.facebook_url %>
+			  <%= link_to "Dribbble", "http://dribbble.com/" + @candidate.dribbble_url, target: "_blank", class: "list-group-item" if @candidate.dribbble_url %>
 			  <a href="#" class="list-group-item"><%= @candidate.linkedin_url %></a>
 			</div>
-
 		</div>
 		<div class='col-md-8 col-sm-8 col-xs-12 edit-works'>
 

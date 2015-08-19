@@ -3,7 +3,7 @@
   <li>
    
     <% if current_candidate.avatar_url %>
-      <%= link_to (image_tag @candidate.avatar_url, class: "image_menu"), current_candidate %>
+      <%= link_to (image_tag current_candidate.avatar_url, class: "image_menu"), current_candidate %>
     <% else %>
       <%= link_to (profile_image_for current_candidate, size: 20), current_candidate %>
     <% end %>

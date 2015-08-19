@@ -15,13 +15,13 @@
 
 			
 			<div class="list-group">
-			  
 			  <% if  @candidate.resume_url %>
 			    <%= link_to "Résumé", @candidate.resume_url, :target => "_blank", class: "list-group-item active" if @candidate.resume_url  %>
 			  <% else %>
-			  	<%= link_to "Upload Résumé", profile_info_path+"#resume", class: "list-group-item active"  %>
+			  	<%= link_to "Upload Résumé", profile_info_path+"#resume", class: "list-group-item active" if current_candidate?(@candidate)  %>
 			  <% end %>
-			  </a>
+				
+			  
 			  
 			  <%= link_to "Personal Website", @candidate.portfolio_url, target: "_blank", class: "list-group-item" if @candidate.portfolio_url  %>
 			  <%= link_to "Blog/PortFolio", @candidate.projects_link, target: "_blank", class: "list-group-item" if @candidate.projects_link  %>
