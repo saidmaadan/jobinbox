@@ -1,74 +1,116 @@
-<div class='container'>
-	<div class='row candidate-show'>
-		<div class='col-md-3 col-sm-4 col-xs-12'>
-		<br>
+<div class='candidate-main-show'>
+	<div class='container'>
+		<div class='row candidate-show'>
+			<div class='col-md-3 col-sm-4 col-xs-12'>
+			<br>
 
-			<p>
-			<% if @candidate.avatar_url %>
-				<%= image_tag @candidate.avatar_url, class: 'img-responsive' %>
-			<% else %>
-				<%= profile_image_for@candidate, class: "img-responsive" %></p>
-			<% end %>
-			<%#= @candidate.image_url %>
-			<%#= @candidate.headline %>
-
-
-			
-			<div class="list-group">
-			  <% if  @candidate.resume_url %>
-			    <%= link_to "Résumé", @candidate.resume_url, :target => "_blank", class: "list-group-item active" if @candidate.resume_url  %>
-			  <% else %>
-			  	<%= link_to "Upload Résumé", profile_info_path+"#resume", class: "list-group-item active" if current_candidate?(@candidate)  %>
-			  <% end %>
-				
-			  
-			  
-			  <%= link_to "Personal Website", @candidate.portfolio_url, target: "_blank", class: "list-group-item" if @candidate.portfolio_url  %>
-			  <%= link_to "Blog/PortFolio", @candidate.projects_link, target: "_blank", class: "list-group-item" if @candidate.projects_link  %>
-			  <%= link_to "Linkedin", "http://linkedin.com/in/" + @candidate.linkedin_url, target: "_blank", class: "list-group-item" if @candidate.linkedin_url %>
-			  <%= link_to "Twitter", "http://twitter.com/" + @candidate.twitter_url, target: "_blank", class: "list-group-item" if @candidate.twitter_url %>
-			  <%= link_to "Github", "http://github.com/" + @candidate.github_url, target: "_blank", class: "list-group-item" if @candidate.github_url %>
-			  <%= link_to "Facebook", "http://facebook.com/" + @candidate.facebook_url, target: "_blank", class: "list-group-item" if @candidate.facebook_url %>
-			  <%= link_to "Dribbble", "http://dribbble.com/" + @candidate.dribbble_url, target: "_blank", class: "list-group-item" if @candidate.dribbble_url %>
-			  <a href="#" class="list-group-item"><%= @candidate.linkedin_url %></a>
-			</div>
-
-		</div>
-		<div class='col-md-6 col-sm-5 col-xs-12'>
-			<h2><%= @candidate.name %></h2>
-			<h4><%= @candidate.email_address %></h4>
-			Linkedin: <%= @candidate.linkedin_url %><br>
-			Twitter: <%= @candidate.twitter_url %>
-			<h4>Based in <%= @candidate.city %></h4>
-			
-			<% if @works.any? %> 
-			 <h1>Work Experience</h1> 
-				<% @works.each do |w| %>
-					<div class='row'>
-						<div class='col-sm-12'>
-							<h4><i class=" fa fa-briefcase " ></i><%= w.company %></h4>
-						</div>
-						<div class='col-sm-12'>
-							<%= w.position %>
-						</div>
-						<div class='col-sm-12'>
-							<%= w.start_month %> <%= w.start_year %> — <%= w.end_month %> <%= w.end_year %>
-						</div>
-						
-						<div class='col-sm-12 col-xs-12'>
-							<%= w.description %>
-						</div>
-					</div>
+				<p>
+				<% if @candidate.avatar_url %>
+					<%= image_tag @candidate.avatar_url, class: 'img-responsive' %>
+				<% else %>
+					<%= profile_image_for@candidate, class: "img-responsive" %></p>
 				<% end %>
-			<% end %>		
-			
-		</div>
-		<div class='col-md-3 col-sm-3 col-xs-12'></div>
-	</div>
- 	<% if current_candidate_admin? %>
-	<%= link_to "Edit", edit_candidate_path(@candidate) %> | 
-	
-	<%= link_to 'Delete Account', candidate_path(@candidate), method: :delete, data: {confirm: "Are You Sure?"} %>
-	<% end %>
-</div>
+				<%#= @candidate.image_url %>
+				<%#= @candidate.headline %>
 
+
+				
+				<div class="list-group">
+				  <% if  @candidate.resume_url %>
+				    <%= link_to "Résumé", @candidate.resume_url, :target => "_blank", class: "list-group-item active" if @candidate.resume_url  %>
+				  <% else %>
+				  	<%= link_to "Upload Résumé", profile_info_path+"#resume", class: "list-group-item active" if current_candidate?(@candidate)  %>
+				  <% end %>
+					
+				  
+				  
+				  <%= link_to "Personal Website", @candidate.portfolio_url, target: "_blank", class: "list-group-item" if @candidate.portfolio_url  %>
+				  <%= link_to "Blog/PortFolio", @candidate.projects_link, target: "_blank", class: "list-group-item" if @candidate.projects_link  %>
+				  <%= link_to "Linkedin", "http://linkedin.com/in/" + @candidate.linkedin_url, target: "_blank", class: "list-group-item" if @candidate.linkedin_url %>
+				  <%= link_to "Twitter", "http://twitter.com/" + @candidate.twitter_url, target: "_blank", class: "list-group-item" if @candidate.twitter_url %>
+				  <%= link_to "Github", "http://github.com/" + @candidate.github_url, target: "_blank", class: "list-group-item" if @candidate.github_url %>
+				  <%= link_to "Facebook", "http://facebook.com/" + @candidate.facebook_url, target: "_blank", class: "list-group-item" if @candidate.facebook_url %>
+				  <%= link_to "Dribbble", "http://dribbble.com/" + @candidate.dribbble_url, target: "_blank", class: "list-group-item" if @candidate.dribbble_url %>
+				  <a href="#" class="list-group-item"><%= @candidate.linkedin_url %></a>
+				</div>
+
+			</div>
+			<div class='col-md-6 col-sm-5 col-xs-12 candidate-content'>
+				<div class='well'>
+					<h2><%= @candidate.name %></h2>
+					<h4><%= @candidate.email_address %></h4>
+					Linkedin: <%= @candidate.linkedin_url %><br>
+					Twitter: <%= @candidate.twitter_url %>
+					<h4>Based in <%= @candidate.city %></h4>
+					
+					<% if @works.any? %> 
+					<hr>
+					 <h1>Work Experience</h1> 
+						<% @works.each do |w| %>
+							<div class='row'>
+								<div class='col-sm-12'>
+									<h4><i class=" fa fa-briefcase " ></i><%= w.company %></h4>
+								</div>
+								<!-- <div class='row'> -->
+									<div class='col-sm-9 col-xs-8'>
+										<%= w.position %>
+									</div>
+									<%if current_candidate?(@candidate) %>
+										<div class='col-sm-3 col-xs-4'>
+											<%= link_to "Edit", edit_candidate_work_path(@candidate, w) %> 
+											<%= link_to 'Delete', candidate_work_path(@candidate, w), method: :delete, data: {confirm: "Are You Sure?"} %>
+										
+										</div>
+									<% end %>
+								<!-- </div> -->
+								<div class='col-sm-12'>
+									<%= w.start_month %> <%= w.start_year %> — 
+									<% if w.status == "CURRENT" %> 
+										<%= "present" %>
+									<% else %>
+										<%= w.end_month %> <%= w.end_year %>
+									<% end %>
+								</div>
+								
+								<div class='col-sm-12 col-xs-12'>
+									<%= w.description %>
+								</div>
+							</div>
+						<% end %>
+					<% end %>		
+					
+					<% if @educations.any? %>  
+						<hr>
+						<h1>Education</h1>
+						<% @educations.each do |e| %>
+						<div class='row'>
+							<div class='col-sm-9 col-xs-8'>
+								<h5><%= e.school %></h5>
+							</div>
+							<div class='col-sm-3 col-xs-4'>
+								<%if current_candidate?(@candidate) %>
+									<%= link_to "Edit", edit_candidate_education_path(@candidate, e) %> 
+									<%= link_to 'Delete', candidate_education_path(@candidate, e), method: :delete, data: {confirm: "Are You Sure?"} %>
+								<% end %>
+							</div>
+							<div class='col-sm-9 col-xs-8'>
+								<h5><%= e.degree %></h5>
+							</div>
+							<div class='col-sm-3 col-xs-4'>
+								<h5><%= e.year %> 
+							</div>
+							
+						</div><br>	
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+			<div class='col-md-3 col-sm-3 col-xs-12'></div>
+		</div>
+	 	<% if current_candidate_admin? %>
+		<%= link_to "Edit", edit_candidate_path(@candidate) %> | 
+		
+		<%= link_to 'Delete Account', candidate_path(@candidate), method: :delete, data: {confirm: "Are You Sure?"} %>
+		<% end %>
+	</div>
+</div>

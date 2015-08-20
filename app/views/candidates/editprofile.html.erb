@@ -307,32 +307,32 @@
 					<div class="row">
 						<div class='col-sm-2 col-xs-3'>
 							<div class='form-group'>
-								<%= f.text_field :start_month, class: 'form-control', placeholder: 'Mon' %>
+								<%= f.select :start_month, Work::START_MONTH, prompt: "MON", class: "form-control" %>
+								<%#= f.text_field :start_month, class: 'form-control', placeholder: 'Mon' %>
 							</div>
 						</div>
 						<div class='col-sm-2 col-xs-3'>
 							<div class='form-group'>
-								<%= f.text_field :start_year, class: 'form-control', placeholder: 'Year' %>
+								<%= f.select :start_year, Work::START_YEAR, prompt: "YEAR", class: "form-control" %>
 							</div>
 						</div>
 						<div class='col-sm-1 col-xs-1 text-center'> — </div>
 						<div class='col-sm-2 col-xs-3'>
 							<div class='form-group'>
-								<%= f.text_field :end_month, class: 'form-control', placeholder: 'Mon' %>
+								<%= f.select :end_month, Work::END_MONTH, prompt: "MON", class: "form-control" %>
 							</div>
 						</div>
 						<div class='col-sm-2 col-xs-3'>
 							<div class='form-group'>
-								<%= f.text_field :end_year, class: 'form-control', placeholder: 'Year' %>
+								<%= f.select :end_year, Work::END_YEAR, prompt: "YEAR", class: "form-control" %>
 							</div>
 						</div>
-						<div class='col-sm-2 col-xs-3'>
+						<div class='col-sm-3 col-xs-3'>
 							<div class='form-group'>
-								<%= f.text_field :status, class: 'form-control', placeholder: 'Status' %>
+							         <%= f.select :status, Work::STATUS, prompt: "Job Status", class: "form-control" %>
 							</div>
 						</div>
 					</div>
-
 
 					<div class="row">
 						
@@ -364,7 +364,12 @@
 							<h5><%= w.position %></h5>
 						</div>
 						<div class='col-sm-4 col-xs-7'>
-							<h5><%= w.start_month %> <%= w.start_year %> — <%= w.end_month %> <%= w.end_year %></h5>
+							<h5><%= w.start_month %> <%= w.start_year %> — 
+							<% if w.status == "CURRENT" %>
+								<%= "present" %>
+							<% else %>
+								<%= w.end_month %> <%= w.end_year %></h5>
+							<% end %>
 						</div>
 						<div class='col-sm-2 col-xs-5'>
 							<%= link_to "Edit", edit_candidate_work_path(@candidate, w) %> 
@@ -376,7 +381,70 @@
 						</div>
 					</div><br>	
 				<% end %>
-			<% end %>	
+			<% end %>
+
+
+			<div class='profile-education'>
+				<div class='well'>
+					<h2>Education <span>*</span></h2>
+					<p>Enter "self taught" if you have no formal education</p>
+					<%= form_for([@candidate, @education]) do |f| %>
+						<%= render "shared/errors", object: @education %>
+						<div class="row">
+							<div class='col-sm-5'>
+								<div class='form-group'>
+									<%= f.text_field :school, class: 'form-control', placeholder: 'University/College' %>
+								</div>
+							</div>
+							<div class='col-sm-5 col-xs-8'>
+								<div class='form-group'>
+									<%= f.text_field :degree, class: 'form-control', placeholder: 'B.S, Computer Science' %>
+								</div>
+							</div>
+							<div class='col-sm-2 col-xs-4'>
+								<div class='form-group'>
+									<%= f.select :year, Education::YEAR, prompt: "YEAR", class: "form-control" %>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							
+							<div class='col-sm-10 text-center'>
+								<div class='form-group'>
+									<%= f.submit "ADD", class: 'btn btn-info' %>
+								</div>
+							</div>
+						</div>
+						
+
+					<% end %>
+				</div>
+			</div>	
+
+			<div class='education-content'>
+				<% if @educations.any? %>  
+					<% @educations.each do |e| %>
+						<div class='row'>
+							<div class='col-sm-4 col-xs-6'>
+								<h5><%= e.school %></h5>
+							</div>
+							<div class='col-sm-4 col-xs-6'>
+								<h5><%= e.degree %></h5>
+							</div>
+							<div class='col-sm-2 col-xs-6'>
+								<h5><%= e.year %> 
+							</div>
+							<div class='col-sm-2 col-xs-6'>
+								<%= link_to "Edit", edit_candidate_education_path(@candidate, e) %> 
+								<%= link_to 'Delete', candidate_education_path(@candidate, e), method: :delete, data: {confirm: "Are You Sure?"} %>
+								
+							</div>
+						</div><br>	
+					<% end %>
+				<% end %>
+
+			</div>
 		</div>
 			
   	</div>

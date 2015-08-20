@@ -11,6 +11,7 @@ body {
   font-size: 17px;
   line-height: 21px;
   color: #4c4c4e;
+  background-color: #f1f2f4;
 }
 h1, h2, h3, th {
   font-family: ProximaNova, Arial, sans-serif;
@@ -23,6 +24,13 @@ h1 {
 h2 {
   margin-bottom: 12px;
   font-size: 18px;
+}
+.body{
+  background-color: #f1f2f4;
+}
+main{
+  margin-top: 70px;
+  
 }
 
 .navbar-inverse .navbar-brand {
@@ -79,6 +87,17 @@ img{
     color: #fd7700;
     font-size: 18px;
 }
+.candidate-main-show{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  .candidate-content{
+    margin-top: 20px;
+    .well{
+      background-color: #f1f2f4;
+    }
+  }
+}
 .candidate-show{
   .fa{
     padding-right: 10px;
@@ -87,6 +106,28 @@ img{
   }
 }
 
+select{
+    
+    font-size: 30px;
+    line-height: inherit;
+    height: 50px;
+  }
+  .profile-education{
+    margin-top: 30px;
+    .well{
+      background-color: #fd7700;
+      h2{
+        font-weight: 900;
+        span{
+          color: red;
+        }
+      p{
+        margin-top: -40px;
+        font-size: 10px;
+      }
+      }
+    }
+  }
 //-----------------Edit Form-----------------------------------//
 
 .edit-works{

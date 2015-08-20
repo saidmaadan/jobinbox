@@ -18,6 +18,7 @@ class Candidate < ActiveRecord::Base
                      uniqueness: { case_sensitive: false }
   
   has_many :works
+  has_many :educations
 
   before_create {generate_token(:auth_token)}
 

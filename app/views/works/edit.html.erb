@@ -53,36 +53,34 @@
 						</div>
 					</div>
 					<div class="row">
-								<div class='col-sm-2 col-xs-4'>
-									<div class='form-group'>
-										<%= f.text_field :start_month, class: 'form-control', placeholder: 'Mon' %>
-									</div>
-								</div>
-								<div class='col-sm-2 col-xs-4'>
-									<div class='form-group'>
-										<%= f.text_field :start_year, class: 'form-control', placeholder: 'Year' %>
-									</div>
-								</div>
-								<div class='col-sm-1 hidden-xs text-center'> — </div>
-
-								<div class='col-sm-2 col-xs-4'>
-									<div class='form-group'>
-										<%= f.text_field :end_month, class: 'form-control', placeholder: 'Mon' %>
-									</div>
-								</div>
-								<div class='col-sm-2 col-xs-4'>
-									<div class='form-group'>
-										<%= f.text_field :end_year, class: 'form-control', placeholder: 'Year' %>
-									</div>
-								</div>
-								<div class='col-sm-2 col-xs-4'>
-									<div class='form-group'>
-										<%= f.text_field :status, class: 'form-control', placeholder: 'Status' %>
-									</div>
-								</div>
+								<div class='col-sm-2 col-xs-3'>
+							<div class='form-group'>
+								<%= f.select :start_month, Work::START_MONTH, prompt: "MON", class: "form-control" %>
+								<%#= f.text_field :start_month, class: 'form-control', placeholder: 'Mon' %>
 							</div>
-
-
+						</div>
+						<div class='col-sm-2 col-xs-3'>
+							<div class='form-group'>
+								<%= f.select :start_year, Work::START_YEAR, prompt: "YEAR", class: "form-control" %>
+							</div>
+						</div>
+						<div class='col-sm-1 col-xs-1 text-center'> — </div>
+						<div class='col-sm-2 col-xs-3'>
+							<div class='form-group'>
+								<%= f.select :end_month, Work::END_MONTH, prompt: "MON", class: "form-control" %>
+							</div>
+						</div>
+						<div class='col-sm-2 col-xs-3'>
+							<div class='form-group'>
+								<%= f.select :end_year, Work::END_YEAR, prompt: "YEAR", class: "form-control" %>
+							</div>
+						</div>
+						<div class='col-sm-3 col-xs-3'>
+							<div class='form-group'>
+							         <%= f.select :status, Work::STATUS, prompt: "Job Status", class: "form-control" %>
+							</div>
+						</div>
+					</div>
 					<div class="row">
 						
 						<div class='col-sm-12 text-center'>

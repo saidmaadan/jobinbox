@@ -42,7 +42,7 @@ class WorksController < ApplicationController
 	private
 
 	def work_params
-		params.require(:work).permit(:company, :position, :start_month, :start_year, :end_month, :end_year, :status, :description)
+		params.require(:work).permit(:company, :position, :start_month, :start_year, :end_month, :end_year, :description, :status)
 	end
 
 	def set_candidate
