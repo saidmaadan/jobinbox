@@ -29,8 +29,43 @@ h2 {
   background-color: #f1f2f4;
 }
 main{
-  margin-top: 70px;
+  margin-top: 120px;
   
+}
+//---------------header----------------------------
+
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 70px;
+  background-color: #fd7700;
+  .logo img{
+    width: 250px;
+    height: 60px;
+    padding-top: 10px;
+    margin-left: -20px;
+  }
+  span{
+    color: #15A3B3;
+    font-size: 1.7em;
+    font-weight: bolder;
+  }
+  .btn{
+    padding: 10px;
+    margin-top: 12px;
+    color: #fff;
+    font-weight: 900;
+  }
+  .btn-default{
+    color: #fd7700;
+  }
+}
+
+.navbar{
+  margin-top: 70px;
 }
 
 .navbar-inverse .navbar-brand {
@@ -45,6 +80,7 @@ main{
 }
 .navbar-inverse .navbar-nav > li > a {
   color: #fd7700;
+  font-weight: 900;
 }
 .navbar-inverse .navbar-nav > li > a:hover {
   color: #000;
@@ -52,7 +88,14 @@ main{
 .navbar-inverse .navbar-brand:hover {
   color: #000;
 }
-
+.right-nav-job{
+  //background-color: green;
+  background: -webkit-linear-gradient(90deg, #52c234 10%, #061700 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #52c234 10%, #061700 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #52c234 10%, #061700 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #52c234 10%, #061700 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #52c234 10%, #061700 90%); /* W3C */
+ }       
 //-------------- Candidate Styles-------------------------------------//
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
 	z-index: 2;
@@ -143,4 +186,15 @@ select{
     font-size: 25px;
   }
 }
-
+//-------------------------Pages---------------------------------//
+.jumbotron{
+  width: 100%;
+  height: 600px;
+  background-image: url('https://s3.amazonaws.com/inventivelabs/jobinbox/imgs/tech-peep.jpg');
+  background-size: cover;
+  text-align: center;
+  h1{
+    color: #fff;
+    font-weight: 900;
+  }
+}

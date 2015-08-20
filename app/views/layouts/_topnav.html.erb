@@ -1,0 +1,32 @@
+<header>
+	<div class="container">
+	    <div class="row">
+	    	<div class="col-md-3 col-sm-4 col-xs-6 logo pull-left">
+	       <a ui-sref="home"><img src="https://s3.amazonaws.com/inventivelabs/jobinbox/logos/jblogo4.png"></a></div>
+	   
+	    	<div class="col-md-9 col-sm-8 col-xs-6">
+	    	<div class='row text-right'>
+	    		<div class='col-sm-12 pull-right text-uppercase'>
+	    			<% if current_candidate %>
+				  		<%= link_to 'logout', session_path, method: :delete, class: ' btn btn-default ' %>
+	          		<% elsif current_employer %>
+				  		<%= link_to 'logout', session_path, method: :delete, class: ' btn btn-default ' %>
+
+	    			<% else %>
+		    			<%= link_to "Employers", register_path, class: 'btn btn-success hidden-xs' %>
+		    			<%= link_to "Apply As A Candidates", signup_path, class: 'btn btn-success hidden-xs' %>
+		    			<%= link_to "LogIn", signin_path, class: 'btn btn-default' %>
+		    		<% end %>
+	    		</div>
+	    		<!-- <div class='col-sm-2'>
+	    			
+	    		</div>
+	    		<div class='col-sm-2'>
+	    			
+	    		</div> -->
+	    	</div>
+		    	
+	      </div>
+	    </div>
+	   </div>
+  </header>

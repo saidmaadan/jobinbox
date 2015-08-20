@@ -10,8 +10,14 @@
       </button>
       <% if current_candidate %>
        <%= link_to 'Home', current_candidate, class: 'navbar-brand' %>
+       <%= link_to 'Dashboard', current_candidate, class: 'navbar-brand' %>
+       <%= link_to 'Tech News', current_candidate, class: 'navbar-brand' %>
+       <%= link_to 'Search', current_candidate, class: 'navbar-brand' %>
       <% else %>
         <%= link_to 'Home', root_path, class: 'navbar-brand' %>
+        <%= link_to 'Dashboard', current_candidate, class: 'navbar-brand' %>
+       <%= link_to 'Tech News', current_candidate, class: 'navbar-brand' %>
+       <%= link_to 'Search', current_candidate, class: 'navbar-brand' %>
       <% end %>
     </div>
     <div class="collapse navbar-collapse">
