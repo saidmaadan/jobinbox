@@ -1,0 +1,19 @@
+<div class='container'>
+	<div class='row'><br>
+	<div class='col-sm-3'>
+		<% if @employer.avatar_url %>
+			<%= image_tag @employer.avatar_url, class: 'img-responsive' %>
+		<% else %>
+			<%= profile_image_for@employer, class: "img-responsive" %>
+		<% end %>	
+	</div>
+	<div class='col-sm-6'>
+		<%= @employer.name %>
+		
+	</div>
+	<div class='col-sm-3'>
+		
+	</div>
+
+	</div>
+</div>

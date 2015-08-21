@@ -18,6 +18,7 @@ class Employer < ActiveRecord::Base
                      uniqueness: { case_sensitive: false }
 
   has_many :jobs
+  belongs_to :plan
 
   before_create {generate_token(:auth_token)}
 

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   get "register" => "employers#new", as: "register"
+  get "employers/signup" => "employers#home"
   resources :employers 
 
   resources :jobs
