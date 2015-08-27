@@ -1,0 +1,32 @@
+<div class='container'>
+<div class='row'>
+<br><br>
+
+<header id="content-header">
+  <h1>Sign In</h1>
+
+</header>
+
+<%= form_tag(login_path) do %>
+
+  <fieldset>
+
+      <p class="required">
+        <%= label_tag :email_address %><br>
+        <%= text_field_tag :email_address, nil, required: true, autofocus: true, size: 40, placeholder: "Email or Username" %>
+      </p>
+      <p class="required">
+      <%= label_tag :password %><br>
+        <%= password_field_tag :password, nil, required: true, size: 40, placeholder: "Password" %>
+      </p>
+
+    <p>
+      <%= submit_tag 'Sign In' %>
+    </p>
+  </fieldset>
+<% end %>
+<p>
+  No account yet? Sign up as <%= link_to ' Candidate!', signup_path %> or  <%= link_to 'Employer!', register_path %>
+</p>
+</div>
+</div>

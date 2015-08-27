@@ -11,6 +11,12 @@ class ApplicationController < ActionController::Base
   # 		redirect_to new_session_url, alert: "You need to sign in to have access"
   # 	end
   # end
+  # def require_signin_employer
+  #   unless current_employer
+  #     session[:intended_url] = request.url
+  #     redirect_to new_session_url, alert: "You need to sign in to get in"
+  #   end
+  # end
 
   def require_signin
   	unless current_candidate || current_employer
@@ -19,27 +25,43 @@ class ApplicationController < ActionController::Base
   	end
   end
 
+  # def require_signin
+  #   if current_candidate
+  #     session[:intended_url] = request.url
+  #   elsif
+  #     current_employer
+  #     session[:intended_url] = request.url
+  #   else
+  #     redirect_to new_session_url, alert: "You need to sign in to have access"
+  #   end
+  # end
+
+  
+
+  def current_employer
+    #@current_employer ||= Employer.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
+    @current_employer ||= Employer.find(session[:employer_id]) if session[:employer_id]
+  end
+  helper_method :current_employer
+
   def current_candidate
-  		@current_candidate ||= Candidate.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
+  	@current_candidate ||= Candidate.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
 		#@current_candidate ||= Candidate.find(session[:candidate_id]) if session[:candidate_id]
 	end
 
-	def current_employer
-		@current_employer ||= Employer.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
-		#@current_employer ||= Employer.find(session[:employer_id]) if session[:employer_id]
-	end
-
-	helper_method :current_candidate, :current_employer
+	helper_method :current_candidate
+  
 
 	def current_candidate?(candidate)
 		current_candidate == candidate
 	end
+  helper_method :current_employer?
 
 	def current_employer?(employer)
 		current_employer == employer
 	end
 
-	helper_method :current_candidate?, :current_employer?
+	helper_method :current_candidate?
 
 	def correct_candidate
     @candidate = Candidate.friendly.find(params[:id])

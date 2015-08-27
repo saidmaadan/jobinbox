@@ -1,13 +1,16 @@
 <div class='container'>
 	<div class='row'><br>
 	<div class='col-sm-8 col-sm-offset-2 text-center'>
-		<% if params[:plan] == "pro" %>
+		<h2>Register for a Account</h2>
+		    <%= render 'form' %>
+		    
+		<!-- <%# if params[:plan] == "2" %>
 			<h2>Register for a Pro Account</h2>
-		    <%= render 'pro_form' %>
-		<% else %> 
+		    <%#= render 'pro_form' %>
+		<%# else %> 
 			<h2>Register for a basic Account</h2>
-		    <%= render 'basic_form' %>
-		<% end %>
+		    <%#= render 'basic_form' %>
+		<%# end %> -->
 	</div>
 
 	</div>

@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   get '/faq' =>'pages#faq'
 
   get "signin" => "sessions#new"
+  
   get '/auth/:provider/callback' => 'sessions#create'
+  get "login" => "logins#new"
+  resource :login
   resource :session
   get "signup" => "candidates#new", as: "signup"
   get "candidates/:id/editprofile" => "candidates#editprofile", as: "profile/info"
@@ -20,6 +23,7 @@ Rails.application.routes.draw do
 
   get "register" => "employers#new", as: "register"
   get "employers/signup" => "employers#home"
+
   resources :employers 
 
   resources :jobs

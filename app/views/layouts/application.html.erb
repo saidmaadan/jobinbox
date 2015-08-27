@@ -2,19 +2,25 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Jobinbox" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Jobinbox" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "JobInbox: Hired Top Developer" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : " Employers and Job Seekers " %>">
+    <meta name="author" content="Said Maadan">
     <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Oswald|Roboto', media: 'all' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%#= javascript_include_tag "https://js.stripe.com/v2/", type: 'text/javascript' %>
     <%= javascript_include_tag 'application' %>
+    <%#= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'https://s3.amazonaws.com/inventivelabs/jobinbox/logos/favicon.ico' %>
   </head>
   <body class='body'>
     <header class='header'>
-      <%= render "layouts/topnav" %>
+      
+        <%= render "layouts/topnav" %>
+      
     </header>
     <header>
+      
       <%= render 'layouts/navigation' %>
     </header>
     <main role="main">

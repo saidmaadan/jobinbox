@@ -18,7 +18,8 @@ class Employer < ActiveRecord::Base
                      uniqueness: { case_sensitive: false }
 
   has_many :jobs
-  belongs_to :plan
+  # belongs_to :plan
+  # attr_accessor :stripe_card_token
 
   before_create {generate_token(:auth_token)}
 
@@ -43,6 +44,14 @@ class Employer < ActiveRecord::Base
     employer = Employer.find_by(email_address: email_address_or_username) || Employer.find_by(username: email_address_or_username)
     employer && employer.authenticate(password)
   end
+
+  # def save_with_payment
+  #   if valid?
+  #     customer = Stripe::Customer.create(description: email_address, plan: plan_id, card: stripe_card_token)
+  #     self.stripe_customer_token = customer.id
+  #     save!
+  #   end
+  # end
 
   def should_generate_new_friendly_id?
     	new_record?

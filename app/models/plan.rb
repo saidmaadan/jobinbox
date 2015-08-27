@@ -1,3 +1,3 @@
 class Plan < ActiveRecord::Base
-	has_many :employers
+	# has_many :employers
 end
