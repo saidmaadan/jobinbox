@@ -1,6 +1,7 @@
 class EmployersController < ApplicationController
 	before_action :require_signin, except: [:new, :create, :home]
-    before_action :require_correct_employer, only: [:edit, :update]
+    before_action :require_correct_employer, only: [:edit, :update, :delete]
+    before_action :require_admin, only: [:delete]
 	
 	def index
 		@employers = Employer.all 

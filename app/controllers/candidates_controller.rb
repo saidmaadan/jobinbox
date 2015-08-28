@@ -1,7 +1,7 @@
 class CandidatesController < ApplicationController
 	before_action :require_signin, except: [:new, :create]
-    before_action :correct_candidate, only: [:edit, :update]
-  #before_action :require_admin, only: [:delete]
+    before_action :correct_candidate, only: [:edit, :update, :delete]
+  	before_action :require_admin, only: [:delete]
 	def index
 		@candidates = Candidate.all 
 	end

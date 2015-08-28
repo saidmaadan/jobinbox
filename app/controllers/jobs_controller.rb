@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+	before_action :require_signin_employer, except: [:index, :show]
 
 	def index
 		@jobs = Job.all
@@ -44,7 +45,7 @@ class JobsController < ApplicationController
 	private
 
 	def job_params
-		params.require(:job).permit(:title, :description, :email, :url, :city, :state, :zip_code, :country, :position_type, :pay_rate, :job_length, :travel_required, :employer_id, :candidate_id)
+		params.require(:job).permit(:title, :description, :email, :url, :city, :state, :zip_code, :country, :position_type, :pay_rate, :job_length, :travel_required, :employer_id, :candidate_id, :company_name, :industry, :logo, :company_size, :website_url, :company_description, :responsibility, :experience)
 	end
 
 	def correct_employer

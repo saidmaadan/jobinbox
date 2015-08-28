@@ -5,18 +5,14 @@ class ApplicationController < ActionController::Base
   before_filter :expire_hsts
 
   private
-  # def require_signins
-  # 	unless current_employer
-  # 		session[:intended_url] = request.url
-  # 		redirect_to new_session_url, alert: "You need to sign in to have access"
-  # 	end
-  # end
-  # def require_signin_employer
-  #   unless current_employer
-  #     session[:intended_url] = request.url
-  #     redirect_to new_session_url, alert: "You need to sign in to get in"
-  #   end
-  # end
+
+  def require_signin_employer
+    unless current_employer
+      session[:intended_url] = request.url
+      redirect_to new_session_url, alert: "You need to login or register as employer to have access"
+    end
+  end
+  helper_method :require_signin_employer
 
   def require_signin
   	unless current_candidate || current_employer
@@ -24,19 +20,6 @@ class ApplicationController < ActionController::Base
   		redirect_to new_session_url, alert: "You need to sign in to have access"
   	end
   end
-
-  # def require_signin
-  #   if current_candidate
-  #     session[:intended_url] = request.url
-  #   elsif
-  #     current_employer
-  #     session[:intended_url] = request.url
-  #   else
-  #     redirect_to new_session_url, alert: "You need to sign in to have access"
-  #   end
-  # end
-
-  
 
   def current_employer
     #@current_employer ||= Employer.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
@@ -76,6 +59,18 @@ class ApplicationController < ActionController::Base
   end
   helper_method :correct_candidate?
 
+  def correct_employer
+    @employer = Employer.friendly.find(params[:id])
+    unless current_employer?(@employer)
+      redirect_to root_url
+    end
+  end
+
+  def correct_employer?
+     #current_employer == correct_employer
+     @correct_employer == @employer
+  end
+  helper_method :correct_employer?
 
 	def require_admin
 	  unless current_candidate_admin? || current_employer_admin?

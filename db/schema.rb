@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824170712) do
+ActiveRecord::Schema.define(version: 20150828165545) do
 
 # Could not dump table "candidates" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -89,8 +89,16 @@ ActiveRecord::Schema.define(version: 20150824170712) do
     t.string   "employer_id"
     t.string   "candidate_id"
     t.string   "slug"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "company_name"
+    t.string   "industry"
+    t.string   "logo"
+    t.string   "company_size"
+    t.string   "website_url"
+    t.text     "company_description"
+    t.text     "responsibility"
+    t.string   "experience"
   end
 
   add_index "jobs", ["slug"], name: "index_jobs_on_slug", unique: true
