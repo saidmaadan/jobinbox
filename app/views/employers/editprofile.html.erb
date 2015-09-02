@@ -1,0 +1,177 @@
+<div class='container'>
+  <div class='row'><br>
+  <div class='col-sm-3'>
+    <% if @employer.avatar_url %>
+      <%= image_tag @employer.avatar_url, class: 'img-responsive' %>
+    <% else %>
+      <%= profile_image_for@employer, class: "img-responsive" %>
+    <% end %> 
+    <h1><%= @employer.name %></h1>
+  </div>
+  <div class='col-sm-6'>
+    <h1>Update Your Profile</h1>
+    <%= form_for(@employer) do |f| %>
+
+      <div class="form-group">
+        <div class='row'>
+          <div class='col-xs-6'>
+            <%= f.label :logo, "Company Logo", class: 'control-label' %>
+            <%= f.file_field :logo %>
+          </div>
+          <div class='col-xs-6'>
+            <%= f.label :avatar, "Profile Picture", class: 'control-label' %>
+            <%= f.file_field :avatar %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class='row'>
+          <div class='col-xs-6'>
+            <%= f.label :company_size, class: 'control-label' %><br>
+            <%= f.select :industry, Job::INDUSTRY, prompt: "Select one", class: "form-control" %>
+          </div>
+          <div class='col-xs-6'>
+            <%= f.label :company_size, class: 'control-label' %><br>
+            <%= f.select :company_size, Job::COMPANY_SIZE, prompt: "Select one", class: "form-control" %>
+      
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :headines %>
+        <%= f.text_field :headlines, size: 50, placeholder: "Catching Headline", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_area :company_description, cols: 40, rows: 7, class: "form-control" %>
+      </div>
+
+
+      <div class="form-group">
+        <div class='row'>
+          <div class='col-sm-3'>
+            <%= f.label :location %>
+          </div>
+          <div class='col-sm-9'>
+            <%= f.text_field :location, size: 50, autofocus: true, placeholder: "Your Full Name", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class='row'>
+          <div class='col-sm-3'>
+            <%= f.label :zip_code %>
+          </div>
+          <div class='col-sm-9'>
+            <%= f.text_field :zip_code, size: 50,
+                    placeholder: "78753", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+       <div class="form-group">
+        <div class='row'>
+          <div class='col-sm-3'>
+            <%= f.label :linkedin %>
+          </div>
+          <div class='col-sm-9'>
+            <%= f.text_field :linkedin, size: 50, placeholder: "@username", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+       <div class="form-group">
+        <div class='row'>
+          <div class='col-sm-3'>
+            <%= f.label :facebook %>
+          </div>
+          <div class='col-sm-9'>
+            <%= f.text_field :facebook, size: 50, placeholder: "@username", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class='row'>
+          <div class='col-sm-3'>
+            <%= f.label :twitter %>
+          </div>
+          <div class='col-sm-9'>
+            <%= f.text_field :twitter, size: 50, placeholder: "@username", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+       <div class="form-group">
+        <div class='row'>
+          <div class='col-sm-3'>
+            <%= f.label :instagram %>
+          </div>
+          <div class='col-sm-9'>
+            <%= f.text_field :instagram, size: 50, placeholder: "@username", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+       <div class="form-group">
+        <div class='row'>
+          <div class='col-sm-3'>
+            <%= f.label :skype_id %>
+          </div>
+          <div class='col-sm-9'>
+            <%= f.text_field :skype_id, size: 50, placeholder: "@username", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+       <div class="form-group">
+        <div class='row'>
+          <div class='col-sm-3'>
+            <%= f.label :phone_number %>
+          </div>
+          <div class='col-sm-9'>
+            <%= f.text_field :phone_number, size: 50, placeholder: "+1 123 456 7890", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+       <div class="form-group">
+        <div class='row'>
+          <div class='col-sm-3'>
+            <%= f.label :website_url %>
+          </div>
+          <div class='col-sm-9'>
+            <%= f.text_field :website_url, size: 50, placeholder: "http://yourcompanyname.com", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Update Profile", class: "btn btn-success" %>
+      </div>
+<% end %>
+
+    
+  </div>
+  <div class='col-sm-3'>
+    <% if @employer.jobs.any? %>
+      <h2>My Jobs</h2>
+          <% @jobs.each do |job| %>
+            <% if job %>
+              <div class='row'>
+                <div class='col-sm-12'>
+                   <h2><%= link_to job.title, job %></h2>
+                   <p><%= job.city if job.city %> &nbsp; <%= job.state if job.state %> &nbsp; <%= job.zip_code if job.zip_code  %></p>    
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+        
+  </div>
+
+  </div>
+</div>

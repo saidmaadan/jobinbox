@@ -6,13 +6,51 @@
 		<% else %>
 			<%= profile_image_for@employer, class: "img-responsive" %>
 		<% end %>	
+
+		<div class="list-group">
+			
+		  <%= link_to "Company Website", @employer.website_url, target: "_blank", class: "list-group-item active" if @employer.website_url  %>
+		  <%= link_to "Linkedin", "http://linkedin.com/in/" + @employer.linkedin, target: "_blank", class: "list-group-item" if @employer.linkedin %>
+		  <%= link_to "Twitter", "http://twitter.com/" + @employer.twitter, target: "_blank", class: "list-group-item" if @employer.twitter %>
+		  <%= link_to "instagram", "http://github.com/" + @employer.instagram, target: "_blank", class: "list-group-item" if @employer.instagram %>
+		  <%= link_to "Facebook", "http://facebook.com/" + @employer.facebook, target: "_blank", class: "list-group-item" if @employer.facebook %>
+		  <%= link_to "Phone Number", "http://dribbble.com/" + @employer.phone_number, target: "_blank", class: "list-group-item" if @employer.phone_number %>
+		  
+		</div>
 	</div>
 	<div class='col-sm-6'>
-		<%= @employer.name %>
+		<div class='row'>
+			<div class='col-xs-9'>
+				<h1><%= @employer.headlines if @employer.headlines%></h1>
+				<p><%= @employer.industry if @employer.industry%><br>Company Size:&nbsp;<%= @employer.company_size if @employer.company_size%><br>
+				</p>
+				<p>
+					<h2>Employer/Recruiter Name:&nbsp;<%= @employer.name %></h2>
+					<h3>Skype Username:&nbsp;<%= @employer.skype_id %></h3>  
+				</p>
+			</div>
+			<div class='col-xs-3'>
+				<%= image_tag @employer.logo_url, style: 'width:100px;height:100px' if @employer.logo %>
+			</div>
+		</div> 
+		<p><%= @employer.company_description if @employer.company_description %></p>
 		
 	</div>
 	<div class='col-sm-3'>
-		
+		<% if @employer.jobs.any? %>
+			<h2>Jobs Listing</h2>
+          <% @jobs.each do |job| %>
+            <% if job %>
+              <div class='row'>
+                <div class='col-sm-12'>
+                   <h2><%= link_to job.title, job %></h2>
+                   <p><%= job.city if job.city %> &nbsp; <%= job.state if job.state %> &nbsp; <%= job.zip_code if job.zip_code  %></p>    
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+        
 	</div>
 
 	</div>

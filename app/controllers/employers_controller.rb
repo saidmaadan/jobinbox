@@ -9,6 +9,7 @@ class EmployersController < ApplicationController
 
 	def show
 		@employer = Employer.friendly.find(params[:id])
+		@jobs = @employer.jobs.order("created_at DESC")
 	end
 
 	def home
@@ -23,6 +24,12 @@ class EmployersController < ApplicationController
 
 	def edit
 		@employer = Employer.friendly.find(params[:id])
+		@jobs = @employer.jobs.order("created_at DESC")
+	end
+
+	def editprofile
+		@employer = Employer.friendly.find(params[:id])
+		@jobs = @employer.jobs.order("created_at DESC")
 	end
 
 	def update

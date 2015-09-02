@@ -1,32 +1,37 @@
 <div class='container'>
-<div class='row'>
-<br><br>
+  <div class='row'>
+  <br><br>
+    <div class='col-sm-6 col-sm-offset-3'>
+      <div class='login-form text-center'>
+      <div class='well'>
+        <ul class="nav nav-tabs text-center" role="tablist">
+          <li role="presentation" class="active"><a href="#candidate" aria-controls="candidate" role="tab" data-toggle="tab">Candidate Login</a></li>
+          <li role="presentation"><a href="#employer" aria-controls="employer" role="tab" data-toggle="tab">Employer Login</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="candidate">
+            <header id="content-header">
+          <h2>Sign In As A Candidate</h2>
+        </header>
 
-<header id="content-header">
-  <h1>Sign In</h1>
+        <%= render "form" %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="employer">
+            <header id="content-header">
+              <h2>Sign In As An Employer</h3>
+            </header>
 
-</header>
-
-<%= form_tag(session_path) do %>
-
-  <fieldset>
-
-      <p class="required">
-        <%= label_tag :email_address %><br>
-        <%= text_field_tag :email_address, nil, required: true, autofocus: true, size: 40, placeholder: "Email or Username" %>
-      </p>
-      <p class="required">
-      <%= label_tag :password %><br>
-        <%= password_field_tag :password, nil, required: true, size: 40, placeholder: "Password" %>
-      </p>
-
-    <p>
-      <%= submit_tag 'Sign In' %>
-    </p>
-  </fieldset>
-<% end %>
-<p>
-  No account yet? Sign up as <%= link_to ' Candidate!', signup_path %> or  <%= link_to 'Employer!', register_path %>
-</p>
-</div>
+            <%= render "form" %>
+          </div>
+        </div>
+        
+        <p>
+          No account yet? Sign up as <%= link_to ' Candidate!', signup_path %> or  <%= link_to 'Employer!', register_path %>
+        </p>
+      </div>
+    </div>
+    </div>
+    
+  </div>
 </div>

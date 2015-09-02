@@ -1,0 +1,17 @@
+<%= form_tag(session_path) do %>
+
+          <fieldset>
+            <div class-'form-group'>
+              <%#= label_tag :email_address %><br>
+              <%= text_field_tag :email_address, nil, required: true, autofocus: true, size: 40, placeholder: "Email or Username", class: 'form-control' %>
+            </div>
+            <div class-'form-group'>
+            <%#= label_tag :password %><br>
+              <%= password_field_tag :password, nil, required: true, size: 40, placeholder: "Password", class: 'form-control' %>
+            </div><br>
+
+            <div class-'form-group'>
+              <%= submit_tag 'Sign In',class: 'btn btn-success btn-lg'  %>
+            </div>
+          </fieldset>
+        <% end %><br>

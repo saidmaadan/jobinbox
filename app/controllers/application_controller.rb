@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   def require_signin_employer
     unless current_employer
       session[:intended_url] = request.url
-      redirect_to new_session_url, alert: "You need to login or register as employer to have access"
+      redirect_to new_session_url, alert: "You need to login or register as employer to post job"
     end
   end
   helper_method :require_signin_employer

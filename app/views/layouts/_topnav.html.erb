@@ -17,7 +17,7 @@
 	    			<%if current_candidate || current_employer %>
 				  		<%= link_to 'logout', session_path, method: :delete, class: ' btn btn-default ' %>
 	    			<%else %>
-		    			<%= link_to "Employer", employers_signup_path, class: 'btn btn-success hidden-xs' %>
+		    			<%= link_to "Employer", register_path, class: 'btn btn-success hidden-xs' %>
 		    			<%= link_to "Apply As A Developer", signup_path, class: 'btn btn-success hidden-xs' %>
 		    			<%= link_to "LogIn", signin_path, class: 'btn btn-default' %>
 		    		<%end %>

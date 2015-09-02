@@ -1,8 +1,33 @@
-<div class='container'>
-	<div class='row'><br>
-	<div class='col-sm-8 offset-col-2'>
-		<%= render 'form' %>
-	</div>
 
-	</div>
+<div class='container'>
+  <div class='row'><br><br>
+  <div class='col-sm-3'>
+    <% if @employer.avatar_url %>
+      <%= image_tag @employer.avatar_url, class: 'img-responsive' %>
+    <% else %>
+      <%= profile_image_for@employer, class: "img-responsive" %>
+    <% end %> 
+  </div>
+  <div class='col-sm-6'>
+    <h2 class='text-center'>Account Setting</h2>
+    <%= render 'form' %>
+  </div>
+  <div class='col-sm-3'>
+    <% if @employer.jobs.any? %>
+      <h2>My Jobs</h2>
+          <% @jobs.each do |job| %>
+            <% if job %>
+              <div class='row'>
+                <div class='col-sm-12'>
+                   <h2><%= link_to job.title, job %></h2>
+                   <p><%= job.city if job.city %> &nbsp; <%= job.state if job.state %> &nbsp; <%= job.zip_code if job.zip_code  %></p>    
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+        
+  </div>
+
+  </div>
 </div>
