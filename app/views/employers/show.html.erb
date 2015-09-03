@@ -1,12 +1,48 @@
+<div class='employer-show'>
+	<div class='container'>
+		<div class='row'>
+			<div class='col-md-1'></div>
+			<div class='col-md-2 col-sm-3 profile-image'>
+				<% if @employer.avatar_url %>
+					<%= image_tag @employer.avatar_url, class: 'img-responsive' %>
+				<% else %>
+					<%= profile_image_for@employer, class: "img-responsive" %>
+				<% end %>	
+			</div>
+			<div class='col-md-8 col-sm-9'>
+				<div class='row'>
+					<div class='col-xs-9 employer-head'>
+						<h1><%= @employer.headlines if @employer.headlines%></h1>
+						<p>
+							<%= @employer.location if @employer.location %><br>
+							<%= @employer.phone_number if @employer.phone_number %><br>
+							<%= link_to @employer.website_url, @employer.website_url, target: "_blank" if @employer.website_url  %>
+						</p>
+
+						<p>
+							Industry:&nbsp;<strong><%= @employer.industry if @employer.industry%></strong><br>Company Size:&nbsp;<strong><%= @employer.company_size if @employer.company_size%></strong><br>
+							Employer/Recruiter Name:&nbsp;<strong><%= @employer.name %></strong><br>
+							Skype Username:&nbsp;<strong><%= @employer.skype_id %></strong>
+						</p>
+					</div>
+					<div class='col-xs-3'>
+						<%= image_tag @employer.logo_url, style: 'width:100px;height:100px' if @employer.logo %>
+					</div>
+				</div>
+				<p>
+				<% if @employer.company_description %>
+					<h3>About</h3>
+					<%= @employer.company_description %>
+					<% end %>
+				</p> 
+			</div>
+			<div class='col-md-1'></div>
+		</div>
+	</div>
+</div>
 <div class='container'>
 	<div class='row'><br>
-	<div class='col-sm-3'>
-		<% if @employer.avatar_url %>
-			<%= image_tag @employer.avatar_url, class: 'img-responsive' %>
-		<% else %>
-			<%= profile_image_for@employer, class: "img-responsive" %>
-		<% end %>	
-
+	<div class='col-sm-3'><br>
 		<div class="list-group">
 			
 		  <%= link_to "Company Website", @employer.website_url, target: "_blank", class: "list-group-item active" if @employer.website_url  %>
@@ -14,42 +50,36 @@
 		  <%= link_to "Twitter", "http://twitter.com/" + @employer.twitter, target: "_blank", class: "list-group-item" if @employer.twitter %>
 		  <%= link_to "instagram", "http://github.com/" + @employer.instagram, target: "_blank", class: "list-group-item" if @employer.instagram %>
 		  <%= link_to "Facebook", "http://facebook.com/" + @employer.facebook, target: "_blank", class: "list-group-item" if @employer.facebook %>
-		  <%= link_to "Phone Number", "http://dribbble.com/" + @employer.phone_number, target: "_blank", class: "list-group-item" if @employer.phone_number %>
 		  
 		</div>
 	</div>
 	<div class='col-sm-6'>
-		<div class='row'>
-			<div class='col-xs-9'>
-				<h1><%= @employer.headlines if @employer.headlines%></h1>
-				<p><%= @employer.industry if @employer.industry%><br>Company Size:&nbsp;<%= @employer.company_size if @employer.company_size%><br>
-				</p>
-				<p>
-					<h2>Employer/Recruiter Name:&nbsp;<%= @employer.name %></h2>
-					<h3>Skype Username:&nbsp;<%= @employer.skype_id %></h3>  
-				</p>
-			</div>
-			<div class='col-xs-3'>
-				<%= image_tag @employer.logo_url, style: 'width:100px;height:100px' if @employer.logo %>
-			</div>
-		</div> 
-		<p><%= @employer.company_description if @employer.company_description %></p>
-		
-	</div>
-	<div class='col-sm-3'>
 		<% if @employer.jobs.any? %>
-			<h2>Jobs Listing</h2>
+			<h3 class='text-center'>Jobs Listing</h3><hr>
           <% @jobs.each do |job| %>
             <% if job %>
               <div class='row'>
-                <div class='col-sm-12'>
+                <div class='col-sm-12 employer-jobs'>
                    <h2><%= link_to job.title, job %></h2>
-                   <p><%= job.city if job.city %> &nbsp; <%= job.state if job.state %> &nbsp; <%= job.zip_code if job.zip_code  %></p>    
+                   <p><%= job.city if job.city %> &nbsp; <%= job.state if job.state %> &nbsp; <%= job.zip_code if job.zip_code  %></p>
+                   <p><%= truncate(job.description, length: 180, separator: ' ') %></p>
                 </div>
               </div>
             <% end %>
           <% end %>
         <% end %>
+	</div>
+	<div class='col-sm-3'>
+		<h3>Latest Jobs</h3><hr>
+		<% Job.all.order('created_at DESC').limit(10).each do |job| %>
+       <% if job %>
+          <div class='row'>
+            <div class='col-sm-12 employers-main'>
+          		<h2><%= link_to job.title, job %></h2>
+          	</div>
+          </div>
+          <% end %>
+      <% end %>
         
 	</div>
 

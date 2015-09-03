@@ -4,8 +4,6 @@
    
     <% if current_candidate.avatar_url %>
       <%= link_to (image_tag current_candidate.avatar_url, class: "image_menu"), current_candidate %>
-    <% else %>
-      <%= link_to (profile_image_for current_candidate, size: 20, class: "image_menu"), current_candidate %>
     <% end %>
     
   </li>
@@ -37,7 +35,7 @@
 <li class='text-uppercase'><%= link_to "Post Job", new_job_path, class: 'navbar-brand' %></li>
   <li >
     <% if current_employer.avatar_url %>
-        <%= link_to (image_tag @employer.avatar_url, class: "image_menu"), current_employer %>
+        <%= link_to (image_tag current_employer.avatar_url, class: "image_menu"), current_employer %>
       <% else %>
         <%= link_to (profile_image_for current_employer, size: 20), current_employer %></p>
       <% end %>

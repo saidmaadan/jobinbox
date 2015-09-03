@@ -1,4 +1,4 @@
-<div class='container'>
+<div class='employers-main container'>
   <div class='row'><br>
   <div class='col-sm-3'>
     <% if @employer.avatar_url %>
@@ -157,19 +157,16 @@
     
   </div>
   <div class='col-sm-3'>
-    <% if @employer.jobs.any? %>
-      <h2>My Jobs</h2>
-          <% @jobs.each do |job| %>
-            <% if job %>
-              <div class='row'>
-                <div class='col-sm-12'>
-                   <h2><%= link_to job.title, job %></h2>
-                   <p><%= job.city if job.city %> &nbsp; <%= job.state if job.state %> &nbsp; <%= job.zip_code if job.zip_code  %></p>    
-                </div>
-              </div>
-            <% end %>
+    <h3>Latest Jobs</h3><hr>
+    <% Job.all.order('created_at DESC').limit(5).each do |job| %>
+       <% if job %>
+          <div class='row'>
+            <div class='col-sm-12'>
+              <h2><%= link_to job.title, job %></h2>
+            </div>
+          </div>
           <% end %>
-        <% end %>
+      <% end %>
         
   </div>
 
