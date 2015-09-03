@@ -1,0 +1,46 @@
+<div class="container">
+  <div class='row'>
+
+    <div class='col-sm-9 job_home'>
+      <% @jobs.each do |job| %>
+        <div class='row job-main well'>
+          <div class='col-sm-8 col-xs-12'>
+            <%= image_tag job.logo_url %>
+            <div class='job-title'>
+              <h4><%= job.company_name %></h4>
+              <h5><%= link_to job.title, job %></h5>
+              <%= truncate job.description, length: 100, separator: ' ' %><br>
+              <%= link_to "View full job description", job %>
+            </div>
+          </div>
+          <div class='col-sm-2 col-xs-5'>
+            <%= job.position_type %><br>
+            <%= time_ago_in_words(job.created_at) %> ago
+          </div>
+          <div class='col-sm-2 col-xs-7'>
+            <%= job.city %>, <%= job.state %> <br> <%= job.zip_code %> <%= job.country %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    
+    
+    <div class='col-sm-3 hidden-xs'><br><br>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- MasmaSpace News -->
+      <ins class="adsbygoogle"
+           style="display:inline-block;width:300px;height:600px"
+           data-ad-client="ca-pub-1207389406711656"
+           data-ad-slot="8952579198"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
