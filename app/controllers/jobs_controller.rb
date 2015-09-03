@@ -1,5 +1,13 @@
 class JobsController < ApplicationController
-	before_action :require_signin_employer, except: [:index, :show]
+	before_action :require_signin_employer, except: [:search, :index, :show]
+
+	def search
+    if params[:search].present?
+      @jobs = Job.search(params[:search])
+    else
+      @jobs = Job.all.page params[:page]
+    end
+  end
 
 	def index
 		@jobs = Job.all

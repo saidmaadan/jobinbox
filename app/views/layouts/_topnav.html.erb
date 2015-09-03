@@ -4,6 +4,7 @@
 	    	<div class="col-md-3 col-sm-4 col-xs-6 logo pull-left">
 	    		<% if current_candidate %>
 	    			<%= link_to (image_tag "https://s3.amazonaws.com/inventivelabs/jobinbox/logos/jblogo4.png"), current_candidate %>
+	    			
 	    		<% elsif @current_employer %>
 	    			<%= link_to (image_tag "https://s3.amazonaws.com/inventivelabs/jobinbox/logos/jblogo4.png"), current_employer %>
 	    		<% else %>

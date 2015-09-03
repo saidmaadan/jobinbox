@@ -26,7 +26,12 @@ Rails.application.routes.draw do
 
   resources :employers 
 
-  resources :jobs
+  resources :jobs do
+    collection do
+      get 'search'
+    end
+  end
+
 
   root "pages#home"
 

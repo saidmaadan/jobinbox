@@ -104,14 +104,20 @@ main{
 .navbar-inverse .navbar-brand:hover {
   color: #000;
 }
-.right-nav-job{
-  //background-color: green;
-  background: -webkit-linear-gradient(90deg, #52c234 10%, #061700 90%); /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(90deg, #52c234 10%, #061700 90%); /* FF3.6+ */
-  background:     -ms-linear-gradient(90deg, #52c234 10%, #061700 90%); /* IE10 */
-  background:      -o-linear-gradient(90deg, #52c234 10%, #061700 90%); /* Opera 11.10+ */
-  background:         linear-gradient(90deg, #52c234 10%, #061700 90%); /* W3C */
- }       
+.nav-search-form{
+  .navbar-form .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+    height: 35px;
+}
+  .btn{
+    width: auto;
+    margin-left: -6px;
+    height: 35px;
+  }
+}
+
 //-------------- Candidate Styles-------------------------------------//
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
 	z-index: 2;
@@ -146,6 +152,16 @@ img{
     color: #fd7700;
     font-size: 18px;
 }
+.right-nav-job{
+  // background-color: #5cb85c;
+  // color: #fff;
+  
+  background: -webkit-linear-gradient(90deg, #52c234 10%, #061700 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #52c234 10%, #061700 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #52c234 10%, #061700 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #52c234 10%, #061700 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #52c234 10%, #061700 90%); /* W3C */
+ }       
 h2 > a:hover, footer .bottom a:hover, .employer-head a:hover{
   background: none;
   //text-decoration: none;
@@ -318,6 +334,24 @@ select{
     }
   }
   
+}
+.navbar-form .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+    height: 55px;
+}
+.page-search-form{
+  width: 80%;
+  margin: 40px auto;
+  .form-control{
+    width: 60%;
+  }
+  .btn{
+    width: auto;
+    margin-left: -6px;
+    height: 55px;
+  }
 }
 //----------------------session------------------------------//
 .login-form{
