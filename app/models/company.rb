@@ -3,7 +3,7 @@ class Company < ActiveRecord::Base
   belongs_to :employer
   extend FriendlyId
   friendly_id :slug_companies, use: :slugged
-  searchkick
+  # searchkick
 
   INDUSTRY = ['Accounting', 'Airlines/Aviation', "Alternative Disputs Resolution", "Alternative Medicine", "Animation", "Apparel & Fashion", 
     "Architecture & Planning", "Arts & Crafts", "Automotive", "Banking", "Biotechnology", "Broadcast Media", "Building Materials", "Capital Markets", "Commercial Real Estate",
@@ -19,7 +19,7 @@ class Company < ActiveRecord::Base
       :name,
       [:name, :industry],
       [:name, :industry, :founded,],
-      [:name, :industry, :founded, :size]
+      [:name, :industry, :founded, :size],
       [:name, :industry, :founded, :size, :location]
     ]
   end
