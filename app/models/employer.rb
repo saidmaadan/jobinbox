@@ -18,6 +18,7 @@ class Employer < ActiveRecord::Base
                      uniqueness: { case_sensitive: false }
 
   has_many :jobs
+  has_many :companies
   # belongs_to :plan
   # attr_accessor :stripe_card_token
 

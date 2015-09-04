@@ -24,7 +24,9 @@ Rails.application.routes.draw do
   get "/:id/update-profile" => "employers#editprofile", as: "profile/update"
   get "employers/signup" => "employers#home"
 
-  resources :employers 
+  resources :employers
+  resources :companies
+  resources :insights
 
   resources :jobs do
     collection do

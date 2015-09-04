@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904010017) do
+ActiveRecord::Schema.define(version: 20150904024512) do
 
 # Could not dump table "candidates" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name"
+    t.text     "about"
+    t.string   "industry"
+    t.string   "founded"
+    t.string   "size"
+    t.string   "subsidiaries"
+    t.string   "location"
+    t.string   "website"
+    t.string   "logo"
+    t.string   "avatar"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "slug"
+    t.integer  "employer_id"
+  end
+
+  add_index "companies", ["slug"], name: "index_companies_on_slug", unique: true
 
   create_table "educations", force: :cascade do |t|
     t.string   "school"
@@ -80,7 +99,10 @@ ActiveRecord::Schema.define(version: 20150904010017) do
     t.string   "logo"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "slug"
   end
+
+  add_index "insights", ["slug"], name: "index_insights_on_slug", unique: true
 
   create_table "jobs", force: :cascade do |t|
     t.string   "title"
@@ -109,6 +131,7 @@ ActiveRecord::Schema.define(version: 20150904010017) do
     t.text     "company_description"
     t.text     "responsibility"
     t.string   "experience"
+    t.integer  "company_id"
   end
 
   add_index "jobs", ["slug"], name: "index_jobs_on_slug", unique: true
