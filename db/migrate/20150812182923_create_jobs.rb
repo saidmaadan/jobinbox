@@ -14,8 +14,8 @@ class CreateJobs < ActiveRecord::Migration
       t.string :pay_rate
       t.string :job_length
       t.string :travel_required
-      t.string :employer_id
-      t.string :candidate_id
+      t.integer :employer_id
+      t.integer :candidate_id
       t.string :slug
 
       t.timestamps null: false
