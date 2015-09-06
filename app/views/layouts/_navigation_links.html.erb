@@ -76,8 +76,8 @@
   <li><%=  link_to " ", root_path %></li>
   <li><%=  link_to "Jobs", jobs_path, class: 'navbar-brand' %></li>
   <li><%= link_to 'Post Resume', current_candidate, class: 'navbar-brand' %></li>
- <li><%= link_to 'Companies', current_candidate, class: 'navbar-brand' %></li>
- <li><%= link_to 'Tech News', current_candidate, class: 'navbar-brand' %></li>
+ <li><%= link_to 'Companies', companies_path, class: 'navbar-brand' %></li>
+ <li><%= link_to 'Tech News', insights_path, class: 'navbar-brand' %></li>
  <li><%= link_to 'Search', current_candidate, class: 'navbar-brand' %></li>
 
 <% end %>

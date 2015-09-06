@@ -40,5 +40,3 @@ class InsightsController < ApplicationController
     params.require(:companies).permit(:title, :content,:source_url, :slug, :employer_id, :logo)
   end
 end
-
-end

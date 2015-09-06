@@ -1,4 +1,6 @@
 class Company < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
+  mount_uploader :logo, LogoUploader
   has_many :jobs
   belongs_to :employer
   extend FriendlyId

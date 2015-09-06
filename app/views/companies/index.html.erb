@@ -1,9 +1,19 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-sm-9'>
+    <div class='col-sm-6'>
       <% @companies.each do |company| %>
-        <h2><%= link_to company.name, company %></h2>
-        <p><%= truncate(company.about, lenght: 100, seperate: "") %></p>
+        
+            <div class='row'>
+              <div class='col-sm-4 col-xs-4'>
+                <%= image_tag company.logo_url if company.logo_url %>
+              </div>
+              <div class='col-sm-4 col-xs-4'>
+                <h2><%= link_to company.name, company %></h2>
+                <p><%= truncate(company.about, lenght: 200, seperate: "") %></p>
+              </div>
+            </div>
+          <!-- </div>
+        </div> -->
       <% end %>
     </div>
     <div class='col-sm-3 hidden-xs'></div>

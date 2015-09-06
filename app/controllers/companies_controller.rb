@@ -20,6 +20,8 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.friendly.find(params[:id])
+    # @jobs = Job.all
+    # @jobs = @company.jobs.order("created_at DESC")
   end
 
   def edit
@@ -37,6 +39,6 @@ class CompaniesController < ApplicationController
 
   private
   def company_params
-    params.require(:company).permit(:name,:about, :founded, :size,:industry,:location,:website,:subsidiaries, :slug, :employer_id, :logo,:avatar)
+    params.require(:company).permit(:name,:about, :founded, :size,:industry,:location,:website,:subsidiaries, :slug, :employer_id,:logo,:avatar)
   end
 end

@@ -1,9 +1,48 @@
+<div class='company-imgbg'>
+  <%= image_tag @company.avatar_url if @company.avatar_url %>
+</div>
 <div class='container'>
-  <div class='row'>
-    <div class='col-sm-9'>
-      <h2><%= @company.name %></h2>
-      <p><%= @company.about %></p>
+  <div class='row company-content'>
+    <div class='col-sm-3 company_logo'>
+      <%= image_tag @company.logo_url if @company.avatar_url %>
+      <div class='company-tab'>
+
+      <ul class="nav nav-tabs nav-stacked" role="tablist">
+          <li role="presentation" class="active"><a href="#about" aria-controls="about" role="tab" data-toggle="tab">About <%= @company.name %></a></li>
+          <li role="presentation"><a href="#job" aria-controls="job" role="tab" data-toggle="tab"><%= @company.name %> Jobs</a></li>
+          <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Reviews</a></li>
+          <li role="presentation"><a href="#salary" aria-controls="salary" role="tab" data-toggle="tab">Salary</a></li>
+        </ul>
+      </div>
+
+      
+      
+    </div>
+    <div class='col-sm-6 company-content-tab'>
+      <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="about"><p><%= @company.about %></p></div>
+    <div role="tabpanel" class="tab-pane" id="job">
+      <% Job.all.order('created_at DESC').limit(10).each do |job| %>
+        <% if job.company_name == @company.name %>
+          <div class='row'>
+            <div class='col-sm-12'>
+              <h2><%= link_to job.title, job %></h2>
+               <p><%= truncate job.description, length: 200, separator: ' ' %></p>
+               <%= link_to "View full job description", job %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="reviews"></div>
+    <div role="tabpanel" class="tab-pane" id="salary"></div>
+  </div>
+
+      
+      
+        
     </div>
     <div class='col-sm-3 hidden-xs'></div>
   </div>
 </div>
+
