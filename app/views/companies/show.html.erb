@@ -3,20 +3,34 @@
 </div>
 <div class='container'>
   <div class='row company-content'>
-    <div class='col-sm-3 company_logo'>
-      <%= image_tag @company.logo_url if @company.avatar_url %>
-      <div class='company-tab'>
+    <div class='col-sm-3'>
+      <div class='row'>
+        <div class='col-xs-12 company_logo'>
+          <%= image_tag @company.logo_url if @company.avatar_url %>
+        </div><br>
+        <div class='col-xs-12'>
+          <div class='company-tab'>
 
-      <ul class="nav nav-tabs nav-stacked" role="tablist">
-          <li role="presentation" class="active"><a href="#about" aria-controls="about" role="tab" data-toggle="tab">About <%= @company.name %></a></li>
-          <li role="presentation"><a href="#job" aria-controls="job" role="tab" data-toggle="tab"><%= @company.name %> Jobs</a></li>
-          <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Reviews</a></li>
-          <li role="presentation"><a href="#salary" aria-controls="salary" role="tab" data-toggle="tab">Salary</a></li>
-        </ul>
-      </div>
-
-      
-      
+          <ul class="nav nav-tabs nav-stacked" role="tablist">
+              <li role="presentation" class="active"><a href="#about" aria-controls="about" role="tab" data-toggle="tab">About <%= @company.name %></a></li>
+              <li role="presentation"><a href="#job" aria-controls="job" role="tab" data-toggle="tab"><%= @company.name %> Jobs</a></li>
+              <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Reviews</a></li>
+              <li role="presentation"><a href="#salary" aria-controls="salary" role="tab" data-toggle="tab">Salary</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <% if current_employer || current_candidate %>
+            <div class='write-review btn btn-success'>Write a Review</div>
+            <br><br>
+            <div class='review-form'>
+             <%= render partial: 'reviews/form' %>
+            </div>
+          <% else %>
+            <div><%= link_to 'Signin to Write a Review', new_user_session_path, class: 'btn btn-success' %></div>
+          <% end %>
+        </div>
+      </div>  
     </div>
     <div class='col-sm-6 company-content-tab'>
       <div class="tab-content">
@@ -42,7 +56,65 @@
       
         
     </div>
-    <div class='col-sm-3 hidden-xs'></div>
+    <div class='col-sm-3 hidden-xs'>
+      <% if @reviews.blank? %>
+          <h3>No reviews yet. Be the first to post your review <%= @company.name %></h3>
+        <% else %>
+        
+        <h3><%= @company.name %> Reviews</h3><hr>
+          <% @reviews.each do |r| %>
+            <div class="row">
+
+                <div class='col-sm-5'>
+                <div class='row'>
+                  <div class='col-xs-5'>
+                  <%# if r.user.image_url %>
+                    <%#= image_tag r.user.image_url, class: 'img-responsive', style: 'width:100%;height:100px;border-radius:50%;' %>
+                    <%# else %>
+                    <!-- <i class="fa fa-user fa-4x" ></i> -->
+                    
+                    <%# end %>
+                  </div>
+                  <div class='col-xs-7'>
+                    <!-- <h5>By: <%#= link_to ("#{r.user.first_name.capitalize} #{r.user.last_name.capitalize[0]}."), r.user %></h5> -->
+                      <%= r.created_at.strftime("%-m/%-d/%y") %><br>
+                      <div class='star-rating' data-score= <%= r.rating %> ></div>
+                </div>
+                  </div>
+                </div>
+                
+                    
+                    <div class='col-sm-7'>
+                        <p><%= h(r.pros).gsub(/\n/, '<br/>').html_safe %></p>
+                <% if current_employer %>
+                <%# if (r.user == current_user) || (current_user.admin?)%>
+                <%= link_to "Edit", edit_company_review_path(@company, r) %> | 
+                <%= link_to "Delete", company_review_path(@company, r), method: :delete, data: { confirm: 'Are you sure?' }%>
+                
+                <% end %><br>
+               
+                    </div>
+
+                  </div> 
+
+                  <hr>
+            <% end %>
+          <% end %>
+    </div>
   </div>
 </div>
+
+<script>
+  $('.star-rating').raty({
+    path: 'https://s3.amazonaws.com/foodplace/uploads/stars',
+    readOnly: true,
+    score: function(){
+      return $(this).attr('data-score');
+    }
+  });
+  $('.write-review').on('click', function(){
+    $('.review-form').toggle("slow");
+    });
+    
+</script>
 

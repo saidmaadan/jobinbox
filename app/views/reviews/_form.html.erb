@@ -1,0 +1,35 @@
+<%= form_for([@company, @review]) do |f| %>
+<%= render "shared/errors", object: @review %>
+  <div class="form-group">
+    <%#= image_tag @company.logo_url, style: "width:70px;height:70px;" %>
+    <%#= f.text_area @company.name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :title, "Review Title" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :pros %>
+    <%= f.text_area :pros, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :cons %>
+    <%= f.text_area :cons, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :advice %>
+    <%= f.text_area :advice, class: "form-control" %>
+  </div>
+  <div id="star-rating"></div>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-success' %>
+  </div>
+<% end %>
+
+<script>
+  $('#star-rating').raty({
+    path: 'https://s3.amazonaws.com/foodplace/uploads/stars',
+    scoreName: 'review[rating]'
+  });
+</script>
+

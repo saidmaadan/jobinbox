@@ -1,8 +1,18 @@
 class CompaniesController < ApplicationController
   before_action :require_admin, except: [:index, :show]
+  before_action :set_company, only: [:show, :edit, :update, :destroy]
+
+  def search
+    if params[:search].present?
+      @companies = Company.search(params[:search])
+    else
+      @companies = Company.all.order("created_at DESC")
+    end
+    @reviews = Review.all.order("created_at DESC").limit(5)
+  end
 
   def index
-    @companies = Company.all
+    @companies = Company.all.order("created_at DESC").limit(6)
   end
 
   def new
@@ -19,7 +29,15 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @company = Company.friendly.find(params[:id])
+    @review = Review.new
+    @review.company_id = @company_id
+    if @reviews.blank?
+      @avg_rating = 0
+    else
+      @avg_rating = @reviews.average(:rating).round(2)
+    end
+    @reviews = Review.where(company_id: @company.id).order("created_at DESC")
+    @companies = Company.all.order("created_at DESC").limit(8)
     # @jobs = Job.all
     # @jobs = @company.jobs.order("created_at DESC")
   end
@@ -38,6 +56,10 @@ class CompaniesController < ApplicationController
   end
 
   private
+
+  def set_company
+    @company = Company.friendly.find(params[:id])
+  end
   def company_params
     params.require(:company).permit(:name,:about, :founded, :size,:industry,:location,:website,:subsidiaries, :slug, :employer_id,:logo,:avatar)
   end

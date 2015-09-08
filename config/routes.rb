@@ -25,7 +25,9 @@ Rails.application.routes.draw do
   get "employers/signup" => "employers#home"
 
   resources :employers
-  resources :companies
+  resources :companies do 
+    resources :reviews, except: [:show, :index]
+  end
   resources :insights
 
   resources :jobs do

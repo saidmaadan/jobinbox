@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <p>Hi, <%= @current_employer.name %></p>
+  <p><%= @current_employer.name || @current_candidate.name %> has written a review about your company</p>
+  <p>Pros: <%= @pros %></p>
+  <p>Cons: <%= @cons %></p>
+  <p>Advise: <%= @advise %></p>
+</body>
+</html>

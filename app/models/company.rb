@@ -2,6 +2,7 @@ class Company < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   mount_uploader :logo, LogoUploader
   has_many :jobs
+  has_many :reviews, dependent: :destroy
   belongs_to :employer
   extend FriendlyId
   friendly_id :slug_companies, use: :slugged
