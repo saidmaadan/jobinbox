@@ -3,30 +3,30 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @font-face { 
   font-family: 'JobInboxFont6';
-  src: url('font/optotypo-regular-webfont.eot');
-  src: url('font/optotypo-regular-webfont.eot?#iefix') format('embedded-opentype'),
-       url('font/optotypo-regular-webfont.ttf'),
-       url('font/optotypo-regular-webfont.woff') format('woff'),
-       url('font/optotypo-regular-webfont.woff2') format('woff2');
+  src: url('https://s3.amazonaws.com/inventivelabs/fonts/font/optotypo-regular-webfont.eot');
+  src: url('https://s3.amazonaws.com/inventivelabs/fonts/font/optotypo-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('https://s3.amazonaws.com/inventivelabs/fonts/font/optotypo-regular-webfont.ttf'),
+       url('https://s3.amazonaws.com/inventivelabs/fonts/font/optotypo-regular-webfont.woff') format('woff'),
+       url('https://s3.amazonaws.com/inventivelabs/fonts/font/optotypo-regular-webfont.woff2') format('woff2');
 }
 
 @font-face { 
   font-family: 'JobInboxFont8';
-  src: url('font/Swindale-RG.eot');
-  src: url('font/swindale-rg-webfont.ttf'),
-       url('font/swindale-rg-webfont.eot?#iefix') format('embedded-opentype'),
-       url('font/swindale-rg-webfont.woff') format('woff'),
-       url('font/swindale-rg-webfont.woff2') format('woff2');       
+  src: url('https://s3.amazonaws.com/inventivelabs/fonts/font/Swindale-RG.eot');
+  src: url('https://s3.amazonaws.com/inventivelabs/fonts/font/swindale-rg-webfont.ttf'),
+       url('https://s3.amazonaws.com/inventivelabs/fonts/font/swindale-rg-webfont.eot?#iefix') format('embedded-opentype'),
+       url('https://s3.amazonaws.com/inventivelabs/fonts/font/swindale-rg-webfont.woff') format('woff'),
+       url('https://s3.amazonaws.com/inventivelabs/fonts/font/swindale-rg-webfont.woff2') format('woff2');       
 }
 
 @font-face { 
   font-family: 'JobInboxFont7';
-  src: url('font/QuincyCF-Black-webfont.eot');
-  src: url('font/QuincyCF-Black-webfont.eot?#iefix') format('embedded-opentype'),
-       url('font/QuincyCF-Black-webfont.ttf'),
-       url('font/QuincyCF-Black-webfont.svg'),
-       url('font/QuincyCF-Black-webfont.woff') format('woff'),
-       url('font/QuincyCF-Black-webfont.woff2') format('woff2');
+  src: url('https://s3.amazonaws.com/inventivelabs/fonts/font/QuincyCF-Black-webfont.eot');
+  src: url('https://s3.amazonaws.com/inventivelabs/fonts/font/QuincyCF-Black-webfont.eot?#iefix') format('embedded-opentype'),
+       url('https://s3.amazonaws.com/inventivelabs/fonts/font/QuincyCF-Black-webfont.ttf'),
+       url('https://s3.amazonaws.com/inventivelabs/fonts/font/QuincyCF-Black-webfont.svg'),
+       url('https://s3.amazonaws.com/inventivelabs/fonts/font/QuincyCF-Black-webfont.woff') format('woff'),
+       url('https://s3.amazonaws.com/inventivelabs/fonts/font/QuincyCF-Black-webfont.woff2') format('woff2');
        
        
 }
