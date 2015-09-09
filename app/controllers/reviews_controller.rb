@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
       if @review.save
         ReviewMailer.review_created((current_employer || current_candidate), @company.employer, @review.pros, @review.cons, @review.advice, @review.company_name).deliver
         format.html { redirect_to @company, notice: 'Review was successfully created.' }
-        # format.json { render :show, status: :created, location: @review }
+        format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new }
         format.json { render json: @review.errors, status: :unprocessable_entity }
