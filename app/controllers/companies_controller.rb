@@ -38,8 +38,10 @@ class CompaniesController < ApplicationController
     end
     @reviews = Review.where(company_id: @company.id).order("created_at DESC")
     @companies = Company.all.order("created_at DESC").limit(8)
-    # @jobs = Job.all
-    # @jobs = @company.jobs.order("created_at DESC")
+    @jobs = Job.all
+    @jobs = @company.jobs.order("created_at DESC")
+    @jobs = @jobs.where(title: params["title"]) if params["title"].present?
+    @jobs = @jobs.where(city: params["city"]) if params["city"].present?
   end
 
   def edit

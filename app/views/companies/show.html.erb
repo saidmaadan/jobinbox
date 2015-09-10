@@ -16,24 +16,22 @@
               <li role="presentation"><a href="#job" aria-controls="job" role="tab" data-toggle="tab"><%= @company.name %> Jobs</a></li>
               <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Reviews</a></li>
               <li role="presentation"><a href="#salary" aria-controls="salary" role="tab" data-toggle="tab">Salary</a></li>
+              <% if current_employer || current_candidate %>
+                <li role="presentation"><a href="#write-review" aria-controls="WriteReview" role="tab" data-toggle="tab"><div class='write-review'>Write a Review</div></a></li>
+              <% else %>
+                <li role="presentation"><div><%= link_to 'Signin to Write a Review', signin_path %></div></li>
+              <% end %>
             </ul>
           </div>
         </div>
         <div>
-          <% if current_employer || current_candidate %>
-            <div class='write-review btn btn-success'>Write a Review</div>
-            <br><br>
-            <div class='review-form'>
-             <%= render partial: 'reviews/form' %>
-            </div>
-          <% else %>
-            <div><%= link_to 'Signin to Write a Review', signin_path, class: 'btn btn-success' %></div>
-          <% end %>
+          
         </div>
       </div>  
     </div>
     <div class='col-sm-6 company-content-tab'>
       <div class="tab-content">
+
     <div role="tabpanel" class="tab-pane active" id="about"><p><%= @company.about %></p></div>
     <div role="tabpanel" class="tab-pane" id="job">
       <% Job.all.order('created_at DESC').limit(10).each do |job| %>
@@ -48,16 +46,10 @@
         <% end %>
       <% end %>
     </div>
-    <div role="tabpanel" class="tab-pane" id="reviews"></div>
-    <div role="tabpanel" class="tab-pane" id="salary"></div>
-  </div>
-
-      
-      
-        
-    </div>
-    <div class='col-sm-3 hidden-xs'>
-      <% if @reviews.blank? %>
+    <div role="tabpanel" class="tab-pane" id="reviews">
+      <div class="star-rating" data-score=<%= @avg_rating %> ></div>
+        <p><%= "#{@reviews.length} reviews" %></p>
+        <% if @reviews.blank? %>
           <h3>No reviews yet. Be the first to post your review <%= @company.name %></h3>
         <% else %>
         
@@ -100,6 +92,18 @@
                   <hr>
             <% end %>
           <% end %>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="salary"></div>
+        <div role="tabpanel" class="tab-pane" id="write-review"><p><%= render partial: 'reviews/form' %></div>
+      </div>   
+    </div>
+    <div class='col-sm-3 hidden-xs'> 
+      <% if @reviews.blank? %>
+      <% else %>
+        <h3><%= @company.name %> Reviews</h3><hr>
+          <div class="star-rating" data-score= <%= @avg_rating %> ></div>
+            <p><%= "#{@reviews.length} reviews" %></p>
+      <% end %>
     </div>
   </div>
 </div>
@@ -117,4 +121,5 @@
     });
     
 </script>
+
 
