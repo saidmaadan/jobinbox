@@ -31,6 +31,17 @@
         <% end %>
         </ul></li>
 
+        <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Explore<span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+        <li><%=  link_to "Jobs", jobs_path, class: 'navbar-brand' %></li>
+        
+        
+        <li><%= link_to ' Companies', companies_path, class: 'navbar-brand text-center' %></li>
+        <li><%= link_to ' Tech News', insights_path, class: 'navbar-brand text-center' %></li>
+        <li><%= link_to ' Search', current_candidate, class: 'navbar-brand text-center' %></li>
+      </ul></li>
+
 <% elsif current_employer %>
 <li class='text-uppercase'><%= link_to "Post Job", new_job_path, class: 'navbar-brand' %></li>
   <li >
@@ -64,6 +75,14 @@
       <% end %>
       </ul></li>
 
+      <li class="dropdown">
+      <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown">Discover<span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+        <li><%=  link_to "Post a Job", new_job_path, class: 'navbar-brand' %></li>
+        <li><%= link_to ' Companies', companies_path, class: 'navbar-brand text-center' %></li>
+        <li><%= link_to ' Tech News', insights_path, class: 'navbar-brand text-center' %></li>
+        <li><%= link_to ' Jobs', jobs_path, class: 'navbar-brand text-center' %></li>
+      </ul></li>
 
 
 <% else %>

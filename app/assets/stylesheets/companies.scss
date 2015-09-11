@@ -41,6 +41,14 @@
     border-bottom-color: transparent;
     cursor: default;
   }
+    .btn-success{
+      background: #fd7700;
+      color: #fff;
+    }
+    .btn-success:hover{
+      background: #fd7700;
+      color: #ddd;
+    }
 }
 .review-form{
   display: none;

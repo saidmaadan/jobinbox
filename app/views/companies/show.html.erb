@@ -19,7 +19,7 @@
               <% if current_employer || current_candidate %>
                 <li role="presentation"><a href="#write-review" aria-controls="WriteReview" role="tab" data-toggle="tab"><div class='write-review'>Write a Review</div></a></li>
               <% else %>
-                <li role="presentation"><div><%= link_to 'Signin to Write a Review', signin_path %></div></li>
+                <li role="presentation"><div><%= link_to 'Signin to Write a Review', signin_path, class: "btn btn-success btn-group-justified" %></div></li>
               <% end %>
             </ul>
           </div>
