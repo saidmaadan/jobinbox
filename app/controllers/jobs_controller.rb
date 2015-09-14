@@ -10,7 +10,7 @@ class JobsController < ApplicationController
   end
 
 	def index
-		@jobs = Job.all
+		@jobs = Job.order("created_at DESC").paginate(:page => params[:page], :per_page => 4)
 	end
 
 	def show

@@ -12,7 +12,7 @@ class CompaniesController < ApplicationController
   end
 
   def index
-    @companies = Company.all.order("created_at DESC").limit(6)
+    @companies = Company.all.order("created_at DESC")
   end
 
   def new
@@ -36,12 +36,12 @@ class CompaniesController < ApplicationController
     else
       @avg_rating = @reviews.average(:rating).round(2)
     end
-    @reviews = Review.where(company_id: @company.id).order("created_at DESC")
+    @reviews = Review.where(company_id: @company.id).order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
     @companies = Company.all.order("created_at DESC").limit(8)
-    @jobs = Job.all
-    @jobs = @company.jobs.order("created_at DESC")
-    @jobs = @jobs.where(title: params["title"]) if params["title"].present?
-    @jobs = @jobs.where(city: params["city"]) if params["city"].present?
+    @jobs = Job.all.paginate(:page => params[:page], :per_page => 3)
+    @jobs = @company.jobs.paginate(:page => params[:page], :per_page => 3)
+    # @jobs = @jobs.where(title: params["title"]) if params["title"].present?
+    # @jobs = @jobs.where(city: params["city"]) if params["city"].present?
   end
 
   def edit

@@ -2,7 +2,7 @@ class Review < ActiveRecord::Base
   belongs_to :company
   belongs_to :candidate
   belongs_to :employer
-
+  self.per_page = 5
   validates :rating, :pros, :cons, :advice, presence: true
   validates :rating, numericality:{ 
     only_integer: true,

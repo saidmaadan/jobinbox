@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908164831) do
+ActiveRecord::Schema.define(version: 20150912013711) do
 
 # Could not dump table "candidates" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -103,6 +103,27 @@ ActiveRecord::Schema.define(version: 20150908164831) do
   end
 
   add_index "insights", ["slug"], name: "index_insights_on_slug", unique: true
+
+  create_table "interviews", force: :cascade do |t|
+    t.string   "job_title"
+    t.text     "process"
+    t.text     "questions"
+    t.text     "anwsers"
+    t.string   "interview_difficulty"
+    t.string   "hired"
+    t.string   "how_heard"
+    t.string   "duration"
+    t.string   "when"
+    t.string   "where"
+    t.string   "how_helpful"
+    t.integer  "candidate_id"
+    t.integer  "employer_id"
+    t.integer  "company_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "interviews", ["company_id"], name: "index_interviews_on_company_id"
 
   create_table "jobs", force: :cascade do |t|
     t.string   "title"

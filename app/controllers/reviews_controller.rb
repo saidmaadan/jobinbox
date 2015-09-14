@@ -6,12 +6,14 @@ class ReviewsController < ApplicationController
   before_action :check_user, only: [:edit, :update, :destroy]
 
   # respond_to :html
+
   def new
     @review = Review.new
   end
 
   def edit
   end
+  
 
   def create
     @review = Review.new(review_params)
