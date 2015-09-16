@@ -1,0 +1,56 @@
+<div class='container'>
+  <div class='row company-content'>
+    <div class='col-sm-12'>
+      <div class='company-imgbg'>
+        <%= image_tag @company.avatar_url if @company.avatar_url %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-sm-4'>
+        <div class='company_logo text-center'>
+          <%= image_tag @company.logo_url if @company.avatar_url %>
+        </div><br>
+      </div>
+      <div class='col-sm-8 company-content-tab-review'>
+         <h3><%= @company.name %> Reviews</h3><hr>
+              <% @reviews.each do |r| %>
+                <div class="row">
+                    <div class='col-sm-12'>
+                      <!-- <h5>By: <%#= link_to ("#{r.user.first_name.capitalize} #{r.user.last_name.capitalize[0]}."), r.user %></h5> -->
+                      <%= r.created_at.strftime("%-m/%-d/%y") %><br>
+                      <div class='star-rating' data-score= <%= r.rating %> ></div>
+                    </div>
+                    <div class='col-sm-12'>
+                      <p><%= h(r.pros).gsub(/\n/, '<br/>').html_safe %></p>
+                      <% if current_employer %>
+                       <%# if (r.user == current_user) || (current_user.admin?)%>
+                        <%= link_to "Edit", edit_company_review_path(@company, r) %> | 
+                        <%= link_to "Delete", company_review_path(@company, r), method: :delete, data: { confirm: 'Are you sure?' }%>
+                    
+                      <% end %><br>
+                    </div>
+                  </div> 
+
+                      <hr>
+          
+              <% end %>
+              <%#= will_paginate @collection, renderer: BootstrapPagination::Rails, class: 'text-center' %> 
+      </div>
+    </div> 
+  </div>
+</div>
+<script>
+  $('.star-rating').raty({
+    path: 'https://s3.amazonaws.com/foodplace/uploads/stars',
+    readOnly: true,
+    score: function(){
+      return $(this).attr('data-score');
+    }
+  });
+  $('.write-review').on('click', function(){
+    $('.review-form').toggle("slow");
+    });
+    
+</script>
+
+

@@ -1,0 +1,15 @@
+<div class='container'>
+  <div class='row interview-new'>
+    <div class='col-sm-12'>
+      <div class='company-imgbg'>
+        <%= image_tag @company.avatar_url, class: "img-responsive" if @company.avatar_url %>
+      </div>
+    </div><br>
+    <div class='col-sm-8 col-sm-offset-2 well'>
+      <h3>Editing Your Interview Experienced with <%= @company.name %></h3>
+      <%= render 'form' %>
+      <%= link_to 'Back', company_path(@company) %>
+    </div>
+  </div>
+</div>
+

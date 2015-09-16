@@ -557,3 +557,23 @@ footer{
     height: 1%; }
   *:first-child + html .digg_pagination {
     overflow: hidden; }
+
+//---------------------error_message-------------------------
+.error_message{
+  margin: auto;
+  
+  h3{
+    font-size: 30px;
+    color: #fd7700;
+  }
+  h4{
+    font-size: 25px;
+    color: #449d44;
+  }
+  ul li{
+    list-style-type: decimal;
+    font-size: 18px;
+    padding-bottom: 5px;
+    font-weight: 400;
+  }
+}

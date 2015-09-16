@@ -29,11 +29,19 @@
   // margin-top: 40px;
   background: #fff;
   margin-left: -14px;
-  padding: 60px 20px 40px;
-  p{
+  max-height: 1000px;
+  overflow: auto;
+  overflow-x:hidden;
+  .tab-content{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    p{
     font-size: 16px;
     color: #666666;
   }
+  }
+  
 }
 .company-tab{
   margin-top: 10px;
@@ -53,6 +61,82 @@
       color: #ddd;
     }
 }
+.company-content-tab-review{
+  // margin-top: 40px;
+  background: #fff;
+  margin-left: -30px;
+  padding: 60px 20px 40px;
+  max-height: 800px;
+  overflow: auto;
+  overflow-x:hidden;
+  p{
+    font-size: 16px;
+    color: #666666;
+  }
+}
+.company-main{
+  .well{
+    width: 100%;
+    margin: auto;
+    background: #fff;
+  }
+}
+.company-side{
+  margin-top: 20px;
+  .well{
+    background: #fff;
+    padding: 10px 10px;
+    text-align: center;
+    .social-link{
+      display: inline;
+      
+      .fa{
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        color: #fff;
+        padding-top: 5px;
+      }
+      .fa-twitter{
+        background: #2bb6e9;
+      }
+      .fa-youtube{
+        background: #d9292c;
+      }
+      .fa-linkedin{
+        background: #0079b6;
+      }
+       .fa-facebook{
+        background: #435f9d;
+      }
+    }
+    .twitter{
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+    .linkedin{
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+}
 .review-form{
   display: none;
+}
+select{
+  height: 80px;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.interview-form .well{
+  //width: 100%;
+  margin: 10px auto;
+  background: #fbfbfb;
+}
+.interview-new .well{
+  //width: 100%;
+  margin-top: 20px;
+  
 }

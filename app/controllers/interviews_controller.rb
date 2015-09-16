@@ -7,9 +7,11 @@ class InterviewsController < ApplicationController
   # respond_to :html
   def new
     @interview = Interview.new
+    @company = Company.friendly.find(params[:id])
   end
 
   def edit
+    #@company = Company.friendly.find(params[:id])
   end
 
   def create
@@ -17,17 +19,22 @@ class InterviewsController < ApplicationController
     #@interview.candidate_id = current_candidate.id
     @interview.employer_id = current_employer.id
     @interview.company_id = @company.id
-    respond_to do |format|
+    # respond_to do |format|
       if @interview.save
-        InterviewMailer.interview_created((current_employer || current_candidate), @company.employer, @interview.pros, @interview.cons, @interview.advice, @interview.company_name).deliver
-        format.html { redirect_to @company, notice: 'Interview was successfully created.' }
-        format.json { render :show, status: :created, location: @interview }
+        redirect_to @company
       else
-        format.html { render :new }
-        format.json { render json: @interview.errors, status: :unprocessable_entity }
+        render :new
       end
     end
-  end
+    #     InterviewMailer.interview_created((current_employer || current_candidate), @company.employer, @interview.pros, @interview.cons, @interview.advice, @interview.company_name).deliver
+    #     format.html { redirect_to @company, notice: 'Interview was successfully created.' }
+    #     format.json { render :show, status: :created, location: @interview }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @interview.errors, status: :unprocessable_entity }
+    #   end
+    # end
+  # end
 
   def update
     respond_to do |format|
@@ -64,6 +71,6 @@ class InterviewsController < ApplicationController
     end
 
     def interview_params
-      params.require(:interview).permit(:job_title, :process, :questions, :answers, :interview_difficulty, :hired, :how_heard,:duration,:when, :where, :how_helpful, :candidate_id, :employer_id, :company_id)
+      params.require(:interview).permit(:job_title, :process, :questions, :answers, :interview_difficulty, :hired, :how_heard,:duration, :duration_days, :when, :when_month, :where, :how_helpful, :candidate_id, :employer_id, :company_id)
     end
 end

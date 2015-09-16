@@ -1,0 +1,70 @@
+<div class='interview-form'>
+  <%= form_for([@company, @interview]) do |f| %>
+  <%= render "shared/errors", object: @interview %>
+
+    <div class="form-group">
+      <%= f.label :job_title, "Job Title" %>
+      <%= f.text_field :job_title, class: "form-control", placeholder: "What position did you apply for?" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :process, "Describe the Interview Process" %>
+      <%= f.text_area :process, cols: 20, rows: 4, class: "form-control", placeholder: "Briefly descripe the interview process " %>
+    </div>
+    <div class="form-group">
+      <%= f.label :questions, "Interview Questions" %>
+      <%= f.text_area :questions, cols: 20, rows: 4, class: "form-control", placeholder: "Q: What did they asked you?" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :anwsers, " " %>
+      <%= f.text_area :anwsers, cols: 10, rows: 4, class: "form-control", placeholder: "A: How did you answer the question? (Optional)" %>
+    </div>
+    <div class='row well'>
+      <div class='col-sm-5'>
+        <div class="form-group">
+          <%= f.label :interview_difficulty, class: 'control-label' %><br>
+            <%= f.select :interview_difficulty, Interview::INTERVIEW_DIFFICULTY, prompt: "Select one", class: "form-control" %>
+        </div>
+      </div>
+      <div class='col-sm-7'>
+        <div class="form-group">
+          <%= f.label :how_heard, "how do you get the interview?", class: 'control-label' %><br>
+            <%= f.select :how_heard, Interview::HOW_HEARD, prompt: "Select one", class: "form-control" %>
+        </div>
+      </div>
+    </div><br>
+
+    <div class='row well'>
+      <div class='col-sm-6'>
+        <div class="form-group">
+          <%= f.label :duration, "how long was the entire process?", class: 'control-label' %><br>
+          <div class='row'>
+            <div class='col-xs-4'>
+              <%= f.text_field :duration, class: "form-control", placeholder: '#' %>
+            </div>
+            <div class='col-xs-8'>
+              <%= f.select :duration_days, Interview::DURATION_DAYS, prompt: "Select one", class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='col-sm-6'>
+        <div class="form-group">
+          <%= f.label :when_month, "When was this interview?", class: 'control-label' %><br>
+            <%= f.select :when_month, Interview::WHEN_MONTH, prompt: "Select one", class: "form-control" %>
+            <%= f.select :when, Interview::WHEN, prompt: "Select one", class: "form-control" %>
+        </div>
+      </div>
+    </div><br>
+     
+    <div class="form-group">
+      <%= f.label :where, "where was this interview?" %>
+      <%= f.text_field :where, class: "form-control", placeholder: "e.g, Austin, TX" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.submit "Submit Interview", class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>
+
+

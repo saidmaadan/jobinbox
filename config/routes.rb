@@ -25,8 +25,10 @@ Rails.application.routes.draw do
   get "employers/signup" => "employers#home"
 
   resources :employers
+  get "companies/:id/review" => "companies#review"
   resources :companies do 
     resources :reviews, except: [:show, :index]
+    resources :interviews, except: [:show, :index]
   end
   resources :insights
 
