@@ -58,40 +58,29 @@
                 </div>
               </div>
             <div class='col-sm-8 company-content-tab'>
-              <div class="tab-content">
-                <% if @reviews.blank? %>
-                  <h3>No reviews yet. Be the first to post your review <%= @company.name %></h3>
-                <% else %>
-                <h3><%= @company.name %> Reviews</h3><hr>
-                  <% @reviews.each do |r| %>
-                    <div class="row">
-                      <div class='col-xs-12'>
-                        <%= r.created_at.strftime("%-m/%-d/%y") %><br>
-                        <div class='star-rating' data-score= <%= r.rating %> >
-                        </div>
-                      </div>
-                      <div class='col-sm-12'>
-                        <p><%= h(r.pros).gsub(/\n/, '<br/>').html_safe %></p>
-                        <% if current_employer %>
-                        <%# if (r.user == current_user) || (current_user.admin?)%>
-                          <%= link_to "Edit", edit_company_review_path(@company, r) %> | 
-                          <%= link_to "Delete", company_review_path(@company, r), method: :delete, data: { confirm: 'Are you sure?' }%>
-                        <% end %><br>
-                      </div>
-                    </div>
+          <div class="tab-content">
 
-                      <hr> 
-                  <% end %>
-                <% end %>
-                <%= will_paginate @reviews, renderer: BootstrapPagination::Rails, class: 'text-center' %>
+          
+          <% @jobs.each do |job| %>
+            <% if job.company_name == @company.name %>
+              <div class='row'>
+                <div class='col-sm-12'>
+                  <h2><%= link_to job.title, job %></h2>
+                   <p><%= truncate job.description, length: 200, separator: ' ' %></p>
+                   <%= link_to "View full job description", job %>
+                </div>
               </div>
-            </div>   
-          </div>
+            <% end %>
+          <% end %>
+         
+              <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, class: 'text-center' %> 
+           
+          </div>   
         </div>
       </div>
     </div>
-
-        
+    </div>
+   </div>
 
     <div class='col-sm-3 hidden-xs'> 
       <div class='row company-side'>
@@ -115,7 +104,13 @@
         <% end %>  
       </div>
        
-      
+      <% if @reviews.blank? %>
+      <% else %>
+        <h3><%= @company.name %> Reviews</h3><hr>
+          <div class="star-rating" data-score= <%= @avg_rating %> ></div>
+            <p><%= "#{@reviews.length} reviews" %></p>
+      <% end %>
+
     </div>
   </div>
 </div>
@@ -129,17 +124,8 @@
     }
   });
   $('.write-review').on('click', function(){
-    $('.tab-content').hide("slow");
-    $('.review-form').show("slow");
-    $('.write-review').hide();
-    $('.show-review').show("slow");
-  });
-  $('.show-review').on('click', function(){
-    $('.review-form').hide("slow");
-    $('.tab-content').show("slow");
-     $('.write-review').show();
-    $('.show-review').hide("slow");
-  });
+    $('.review-form').toggle("slow");
+    });
     
 </script>
 

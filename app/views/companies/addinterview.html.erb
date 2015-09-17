@@ -57,41 +57,13 @@
                   </div>     
                 </div>
               </div>
-            <div class='col-sm-8 company-content-tab'>
-              <div class="tab-content">
-                <% if @reviews.blank? %>
-                  <h3>No reviews yet. Be the first to post your review <%= @company.name %></h3>
-                <% else %>
-                <h3><%= @company.name %> Reviews</h3><hr>
-                  <% @reviews.each do |r| %>
-                    <div class="row">
-                      <div class='col-xs-12'>
-                        <%= r.created_at.strftime("%-m/%-d/%y") %><br>
-                        <div class='star-rating' data-score= <%= r.rating %> >
-                        </div>
-                      </div>
-                      <div class='col-sm-12'>
-                        <p><%= h(r.pros).gsub(/\n/, '<br/>').html_safe %></p>
-                        <% if current_employer %>
-                        <%# if (r.user == current_user) || (current_user.admin?)%>
-                          <%= link_to "Edit", edit_company_review_path(@company, r) %> | 
-                          <%= link_to "Delete", company_review_path(@company, r), method: :delete, data: { confirm: 'Are you sure?' }%>
-                        <% end %><br>
-                      </div>
-                    </div>
-
-                      <hr> 
-                  <% end %>
-                <% end %>
-                <%= will_paginate @reviews, renderer: BootstrapPagination::Rails, class: 'text-center' %>
-              </div>
+            <div class='col-sm-8 company-content-tab'><br>
+                <%= render partial: 'interviews/form' %>            
             </div>   
           </div>
         </div>
       </div>
-    </div>
-
-        
+    </div>   
 
     <div class='col-sm-3 hidden-xs'> 
       <div class='row company-side'>
@@ -128,19 +100,5 @@
       return $(this).attr('data-score');
     }
   });
-  $('.write-review').on('click', function(){
-    $('.tab-content').hide("slow");
-    $('.review-form').show("slow");
-    $('.write-review').hide();
-    $('.show-review').show("slow");
-  });
-  $('.show-review').on('click', function(){
-    $('.review-form').hide("slow");
-    $('.tab-content').show("slow");
-     $('.write-review').show();
-    $('.show-review').hide("slow");
-  });
     
 </script>
-
-

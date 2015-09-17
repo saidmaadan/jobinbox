@@ -1,4 +1,3 @@
-
 <div class='container'>
   <div class='row company-content'>
     <div class='col-sm-9'>
@@ -10,186 +9,63 @@
         </div>
         <div class='col-sm-12 company-main'>
           <div class='row well'>
-            <div class='col-sm-4 col-xs-5 company_logo text-center'>
+            <div class='col-sm-4 hidden-xs company_logo text-center'>
               <%= image_tag @company.logo_url if @company.logo_url %>
             </div>
-            <div class='col-sm-8 col-xs-7'>
+            <div class='col-sm-8 col-xs-12'>
               <h2><%= @company.name %></h2>
-              <%= link_to " #{@company.website}", @company.website, :target => "_blank", class: "fa fa-link " %>
+              <%= link_to " #{@company.website}", @company.website, :target => "_blank", class: "fa fa-link " %><br>
+              <% if @reviews.blank? %>
+                    <% else %>
+                        <div class="star-rating" data-score= <%= @avg_rating %> ></div>
+              <% end %>
+              </div>
+              <div class='row'>
+                <div class='col-sm-12 col-xs-12 text-center company-btn'>
+                  <% if @reviews.blank? %>
+                    <% else %>
+                        
+                          <h2><span class="btn btn-success"><%= "#{@reviews.length} Reviews" %></span>&nbsp;&nbsp;<span class="btn btn-success"><%= "#{@interviews.length} Interviews" %></span>&nbsp;&nbsp;
+                          <% if current_employer || current_candidate %>
+                            <span class="btn btn-success"><%= link_to "Write a Reviews", company_addreview_path(@company) %></span>&nbsp;&nbsp;<span class="btn btn-success"><%= link_to "Add-Interviews", company_addinterview_path(@company) %></span>
+                          <% else %>
+                            <%= link_to 'Signin to Add-Review/Interview', signin_path, class: 'btn btn-success' %>
+                          <% end %>
+                          </h2>
+                    <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div class='col-sm-12'>
+          <div class='row'>
+            <div class='col-sm-4 col-xs-12'>
+              <div class='company-tab'>
+
+                <div class="list-group">
+          
+                  <%= link_to "#{@company.name}", @company, class: "list-group-item active"   %>
+                  <%= link_to "About #{@company.name}", company_about_path(@company), class: "list-group-item"   %>
+                  <%= link_to "#{@company.name} Jobs", company_job_path(@company), class: "list-group-item" %>
+                  <%= link_to "Reviews", company_review_path(@company), class: "list-group-item"  %>
+                  <%= link_to "Interviews", company_interview_path(@company), class: "list-group-item"  %>
+                   <% if current_employer || current_candidate %>
+                    <%= link_to "Write a Reviews", company_addreview_path(@company), class: "list-group-item"  %>
+                    <%= link_to "Add-Interviews", company_addinterview_path(@company), class: "list-group-item"  %>
+                    <% end %>    
+                  </div>     
+                </div>
+              </div>
+              <div class='col-sm-8 col-xs-12 company-content-tab'>
+                <div class="tab-content">
+                  <p><%= @company.about %></p>
+                </div>  
+              </div>   
             </div>
           </div>
         </div>
-        <br>
-        <div class='col-sm-12'>
-          <div class='row'>
-            
-            <div class='col-xs-4 hidden-xs'>
-              <div class='company-tab'>
-
-              <ul class="nav nav-tabs nav-stacked" role="tablist">
-                  <li role="presentation" class="active"><a href="#about" aria-controls="about" role="tab" data-toggle="tab">About <%= @company.name %></a></li>
-                  <li role="presentation"><a href="#job" aria-controls="job" role="tab" data-toggle="tab"><%= @company.name %> Jobs</a></li>
-                  <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Reviews</a></li>
-                  <li role="presentation"><a href="#interviews" aria-controls="interviews" role="tab" data-toggle="tab">Interviews</a></li>
-                    
-                  <% if current_employer || current_candidate %>
-                    <li role="presentation"><a href="#write-review" aria-controls="WriteReview" role="tab" data-toggle="tab"><div class='write-review'>Write a Review</div></a></li>
-                    <li role="presentation"><a href="#write-interview" aria-controls="writeInterview" role="tab" data-toggle="tab">Add-Interview</a></li>
-                  <% else %>
-                    <li role="presentation"><div><%= link_to 'Signin to Write a Review', signin_path, class: "btn btn-success btn-group-justified" %></div></li>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-
-            <div class='hidden-lg hidden-md hidden-sm col-xs-12'>
-              <div class='company-tab'>
-
-              <ul class="nav nav-tabs" role="tablist">
-                  <li role="presentation" class="active"><a href="#about" aria-controls="about" role="tab" data-toggle="tab">About <%= @company.name %></a></li>
-                  <li role="presentation"><a href="#job" aria-controls="job" role="tab" data-toggle="tab"><%= @company.name %> Jobs</a></li>
-                  <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Reviews</a></li>
-                  <li role="presentation"><a href="#interviews" aria-controls="interviews" role="tab" data-toggle="tab">Interviews</a></li>
-                  <% if current_employer || current_candidate %>
-                    <li role="presentation"><a href="#write-review" aria-controls="WriteReview" role="tab" data-toggle="tab"><div class='write-review'>Write a Review</div></a></li>
-                    <li role="presentation"><a href="#write-interview" aria-controls="writeInterview" role="tab" data-toggle="tab">Add-Interview</a></li>
-                  <% else %>
-                    <li role="presentation"><div><%= link_to 'Signin to Write a Review', signin_path, class: "btn btn-success btn-group-justified" %></div></li>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-
-            <div class='col-sm-8 company-content-tab'>
-          <div class="tab-content">
-
-          <div role="tabpanel" class="tab-pane active" id="about"><p><%= @company.about %></p></div>
-          <div role="tabpanel" class="tab-pane" id="job">
-          <% Job.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 5).each do |job| %>
-            <% if job.company_name == @company.name %>
-              <div class='row'>
-                <div class='col-sm-12'>
-                  <h2><%= link_to job.title, job %></h2>
-                   <p><%= truncate job.description, length: 200, separator: ' ' %></p>
-                   <%= link_to "View full job description", job %>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-          <%#= will_paginate companies_jobs_path %>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="reviews">
-          <div class="star-rating" data-score=<%= @avg_rating %> ></div>
-            <p><%= "#{@reviews.length} reviews" %></p>
-            <% if @reviews.blank? %>
-              <h3>No reviews yet. Be the first to post your review <%= @company.name %></h3>
-            <% else %>
-            
-            <h3><%= @company.name %> Reviews</h3><hr>
-              <% @reviews.each do |r| %>
-                <div class="row">
-
-                    <div class='col-sm-5'>
-                    <div class='row'>
-                      <div class='col-xs-5'>
-                      <%# if r.user.image_url %>
-                        <%#= image_tag r.user.image_url, class: 'img-responsive', style: 'width:100%;height:100px;border-radius:50%;' %>
-                        <%# else %>
-                        <!-- <i class="fa fa-user fa-4x" ></i> -->
-                        
-                        <%# end %>
-                      </div>
-                      <div class='col-xs-7'>
-                        <!-- <h5>By: <%#= link_to ("#{r.user.first_name.capitalize} #{r.user.last_name.capitalize[0]}."), r.user %></h5> -->
-                          <%= r.created_at.strftime("%-m/%-d/%y") %><br>
-                          <div class='star-rating' data-score= <%= r.rating %> ></div>
-                    </div>
-                      </div>
-                    </div>
-                    
-                        
-                        <div class='col-sm-7'>
-                            <p><%= h(r.pros).gsub(/\n/, '<br/>').html_safe %></p>
-                    <% if current_employer %>
-                    <%# if (r.user == current_user) || (current_user.admin?)%>
-                    <%= link_to "Edit", edit_company_review_path(@company, r) %> | 
-                    <%= link_to "Delete", company_review_path(@company, r), method: :delete, data: { confirm: 'Are you sure?' }%>
-                    
-                    <% end %><br>
-                   
-                        </div>
-
-                      </div> 
-
-                      <hr>
-                <% end %>
-              <% end %>
-              <%= will_paginate @reviews %>
-            </div>
-
-            <div role="tabpanel" class="tab-pane" id="interviews">
-            <p><%= "#{@interviews.length} interviews" %></p>
-            <% if @interviews.blank? %>
-              <h3>No interviews yet. Be the first to share your interview experienced with <%= @company.name %></h3>
-            <% else %>
-            
-            <h3><%= @company.name %> Interviews</h3><hr>
-              <% @interviews.each do |interview| %>
-                <div class="row">
-                    <div class='col-xs-12'>
-                      <h2><%= interview.job_title %></h2>
-                    </div>
-                    <div class='col-xs-12'>
-                      <h3><%= "Accepted offer" if interview.hired == "Yes" %></h3>
-                    </div>
-                    <div class='col-xs-12'>
-                      <h2>Application Process</h2>
-                      <p><%= "I applied via #{interview.how_heard}" if interview.how_heard %>.&nbsp; <%= "The process took #{interview.duration} #{interview.duration_days}" %>.&nbsp;<%= "I interviewed at #{@company.name} #{interview.where}"  %></p>
-                    </div>
-                    <div class='col-xs-12'>
-                      <% if interview.process%>
-                        <h3>Interview Process</h3>
-                        <p><%= interview.process %></p>
-                      <% end %>
-                    </div>
-                    <div class='col-xs-12'>
-                      <% if interview.questions %>
-                        <h3>Interview Questions </h3>
-                        <p><%= interview.questions %></p>
-                      <% end %>
-                    </div>
-                    <div class='col-xs-12'>
-                      <% if current_employer.admin? || current_candidate.admin? %>
-                        <% if interview.anwsers %>
-                          <h3>Interview Anwsers </h3>
-                          <p><%= interview.anwsers %></p>
-                        <% end %>
-                      <% end %>
-                    </div><br>
-                    <div class='text-center'>
-                      <% if current_employer || current_candidate || current_employer.admin? || current_candidate.admin? %>
-                        <%= link_to "Edit", edit_company_interview_path(@company, interview) %> | 
-                        <%= link_to "Delete", company_interview_path(@company, interview), method: :delete, data: { confirm: 'Are you sure?' }%>
-                      <% end %>
-                    </div>
-                    <br>   
-                  </div>
-                  <hr>
-                <% end %>
-              <% end %>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="write-interview"><p><%= render partial: 'interviews/form' %></div>
-            <div role="tabpanel" class="tab-pane" id="write-review"><p><%= render partial: 'reviews/form' %></div>
-          </div>   
-        </div>
       </div>
-    </div>
-            <div>
-              
-            </div>
-          </div>  
-        </div>
-        
 
     <div class='col-sm-3 hidden-xs'> 
       <div class='row company-side'>

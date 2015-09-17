@@ -11,8 +11,8 @@
 }
 .company_logo img{
   margin-top: -60px;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   float: center;
 }
 .company-new{
@@ -29,7 +29,7 @@
   // margin-top: 40px;
   background: #fff;
   margin-left: -14px;
-  max-height: 1000px;
+  max-height: 1200px;
   overflow: auto;
   overflow-x:hidden;
   .tab-content{
@@ -81,6 +81,12 @@
     background: #fff;
   }
 }
+.company-btn .btn-success a{
+  color: #fff;
+}
+.company-btn .btn-success a:hover{
+  background: none;
+}
 .company-side{
   margin-top: 20px;
   .well{
@@ -121,6 +127,9 @@
   }
 }
 .review-form{
+  display: none;
+}
+.show-review{
   display: none;
 }
 select{

@@ -59,38 +59,64 @@
               </div>
             <div class='col-sm-8 company-content-tab'>
               <div class="tab-content">
-                <% if @reviews.blank? %>
-                  <h3>No reviews yet. Be the first to post your review <%= @company.name %></h3>
-                <% else %>
-                <h3><%= @company.name %> Reviews</h3><hr>
-                  <% @reviews.each do |r| %>
-                    <div class="row">
-                      <div class='col-xs-12'>
-                        <%= r.created_at.strftime("%-m/%-d/%y") %><br>
-                        <div class='star-rating' data-score= <%= r.rating %> >
-                        </div>
-                      </div>
-                      <div class='col-sm-12'>
-                        <p><%= h(r.pros).gsub(/\n/, '<br/>').html_safe %></p>
-                        <% if current_employer %>
-                        <%# if (r.user == current_user) || (current_user.admin?)%>
-                          <%= link_to "Edit", edit_company_review_path(@company, r) %> | 
-                          <%= link_to "Delete", company_review_path(@company, r), method: :delete, data: { confirm: 'Are you sure?' }%>
-                        <% end %><br>
-                      </div>
+                <p><%= "#{@interviews.length} interviews" %></p>
+              <% if @interviews.blank? %>
+                <h3>No interviews yet. Be the first to share your interview experienced with <%= @company.name %></h3>
+              <% else %>
+            
+              <h3><%= @company.name %> Interviews</h3><hr>
+              <% @interviews.each do |interview| %>
+                <div class="row">
+                    <div class='col-xs-12'>
+                      <h2><%= interview.job_title %></h2>
                     </div>
-
-                      <hr> 
-                  <% end %>
+                    <div class='col-xs-12'>
+                      <h3><%= "Accepted offer" if interview.hired == "Yes" %></h3>
+                    </div>
+                    <div class='col-xs-12'>
+                      <h2>Application Process</h2>
+                      <p><%= "I applied via #{interview.how_heard}" if interview.how_heard %>.&nbsp; <%= "The process took #{interview.duration} #{interview.duration_days}" %>.&nbsp;<%= "I interviewed at #{@company.name} #{interview.where}"  %></p>
+                    </div>
+                    <div class='col-xs-12'>
+                      <% if interview.process%>
+                        <h3>Interview Process</h3>
+                        <p><%= interview.process %></p>
+                      <% end %>
+                    </div>
+                    <div class='col-xs-12'>
+                      <% if interview.questions %>
+                        <h3>Interview Questions </h3>
+                        <p><%= interview.questions %></p>
+                      <% end %>
+                    </div>
+                    <div class='col-xs-12'>
+                      <% if current_employer.admin? || current_candidate.admin? %>
+                        <% if interview.anwsers %>
+                          <h3>Interview Anwsers </h3>
+                          <p><%= interview.anwsers %></p>
+                        <% end %>
+                      <% end %>
+                    </div><br>
+                    <div class='text-center'>
+                      <% if current_employer || current_candidate || current_employer.admin? || current_candidate.admin? %>
+                        <%= link_to "Edit", edit_company_interview_path(@company, interview) %> | 
+                        <%= link_to "Delete", company_interview_path(@company, interview), method: :delete, data: { confirm: 'Are you sure?' }%>
+                      <% end %>
+                    </div>
+                    <br>   
+                  </div>
+                  <hr>
                 <% end %>
-                <%= will_paginate @reviews, renderer: BootstrapPagination::Rails, class: 'text-center' %>
-              </div>
-            </div>   
-          </div>
+              <% end %>
+               <%= will_paginate @interviews, renderer: BootstrapPagination::Rails, class: 'text-center' %> 
+            </div>
+          </div>   
         </div>
       </div>
     </div>
-
+  </div>
+ 
+          
         
 
     <div class='col-sm-3 hidden-xs'> 
@@ -115,7 +141,13 @@
         <% end %>  
       </div>
        
-      
+      <% if @reviews.blank? %>
+      <% else %>
+        <h3><%= @company.name %> Reviews</h3><hr>
+          <div class="star-rating" data-score= <%= @avg_rating %> ></div>
+            <p><%= "#{@reviews.length} reviews" %></p>
+      <% end %>
+
     </div>
   </div>
 </div>
@@ -129,17 +161,8 @@
     }
   });
   $('.write-review').on('click', function(){
-    $('.tab-content').hide("slow");
-    $('.review-form').show("slow");
-    $('.write-review').hide();
-    $('.show-review').show("slow");
-  });
-  $('.show-review').on('click', function(){
-    $('.review-form').hide("slow");
-    $('.tab-content').show("slow");
-     $('.write-review').show();
-    $('.show-review').hide("slow");
-  });
+    $('.review-form').toggle("slow");
+    });
     
 </script>
 

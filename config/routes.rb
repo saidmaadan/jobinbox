@@ -25,7 +25,12 @@ Rails.application.routes.draw do
   get "employers/signup" => "employers#home"
 
   resources :employers
-  get "companies/:id/review" => "companies#review"
+  get "companies/:id/review" => "companies#review", as: "company/review"
+  get "companies/:id/addreview" => "companies#addreview", as: "company/addreview"
+  get "companies/:id/interview" => "companies#interview", as: "company/interview"
+  get "companies/:id/addinterview" => "companies#addinterview", as: "company/addinterview"
+  get "companies/:id/job" => "companies#job", as: "company/job"
+  get "companies/:id/about" => "companies#about", as: "company/about"
   resources :companies do 
     resources :reviews, except: [:show, :index]
     resources :interviews, except: [:show, :index]
