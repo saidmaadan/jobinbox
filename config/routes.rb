@@ -34,6 +34,9 @@ Rails.application.routes.draw do
   resources :companies do 
     resources :reviews, except: [:show, :index]
     resources :interviews, except: [:show, :index]
+    collection do
+      get 'search'
+    end
   end
   resources :insights
 

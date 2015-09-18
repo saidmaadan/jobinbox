@@ -1,27 +1,30 @@
+<div class="job-form-header">
+  <div class="container">
+    <div class='row'>
 
+      <% if current_candidate || current_employer %>
+      <% else %>
+        <div class='col-sm-10 col-sm-offset-1'>
+          <div class='jobs-search'>
+             <div class='jobs-search-form text-center'>
+            <%= form_tag search_jobs_path, method: :get, class: "navbar-form" do %>
+              <p>
+                <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Enter job title, keywords, city", size: 30 %>
+                <%= submit_tag 'FIND TECH JOBS', name: nil, class: "btn btn-success" %>
+              </p>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 <div class="container">
   <div class='row'>
 
-    <% if current_candidate || current_employer %>
-    <% else %>
-      <div class='col-sm-10 col-sm-offset-1'>
-        <div class='jobs-search'>
-           <div class='jobs-search-form text-center'>
-          <%= form_tag search_jobs_path, method: :get, class: "navbar-form" do %>
-            <p>
-              <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Enter job title, keywords, city", size: 30 %>
-              <%= submit_tag 'FIND TECH JOBS', name: nil, class: "btn btn-success" %>
-            </p>
-          <% end %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <div class='row'>
-
     <div class='col-sm-9 col-xs-12 jobs-list'>
-      <h1>All Tech Jobs</h1><hr>
+      <h1 class='text-center'>All Tech Jobs</h1><hr>
       
          <div class="digg_pagination">
           <div class="page_info">

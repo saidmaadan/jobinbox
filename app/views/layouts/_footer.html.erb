@@ -3,7 +3,14 @@
     <div class='container'>
       <div class='row'>
         <div class='col-sm-3'>
-          As your qualified candidates roll in, we make it easy to screen & rate them, allowing you to make the best hiring decisions for your business.
+          <% if current_candidate %>
+            <%= link_to (image_tag "https://s3.amazonaws.com/inventivelabs/jobinbox/logos/jblogo4.png"), current_candidate %>
+            
+          <% elsif @current_employer %>
+            <%= link_to (image_tag "https://s3.amazonaws.com/inventivelabs/jobinbox/logos/jblogo4.png"), current_employer %>
+          <% else %>
+            <%= link_to (image_tag "https://s3.amazonaws.com/inventivelabs/jobinbox/logos/jblogo4.png"), root_path %>
+          <% end %>
         </div>
         <div class='col-sm-3'>
           As your qualified candidates roll in, we make it easy to screen & rate them, allowing you to make the best hiring decisions for your business.
@@ -18,8 +25,24 @@
     </div>
   </div>
   
-  <div class='bottom text-center'>
-    <p>Copyright &copy; 2015 Job-Inbox. All right reserved</p>
-    <p>Made with <i class='fa fa-heart'></i> at <a href='http://inventivelabs.co' target='_blank'>Inventive Labs</a></p>
+  <div class='bottom'>
+    <div class='container'>
+    <div class='row'>
+      <div class='col-sm-9'>
+        <p>Copyright &copy; 2015 Job-Inbox. All right reserved</p>
+        <p>Made with <i class='fa fa-heart'></i> at <a href='http://inventivelabs.co' target='_blank'>Inventive Labs, LLC</a></p>
+      </div>
+      <div class='col-sm-3'>
+        <div class='social-link facebook'>
+          <a href="https://www.facebook.com/JobInbox" target="_blank"><i class="fa fa-facebook fa-2x"></i></a> 
+        </div>
+        <div class='social-link twitter'>
+          <a href="https://twitter.com/inventivelabsco" target="_blank"><i class="fa fa-twitter fa-2x"></i></a> 
+        </div>
+        <div class='social-link linkedin'>
+          <a href="https://www.linkedin.com/company/inventtive/" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a> 
+        </div>
+      </div>
+    </div>
   </div>
 </footer>

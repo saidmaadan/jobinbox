@@ -1,6 +1,34 @@
 // Place all the styles related to the companies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.companies{
+  .jumbotron{
+    width: 100%;
+    height: 600px;
+    background-image: url('https://s3.amazonaws.com/foodplace/uploads/job/imgs/siliconnew.jpg');
+    background-size: cover;
+    text-align: center;
+    h1{
+      //color: #fd7700;
+      color: #fff;
+      font-weight: 900;
+    }
+  }
+}
+.companies-middle{
+  .jumbotron{
+    width: 100%;
+    height: 800px;
+    background-image: url('https://s3.amazonaws.com/foodplace/uploads/job/imgs/siliconvalley.jpg');
+    background-size: cover;
+    text-align: center;
+    h1{
+      //color: #fd7700;
+      color: #fff;
+      font-weight: 900;
+    }
+  }
+}
 .company-imgbg{
   width: 100%;
   height: 300px;
@@ -83,6 +111,9 @@
 }
 .company-btn .btn-success a{
   color: #fff;
+}
+.company-btn .btn-success{
+  margin-top: 5px;
 }
 .company-btn .btn-success a:hover{
   background: none;
