@@ -297,8 +297,13 @@ select{
       padding-top: 30px;
       border-radius: 10px;
       ul{
-        text-align: center;
-        margin: auto;
+        width: 40%; 
+        margin: auto;       
+        .nav-tabs{
+          margin: auto;
+          text-align: center;
+
+        }
       }
       h1{
         color: #fff;
@@ -632,6 +637,9 @@ footer{
       color: #5cb85c;
       background: none;
     }
+    .fa{
+      color: #fd7700;
+    }
   }
   .bottom{
     //font-family: JobInboxFont7, Arial, sans-serif;
@@ -783,5 +791,41 @@ footer{
     font-size: 18px;
     padding-bottom: 5px;
     font-weight: 400;
+  }
+}
+
+//--------------Media Queries--------------------//
+@media screen and (max-width: 800px) {
+  .pages{
+    .jumbotron{
+      .pages-search {
+        ul{
+          width: 60%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .pages{
+    .jumbotron{
+      .pages-search {
+        ul{
+          width: 70%;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .pages{
+    .jumbotron{
+      .pages-search {
+        ul{
+          width: 85%;
+        }
+      }
+    }
   }
 }

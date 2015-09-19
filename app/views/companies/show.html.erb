@@ -13,27 +13,37 @@
               <%= image_tag @company.logo_url if @company.logo_url %>
             </div>
             <div class='col-sm-8 col-xs-12'>
-              <h2><%= @company.name %></h2>
-              <%= link_to " #{@company.website}", @company.website, :target => "_blank", class: "fa fa-link " %><br>
-              <% if @reviews.blank? %>
-                    <% else %>
-                        <div class="star-rating" data-score= <%= @avg_rating %> ></div>
-              <% end %>
+              <div class='row'>
+                <div class='col-sm-8'>
+                  <h2><%= @company.name %></h2>
+                  <%= link_to " #{@company.website}", @company.website, :target => "_blank", class: "fa fa-link " %><br>
+                </div>
+                <div class='col-sm-4'><br>
+                  <% if current_employer || current_candidate %>
+                    <span class=" btn btn-success fa fa-plus"><%= link_to "  Add Review", company_addreview_path(@company) %></span>&nbsp;&nbsp;
+                  <% else %>
+                    <%= link_to 'Signin to Add-Review', signin_path, class: 'btn btn-success' %>
+                  <% end %>
+                </div>
               </div>
               <div class='row'>
-                <div class='col-sm-12 col-xs-12 text-left company-btn'>
-                  <% if @reviews.blank? %>
-                    <% else %>
-                        
-                          <h2><span class="btn btn-success"><%= "#{@reviews.length} Reviews" %></span>&nbsp;&nbsp;<span class="btn btn-success"><%= "#{@interviews.length} Interviews" %></span>&nbsp;&nbsp;
-                          <% if current_employer || current_candidate %>
-                            <span class="btn btn-success"><%= link_to "Write a Reviews", company_addreview_path(@company) %></span>&nbsp;&nbsp;<span class="btn btn-success"><%= link_to "Add-Interviews", company_addinterview_path(@company) %></span>
-                          <% else %>
-                            <%= link_to 'Signin to Add-Review/Interview', signin_path, class: 'btn btn-success' %>
-                          <% end %>
-                          </h2>
-                    <% end %>
+                <div class='col-sm-12'>
+                  <div class='company-reviewinterview'>
+                    <div class='review-star'>
+                      <% if @reviews.blank? %>
+                      <% else %>
+                        <div class="star-rating" data-score= <%= @avg_rating %> ></div>
+                      <% end %>
+                    </div>
+                    <div class='review-rating text-center'>
+                      <%= "#{@reviews.length} " %><br>Reviews
+                    </div>
+                    <div class='interview-rating text-center'>
+                      <%= "#{@interviews.length} " %><br>Interviews
+                    </div>
+                  </div>
                 </div>
+              </div>
               </div>
             </div>
           </div>
