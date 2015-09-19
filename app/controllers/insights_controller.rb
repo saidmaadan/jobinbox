@@ -1,5 +1,5 @@
 class InsightsController < ApplicationController
-  before_action :require_admin, except: [:index, :show]
+  before_action :require_author, except: [:index, :show]
 
   def index
     @insights = Insight.all
