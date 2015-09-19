@@ -4,15 +4,15 @@ class CompaniesController < ApplicationController
 
   def search
     if params[:search].present?
-      @companies = Company.search(params[:search])
+      @companies = Company.search(params[:search]).paginate(:page => params[:page], :per_page => 7)
     else
-      @companies = Company.all.order("created_at DESC")
+      @companies = Company.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 7)
     end
     @reviews = Review.all.order("created_at DESC").limit(5)
   end
 
   def index
-    @companies = Company.all.order("created_at DESC")
+    @companies = Company.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 2)
   end
 
   def new

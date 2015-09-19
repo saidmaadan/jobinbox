@@ -1,0 +1,14 @@
+<div class="container">
+  <div class='row'>
+    <div class='col-sm-9'>
+      <div class="well">
+        <% @insights.each do |insight| %>
+            <h2><%= link_to insight.title, insight %></h2>
+            <p><%= truncate(insight.content, lenght: 250, seperate: "") %></p>
+            <p><%= link_to insight.source_url, insight.source_url %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class='col-sm-3'></div>
+  </div>
+</div>

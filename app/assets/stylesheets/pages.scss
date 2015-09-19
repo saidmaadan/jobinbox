@@ -11,8 +11,7 @@ html, body {
   font-weight: normal;
   font-size: 17px;
   line-height: 21px;
-  color: #666666;
- 
+  color: #666666; 
 }
 .stars-rating, img {
   display: inline;
@@ -61,8 +60,7 @@ main{
   right: 0;
   height: auto !important;
   height: 100%;
-  padding-bottom: 50px;
-  
+
 }
 
 //---------------header----------------------------
@@ -292,7 +290,7 @@ select{
     text-align: center;
     .pages-search{
       width: 70%;
-      margin: 5% auto;
+      margin: 3% auto;
       background: linear-gradient(200deg, rgba(22, 33, 6, 0) 0%, rgba(75, 134, 104, 0.9) 100%);
       box-shadow: rgba(0,0,0,0.15) 1px 1px 5px;
       padding-bottom: 30px;
@@ -352,7 +350,77 @@ select{
     }
   }
 }
-
+.pages-top{
+  width: 100%;
+  margin-top: -40px;
+  .jumbotron{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    h1{
+      font-size: 40px;
+      color: #000;
+      //padding-top: 20px;
+      //padding-bottom: 40px;
+      margin-bottom: 40px;     
+    }
+    h2{
+      padding-bottom: 60px;  
+    }
+    .fa{
+      margin: auto;
+      // margin-right: 20px;
+      // padding-right: 10px;
+      color: #5cb85c;
+       
+    }
+  }
+}
+.pages-middle{
+  width: 100%;
+  margin-top: -40px;
+  .jumbotron{
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+    padding-bottom: 60px;
+    h1{
+      font-size: 40px;
+      color: #000;
+      padding-top: 20px;
+      padding-bottom: 20px; 
+    }
+    p{
+      font-size: 16px;
+      color: #333;     
+    }
+  }
+}
+.pages-bottom{
+  width: 100%;
+  .jumbotron{
+    width: 100%;
+    height: 400px;
+    background: #fff;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    h1{
+      font-size: 40px;
+      color: #000;
+      padding-top: 20px;
+      margin-bottom: 60px;     
+    }
+    .fa{
+      margin: auto;
+      // margin-right: 20px;
+      // padding-right: 10px;
+      color: green;
+       
+    }
+  }
+}
 //--------------------Candidates----------------------------//
 .candidate-new{
   width: 100%;
@@ -528,6 +596,7 @@ select{
 }
 //----------------------session------------------------------//
 .login-form{
+  margin-top: 10%;
   .well{
     background: #fff;
     .nav-tabs{
@@ -548,19 +617,20 @@ footer{
   .footer{
     //font-family: JobInboxFont7, Arial, sans-serif;
     padding: 50px auto;
-    color: #afafaf;
+    color: #333;
     padding-top: 20px;
     padding-bottom: 30px;
-    font-size: 16px;
-    img{
-      width: 200px;
-      height: 60px;
-      padding-top: 10px;
-      color: black;
-      //margin-left: -20px;
+    font-size: 15px;
+    h2{
+      color: #fd7700;
+    }
+    a{
+      color: #333;
+      font-size: 15px;
     }
     a:hover{
-    background: none;
+      color: #5cb85c;
+      background: none;
     }
   }
   .bottom{
@@ -569,7 +639,10 @@ footer{
     bottom: 0;
     padding: 20px;
     background: #333;
-
+    img{
+      width: 200px;
+      height: 60px;
+    }
     p{
       font-size: 14px;
       a{

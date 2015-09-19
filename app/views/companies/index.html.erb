@@ -1,37 +1,48 @@
 <div class='companies'>
   <div class='jumbotron'>
-    <h1>Search for company</h1>
+    <div class='companies-h1'>
+      <h1>Search for company</h1>
+    </div>
     <div class='page-search-form'>
         <%= form_tag search_companies_path, class: "navbar-form", method: :get do %>  
            <%= text_field_tag :search, params[:search], placeholder: "Search for your next career jobs...", class: "form-control" %>
-            <%= submit_tag 'Search', name: nil, class: "btn btn-warning btn-lg" %>
+            <%= submit_tag 'Search', name: nil, class: "btn btn-success btn-lg" %>
         <% end %>
       </div>     
   </div>
 </div>
-<div class='container'>
-  <div class='row'>
-    <div class='col-sm-6'>
-      <% @companies.each do |company| %>
-        
-            <div class='row'>
-              <div class='col-sm-4 col-xs-4'>
-                <%= image_tag company.logo_url if company.logo_url %>
-              </div>
-              <div class='col-sm-4 col-xs-4'>
-                <h2><%= link_to company.name, company %></h2>
-                <p><%= truncate(company.about, lenght: 200, seperate: "") %></p>
-              </div>
-            </div>
-          <!-- </div>
-        </div> -->
-      <% end %>
-      <%#= will_paginate @collection, renderer: BootstrapPagination::Rails %>
+<div class='companies-top'>
+  <div class='jumbotron'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm-9'>
+        <% @companies.each do |company| %>
+          
+              <div class='row'>
+                <div class='col-sm-2 col-xs-3'>
+                  <%= image_tag company.logo_url if company.logo_url %>
+                </div>
+                <div class='col-sm-10 col-xs-9 text-left'>
+                  <h2><%= link_to company.name, company %></h2>
+                  <p><%= truncate(company.about, lenght: 400, seperate: "") %></p>
+                </div>
+              </div><hr>
+            <!-- </div>
+          </div> -->
+        <% end %>
+        <%= will_paginate @companies, renderer: BootstrapPagination::Rails %>
+      </div>
+      <div class='col-sm-3 hidden-xs'></div>
     </div>
-    <div class='col-sm-3 hidden-xs'></div>
+  </div>
+
   </div>
 </div>
 <div class='companies-middle'>
+  <div class='jumbotron'>
+  </div>
+</div>
+<div class='companies-bottom'>
   <div class='jumbotron'>
   </div>
 </div>

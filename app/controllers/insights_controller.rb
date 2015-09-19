@@ -12,7 +12,7 @@ class InsightsController < ApplicationController
   def create
     @insight = Insight.new(insight_params)
     if @insight.save
-      redirect_to companies_path, notice: "Insight added successfully"
+      redirect_to @insight, notice: "Insight added successfully"
     else
       render :new
     end
@@ -37,6 +37,6 @@ class InsightsController < ApplicationController
 
   private
   def insight_params
-    params.require(:companies).permit(:title, :content,:source_url, :slug, :employer_id, :logo)
+    params.require(:insight).permit(:title, :content,:source_url, :slug, :employer_id, :logo)
   end
 end

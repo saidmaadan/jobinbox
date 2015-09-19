@@ -1,7 +1,7 @@
 class Insight < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_insights, use: :slugged
-  searchkick
+  #searchkick
   
   def slug_insights
     [
