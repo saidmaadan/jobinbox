@@ -98,7 +98,32 @@
           </div>
         <% end %>  
       </div>
-       
+
+      <div class='row company-side'>
+        <% if @company.video %>
+          <p><iframe  src="//www.youtube.com/embed/<%= @company.video %>" frameborder="0" allowfullscreen class="img-responsive text-center" style="width:100%;height:250px;"></iframe>
+          </p>
+        <% end %>
+      </div>
+
+      <div class='row company-side'>
+         <% @jobs.each do |job| %>
+            <% if job.company_name == @company.name %>
+              <div class='row'>
+                <div class='col-sm-12'>
+                  <h2>Carear At <%= company.name %></h2>
+                  <hr>
+                  <%= image_tag @company.avatar_url, class: "img-responsive", style: "height:140px;" if @company.avatar_url %>
+                  <h2><%= link_to job.title, job %></h2>
+                  <%= link_to "more...", company_job_path(@company), class: "text-right" %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+
+        
+      </div>
+     
       <% if @reviews.blank? %>
       <% else %>
         <h3><%= @company.name %> Reviews</h3><hr>

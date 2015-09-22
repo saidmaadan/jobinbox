@@ -58,6 +58,11 @@
             <%= f.text_field :subsidiaries, class: "form-control" %>
         </div>
 
+        <div class="form-group">
+            <%= f.label :video, class: 'control-label' %>
+            <%= f.text_field :video, class: "form-control" %>
+        </div>
+
         <div class='form-group'>
         <div class='row'>
           <%= f.label :about, class: 'control-label' %>
@@ -90,7 +95,31 @@
             </div>
           </div>
         </div>
-     
+        <div class='form-group'>
+          <div class='row'>
+           <div class='col-sm-6'>
+              <%= f.label :pinterest %>
+              <%= f.text_field :pinterest, class: "form-control" %>
+            </div>
+            <div class='col-sm-6'>
+              <%= f.label :github, class: 'control-label' %>
+              <%= f.text_field :github, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class='form-group'>
+          <div class='row'>
+           <div class='col-sm-6'>
+              <%= f.label :instagram %>
+              <%= f.text_field :instagram, class: "form-control" %>
+            </div>
+            <div class='col-sm-6'>
+              <%= f.label :googleplus, class: 'control-label' %>
+              <%= f.text_field :googleplus, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
         <div class="form-group">
           <% if @company.new_record? %>
             <%= f.submit "Add Company", class: "btn btn-success" %>
