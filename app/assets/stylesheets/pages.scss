@@ -391,6 +391,7 @@ select{
     height: 100%;
     padding-top: 20px;
     padding-bottom: 60px;
+    background: #eaeaea;
     h1{
       font-size: 40px;
       color: #000;
@@ -558,8 +559,9 @@ select{
 // }
 .job-form-header{
   width: 100%;
-  background: #333;
+  background: #eaeaea;
   padding: 30px;
+  border-bottom: 2px solid #ddd;
 }
 .jobs-search{
   width: 100%;

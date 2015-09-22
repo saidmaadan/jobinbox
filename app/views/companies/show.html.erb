@@ -68,6 +68,38 @@
                 </div>
               </div>
               <div class='col-sm-8 col-xs-12 company-content-tab'>
+                 <div class='row company-side'>
+                  <div class='col-sm-12 '>
+                    <div class='row '>
+                      <div class='col-sm-3'>
+                        Website
+                      </div>
+                      <div class='col-sm-9'>
+                        <%= @company.website %>
+                      </div>
+                      <div class='col-sm-3'>
+                        Type
+                      </div>
+                      <div class='col-sm-9'>
+                        <%= @company.industry %>
+                      </div>
+
+                       <div class='col-sm-3'>
+                        Size
+                      </div>
+                      <div class='col-sm-9'>
+                        <%= @company.size %>+ Employees
+                      </div>
+                      <div class='col-sm-3'>
+                        Founded
+                      </div>
+                      <div class='col-sm-9'>
+                        <%= @company.founded%>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               
                 <div class="tab-content">
                   <p><%= @company.about %></p>
                 </div>  
@@ -106,7 +138,7 @@
         <% end %>
       </div>
 
-      <div class='row company-side'>
+      <div class='row company-side well'>
          <% @jobs.each do |job| %>
             <% if job.company_name == @company.name %>
               <div class='row'>
@@ -119,9 +151,39 @@
                 </div>
               </div>
             <% end %>
-          <% end %>
+          <% end %> 
+      </div>
 
-        
+      <div class='row company-side'>
+        <div class='col-sm-12 well '>
+          <div class='row text-left'>
+            <div class='col-sm-3'>
+              Website
+            </div>
+            <div class='col-sm-9'>
+              <%= @company.website %>
+            </div>
+            <div class='col-sm-3'>
+              Type
+            </div>
+            <div class='col-sm-9'>
+              <%= @company.industry %>
+            </div>
+
+             <div class='col-sm-3'>
+              Size
+            </div>
+            <div class='col-sm-9'>
+              <%= @company.size %>+ Employees
+            </div>
+            <div class='col-sm-3'>
+              Founded
+            </div>
+            <div class='col-sm-9'>
+              <%= @company.founded%>
+            </div>
+          </div>
+        </div>
       </div>
      
       <% if @reviews.blank? %>

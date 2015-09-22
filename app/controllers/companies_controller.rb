@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :require_admin, except: [:index, :show]
+  before_action :require_admin, except: [:index, :show, :search]
   before_action :set_company, only: [:show, :edit, :update, :destroy, :review, :interview, :addreview, :job, :addinterview, :about]
 
   def search
@@ -12,7 +12,18 @@ class CompaniesController < ApplicationController
   end
 
   def index
-    @companies = Company.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 2)
+    @review = Review.new
+    @job = Job.new
+    @review.company_id = @company_id
+    @job.company_id = @company_id
+    if @reviews.blank?
+      @avg_rating = 0
+    else
+      @avg_rating = @reviews.average(:rating).round(2)
+    end
+    @companies = Company.all.order("created_at DESC").limit(8)
+    @jobs = Job.all.paginate(:page => params[:page], :per_page => 3)
+    @companies = Company.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
   end
 
   def new

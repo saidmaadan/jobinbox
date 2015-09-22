@@ -13,36 +13,90 @@
 </div>
 <div class='companies-top'>
   <div class='jumbotron'>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-sm-9'>
-        <% @companies.each do |company| %>
-          
-              <div class='row'>
-                <div class='col-sm-2 col-xs-3'>
-                  <%= image_tag company.logo_url if company.logo_url %>
-                </div>
-                <div class='col-sm-10 col-xs-9 text-left'>
-                  <h2><%= link_to company.name, company %></h2>
-                  <p><%= truncate(company.about, lenght: 400, seperate: "") %></p>
-                </div>
-              </div><hr>
-            <!-- </div>
-          </div> -->
-        <% end %>
-        <%= will_paginate @companies, renderer: BootstrapPagination::Rails %>
+    <div class='container'>
+      <div class='row text-left'>
+        <h2 class='text-center'>Companies Reviews and Interviews tips</h2>
+        <div class='col-sm-4'>
+          <div class='row'>
+            <div class='col-xs-2'>
+              <i class='fa fa-users fa-2x'style='color:#fd7700;'></i>
+            </div>
+            <div class='col-xs-10'>
+              <h4>Read Reviews from Employees</h4>
+              <p>See what real employees have to say about any company</p>
+            </div>
+          </div>
+        </div>
+        <div class='col-sm-4'>
+          <div class='row'>
+            <div class='col-xs-2'>
+              <i class='fa fa-briefcase fa-2x', style='color:gray;'></i>
+            </div>
+            <div class='col-xs-10'>
+              <h4>Read Reviews from Employees</h4>
+              <p>See what real employees have to say about any company</p>
+            </div>
+          </div>
+        </div>
+        <div class='col-sm-4'>
+          <div class='row'>
+            <div class='col-xs-2'>
+              <i class='fa fa-briefcase fa-2x ', style='color:#5cb85c;'></i>
+            </div>
+            <div class='col-xs-10'>
+              <h4>Read Reviews from Employees</h4>
+              <p>See what real employees have to say about any company</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class='col-sm-3 hidden-xs'></div>
     </div>
-  </div>
-
   </div>
 </div>
 <div class='companies-middle'>
   <div class='jumbotron'>
+    <div class='container'>
+    <div class='row'>
+      <div class='col-sm-1'></div>
+      <div class='col-sm-10'>
+        <h2 class='text-center'>Featured Companies</h2>
+        <% @companies.in_groups_of(3) do |group| %>
+          <div class='row'>
+            <% group.each do |company| %>
+                <div class='col-sm-4 col-xs-12'>
+                  <div class='row'>
+                    <div class='col-sm-12 col-xs-12 companylogo'>
+                      <%= image_tag company.logo_url if company.logo_url %>
+                      <h5><%= link_to company.name, company %></h5>
+                      <div class='review-rating'>
+                        <%= "#{company.reviews.length} Reviews" %> 
+                      </div>
+                     
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+        <% end %>
+        <%#= will_paginate @companies, renderer: BootstrapPagination::Rails %>
+          
+      </div>
+      <div class='col-sm-1 hidden-xs'></div>
+    </div>
+  </div>
   </div>
 </div>
-<div class='companies-bottom'>
+<!-- <div class='companies-bottom'>
   <div class='jumbotron'>
   </div>
-</div>
+</div> -->
+
+<script>
+  $('.star-rating').raty({
+    path: 'https://s3.amazonaws.com/foodplace/uploads/stars',
+    readOnly: true,
+    score: function(){
+      return $(this).attr('data-score');
+    }
+  });
+</script>
