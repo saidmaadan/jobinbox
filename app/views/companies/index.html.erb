@@ -15,15 +15,15 @@
   <div class='jumbotron'>
     <div class='container'>
       <div class='row text-left'>
-        <h2 class='text-center'>Companies Reviews and Interviews tips</h2>
+        <h2 class='text-center'>Companies Reviews and Interview tips</h2>
         <div class='col-sm-4'>
           <div class='row'>
             <div class='col-xs-2'>
               <i class='fa fa-users fa-2x'style='color:#fd7700;'></i>
             </div>
             <div class='col-xs-10'>
-              <h4>Read Reviews from Employees</h4>
-              <p>See what real employees have to say about any company</p>
+              <h4>Read from the horses</h4>
+              <p>Read what past and present employees has to say about any company</p>
             </div>
           </div>
         </div>
@@ -67,7 +67,7 @@
                   <div class='row'>
                     <div class='col-sm-12 col-xs-12 companylogo'>
                       <%= image_tag company.logo_url if company.logo_url %>
-                      <h5><%= link_to company.name, company %></h5>
+                      <h4><%= link_to company.name, company %></h4>
                       <div class='review-rating'>
                         <%= "#{company.reviews.length} Reviews" %> 
                       </div>
