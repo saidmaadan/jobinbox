@@ -31,12 +31,12 @@ Rails.application.routes.draw do
   get "companies/:id/addinterview" => "companies#addinterview", as: "company/addinterview"
   get "companies/:id/job" => "companies#job", as: "company/job"
   get "companies/:id/about" => "companies#about", as: "company/about"
-  resources :companies do 
-    resources :reviews, except: [:show, :index]
-    resources :interviews, except: [:show, :index]
+  resources :companies do
     collection do
       get 'search'
-    end
+    end 
+    resources :reviews, except: [:show, :index]
+    resources :interviews, except: [:show, :index]
   end
   resources :insights
 
