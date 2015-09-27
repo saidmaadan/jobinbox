@@ -1,10 +1,10 @@
 class CompaniesController < ApplicationController
   before_action :require_admin, except: [:index, :show, :search]
-  before_action :set_company, only: [:search, :show, :edit, :update, :destroy, :review, :interview, :addreview, :job, :addinterview, :about]
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :review, :interview, :addreview, :job, :addinterview, :about]
 
   def search
     if params[:search].present?
-      @companies = Company.search(params[:search]).paginate(:page => params[:page], :per_page => 6)
+      @companies = Company.search(params[:search])
     else
       @companies = Company.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
     end
