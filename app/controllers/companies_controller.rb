@@ -1,12 +1,12 @@
 class CompaniesController < ApplicationController
   before_action :require_admin, except: [:index, :show, :search]
-  before_action :set_company, only: [:show, :edit, :update, :destroy, :review, :interview, :addreview, :job, :addinterview, :about]
+  before_action :set_company, only: [:search, :show, :edit, :update, :destroy, :review, :interview, :addreview, :job, :addinterview, :about]
 
   def search
     if params[:search].present?
-      @companies = Company.search(params[:search]).paginate(:page => params[:page], :per_page => 7)
+      @companies = Company.search(params[:search]).paginate(:page => params[:page], :per_page => 6)
     else
-      @companies = Company.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 7)
+      @companies = Company.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
     end
     @reviews = Review.all.order("created_at DESC").limit(5)
   end
@@ -21,7 +21,7 @@ class CompaniesController < ApplicationController
     else
       @avg_rating = @reviews.average(:rating).round(2)
     end
-    @companies = Company.all.order("created_at DESC").limit(8)
+    @companies = Company.all.order("created_at DESC").limit(6)
     @jobs = Job.all.paginate(:page => params[:page], :per_page => 3)
     @companies = Company.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
   end
