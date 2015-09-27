@@ -1,7 +1,16 @@
 class CandidatesController < ApplicationController
-	before_action :require_signin, except: [:new, :create]
-    before_action :correct_candidate, only: [:edit, :update, :delete]
-  	before_action :require_admin, only: [:delete]
+	before_action :require_signin, except: [:new, :create, :search]
+  before_action :correct_candidate, only: [:edit, :update, :delete]
+	before_action :require_admin, only: [:delete]
+	
+	def search
+    if params[:search].present?
+      @candidates = Candidate.search(params[:search])
+    else
+    	@candidates = Candidate.order("created_at DESC").limit(3)
+    end
+  end
+
 	def index
 		@candidates = Candidate.all 
 	end

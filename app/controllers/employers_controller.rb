@@ -1,8 +1,16 @@
 class EmployersController < ApplicationController
-	before_action :require_signin, except: [:new, :create, :home]
-    before_action :require_correct_employer, only: [:edit, :update, :delete]
-    before_action :require_admin, only: [:delete]
+	before_action :require_signin, except: [:new, :create, :home, :search]
+  before_action :require_correct_employer, only: [:edit, :update, :delete]
+  before_action :require_admin, only: [:delete]
 	
+	def search
+    if params[:search].present?
+      @employers = Employer.search(params[:search])
+    else
+    	@employers = Employer.order("created_at DESC").limit(4)
+    end
+  end
+
 	def index
 		@employers = Employer.all 
 	end

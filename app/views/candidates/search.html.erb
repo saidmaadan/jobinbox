@@ -1,0 +1,35 @@
+<div class='candidates-top'>
+  <div class='page-search-form text-center'>
+      <%= form_tag search_candidates_path, class: "navbar-form", method: :get do %>  
+         <%= text_field_tag :search, params[:search], placeholder: "Search for developers by Job position or city", class: "form-control" %>
+          <%= submit_tag 'Developer', name: nil, class: "btn btn-warning btn-lg" %>
+      <% end %>
+    </div>   
+</div>
+</div>
+<div class='candidates-bottom'>
+<div class='jumbotron'>
+  <div class='container'>
+    <div class='row'><br>
+      <div class='col-sm-10'>
+        <% @candidates.each do |candidate| %>
+        <div class='row'>
+          <div class='col-sm-3'>
+            <% if candidate.avatar %>
+              <%= image_tag candidate.avatar_url, class: 'img-responsive' %>
+             <% else %>
+                <%= image_tag "https://s3.amazonaws.com/inventivelabs/jobinbox/logos/jobinbox1.png" %>
+            <% end %>
+          </div>
+          <div class='col-sm-9'>
+            <h4><%= link_to candidate.name, candidate %></h4>
+            <h5><%= candidate.city if candidate.city %></h5>
+            <h5><%= candidate.portfolio_url if candidate.portfolio_url %></h5>
+          </div>
+        </div><br>
+        <% end %>
+      </div>
+      <div class='col-sm-2 hidden-xs'></div>
+    </div>
+  </div>
+</div>

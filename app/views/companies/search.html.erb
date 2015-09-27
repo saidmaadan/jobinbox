@@ -1,6 +1,8 @@
 <div class='companies'>
   <div class='jumbotron'>
-    <h1>Search for company</h1>
+    <div class='companies-h1'>
+      <h1>Search for company</h1>
+    </div>
     <div class='page-search-form'>
         <%= form_tag search_companies_path, class: "navbar-form", method: :get do %>  
            <%= text_field_tag :search, params[:search], placeholder: "Search for your next career jobs...", class: "form-control" %>
@@ -12,18 +14,19 @@
 <div class='companies-middle'>
   <div class='jumbotron'>
     <div class='container'>
-      <div class='row'>
-        <div class='col-sm-2 hidden-xs'></div>
-        <div class='col-sm-8'>
+      <div class='row search'>
+        <div class='col-sm-12'>
           <% @companies.each do |company| %>
             
                 <div class='row'>
-                  <div class='col-sm-1 col-xs-2'><br>
-                    <%= image_tag company.logo_url if company.logo_url %>
+                  <div class='col-sm-4 col-xs-12'><br>
+                    <%= image_tag company.avatar_url if company.avatar_url %>
                   </div>
-                  <div class='col-sm-11 col-xs-10'>
+                  <div class='col-sm-8 col-xs-12'>
                     <h2><%= link_to company.name, company %></h2>
-                    <p><%= truncate(company.about, lenght: 1000, seperate: "") %></p>
+                    <h4><%= "Founded: #{company.founded}" %></h4>
+                    <h4><%= "Located: #{company.location}" %></h4>
+                    <p><%= truncate(company.about, length: 500, seperate: "") %></p>
                   </div>
                 </div>
               <!-- </div>
@@ -33,7 +36,6 @@
             <%= will_paginate @companies, renderer: BootstrapPagination::Rails %>
           </div>
         </div>
-        <div class='col-sm-2 hidden-xs'></div>
       </div>
     </div>
   </div>

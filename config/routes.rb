@@ -18,13 +18,21 @@ Rails.application.routes.draw do
   resources :candidates do 
     resources :works
     resources :educations
+    collection do
+      get 'search'
+    end
   end
 
   get "register" => "employers#new", as: "register"
   get "/:id/update-profile" => "employers#editprofile", as: "profile/update"
   get "employers/signup" => "employers#home"
 
-  resources :employers
+  resources :employers do
+    collection do
+      get 'search'
+    end
+  end
+
   get "companies/:id/review" => "companies#review", as: "company/review"
   get "companies/:id/addreview" => "companies#addreview", as: "company/addreview"
   get "companies/:id/interview" => "companies#interview", as: "company/interview"

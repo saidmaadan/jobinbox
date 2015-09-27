@@ -65,7 +65,7 @@
             <% group.each do |company| %>
                 <div class='col-sm-4 col-xs-12'>
                   <div class='row'>
-                    <div class='col-sm-12 col-xs-12 companylogo'>
+                    <div class='col-sm-12 col-xs-12 companylogo'><br>
                       <%= image_tag company.logo_url if company.logo_url %>
                       <h4><%= link_to company.name, company %></h4>
                       <div class='review-rating'>

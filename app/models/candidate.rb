@@ -2,10 +2,10 @@ class Candidate < ActiveRecord::Base
 	mount_uploader :avatar, AvatarUploader
 	mount_uploader :resume, ResumeUploader
 	has_secure_password
-
+  
   extend FriendlyId
   friendly_id :username, use: :slugged
-
+  searchkick
   validates :password, length: { minimum: 8, allow_blank: true }
 
   validates :name, presence: true
