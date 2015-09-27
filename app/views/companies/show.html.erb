@@ -114,21 +114,23 @@
         <% if @company.facebook || @company.twitter || @company.youtube || @company.linkedin %>
           <div class='col-sm-12 well'>
             <h2 class='text-center'>Connect with <%= @company.name %></h2>
+        <% else %>
+        <% end %> 
             <div class='social-link facebook'>
-              <%= link_to "", @company.facebook, :target => "_blank", class: "fa fa-facebook fa-2x" %>
+              <%= link_to "", @company.facebook, :target => "_blank", class: "fa fa-facebook fa-2x" if @company.facebook %>
             </div>
             <div class='social-link twitter'>
-              <%= link_to "", @company.twitter, :target => "_blank", class: "fa fa-twitter fa-2x" %>
+              <%= link_to "", @company.twitter, :target => "_blank", class: "fa fa-twitter fa-2x" if @company.twitter %>
             </div>
             <div class='social-link youtube'>
-              <%= link_to "", @company.youtube, :target => "_blank", class: "fa fa-youtube fa-2x" %>
+              <%= link_to "", @company.youtube, :target => "_blank", class: "fa fa-youtube fa-2x" if @company.youtube %>
             </div>
             <div class='social-link linkedin'>
-              <%= link_to "", @company.linkedin, :target => "_blank", class: "fa fa-linkedin fa-2x" %>
+              <%= link_to "", @company.linkedin, :target => "_blank", class: "fa fa-linkedin fa-2x" if @company.linkedin %>
             </div>
             
           </div>
-        <% end %>  
+         
       </div>
 
       <div class='row company-side'>
@@ -155,32 +157,41 @@
       </div>
 
       <div class='row company-side'>
-        <div class='col-sm-12 well '>
-          <div class='row text-left'>
-            <div class='col-sm-3'>
-              Website
-            </div>
-            <div class='col-sm-9'>
-              <%= @company.website %>
-            </div>
-            <div class='col-sm-3'>
-              Type
-            </div>
-            <div class='col-sm-9'>
-              <%= @company.industry %>
-            </div>
-
-             <div class='col-sm-3'>
-              Size
-            </div>
-            <div class='col-sm-9'>
-              <%= @company.size %>+ Employees
-            </div>
-            <div class='col-sm-3'>
-              Founded
-            </div>
-            <div class='col-sm-9'>
-              <%= @company.founded%>
+        <div class='col-sm-12'>
+          <div class='row'>
+            <div class='col-sm-12 well text-left'>
+              <div class='row text-left'>
+                <div class='col-sm-3'>
+                  Website:&nbsp;
+                </div>
+                <div class='col-sm-9'>
+                  <%= @company.website %>
+                </div>
+              </div><hr>
+              <div class='row text-left'>
+                <div class='col-sm-3'>
+                  Type:&nbsp;
+                </div>
+                <div class='col-sm-9'>
+                  <%= @company.industry %>
+                </div>
+              </div><hr>
+              <div class='row text-left'>
+                 <div class='col-sm-3'>
+                  Size:&nbsp;
+                </div>
+                <div class='col-sm-9'>
+                  <%= @company.size %>+ Employees
+                </div>
+              </div><hr>
+              <div class='row text-left'>
+                <div class='col-sm-3'>
+                  Founded:&nbsp;
+                </div>
+                <div class='col-sm-9'>
+                  <%= @company.founded%>
+                </div>
+              </div>
             </div>
           </div>
         </div>

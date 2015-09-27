@@ -11,22 +11,22 @@
 </div>
 <div class='container'>
   <div class='row'>
-    <div class='col-sm-6'>
+    <div class='col-sm-9'>
       <% @companies.each do |company| %>
         
             <div class='row'>
-              <div class='col-sm-4 col-xs-4'>
+              <div class='col-sm-4 col-xs-5'>
                 <%= image_tag company.logo_url if company.logo_url %>
               </div>
-              <div class='col-sm-4 col-xs-4'>
+              <div class='col-sm-8 col-xs-7'>
                 <h2><%= link_to company.name, company %></h2>
-                <p><%= truncate(company.about, lenght: 200, seperate: "") %></p>
+                <p><%= truncate(company.about, lenght: 500, seperate: "") %></p>
               </div>
             </div>
           <!-- </div>
         </div> -->
       <% end %>
-      <%#= will_paginate @collection, renderer: BootstrapPagination::Rails %>
+      <%= will_paginate @companies, renderer: BootstrapPagination::Rails %>
     </div>
     <div class='col-sm-3 hidden-xs'></div>
   </div>
