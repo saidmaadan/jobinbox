@@ -1,0 +1,18 @@
+<div class='contactMe'>
+  <%= form_for contact_path do |f| %>
+    <div class='form-group contact-form'>
+      
+      <%= f.text_field :name, class: 'form-control', placeholder: "Your Name" %>
+      <%= f.text_field :email, class: 'form-control', placeholder: "Enter Your Email"%>
+      <%= f.text_field :subject, class: 'form-control'%>
+    </div>
+    
+    <div class='form-group'>
+      <%= f.text_area :messages, class: 'form-control', cols: 20, rows: 3, placeholder: "Your Message" %>
+    </div>
+    <div class='form-group'>
+      <%= f.submit 'Send Message', class: 'btn btn-danger' %>
+      
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,83 @@
+<div class='contact-main-top'>
+  <div class='container'>
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <div class="row">
+          <div class='col-sm-8 contact-contact'>
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                  <h2 class="panel-title">Get in Touch and Say Hello</h2>
+              </div>
+              <div class='panel-body'>
+                <%= form_for @contact do |f| %>
+                  <div class='form-group'>
+                  <%#= f.label :name, class: 'control-label' %>
+                   <div class="input-group">
+                                <span class="input-group-addon"><i class='fa fa-user'></i></span>
+                    <%= f.text_field :name, class: 'form-control', placeholder: 'Kelsey Miller' %>
+                  </div>
+                  </div>
+                  <div class='form-group'>
+                    <%#= f.label :email %>
+                     <div class="input-group">
+                                  <span class="input-group-addon"><i class='fa fa-envelope'></i></span>
+                      <%= f.text_field :email, class: 'form-control', placeholder: 'yourname@company.com' %>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                    <%#= f.label :website %>
+                    <div class="input-group">
+                                  <span class="input-group-addon"><i class='fa fa-link'></i></span>
+                      <%= f.text_field :subject, class: 'form-control', placeholder: 'Subject' %>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                    <%= f.label :messages, 'Message' %>
+                      <%= f.text_area :messages, class: 'form-control', cols: 40, rows: 7 %>
+                  </div>
+                  <div class='form-group'>
+                    <%= f.submit 'Send Message', class: 'btn btn-danger' %>
+                    
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div> 
+          <div class="col-sm-4 hidden-xs">
+            <div class="address-contact">
+              <h2>Connect With Us</h2>
+              <div class='social-link facebook'>
+                <a href="https://www.facebook.com/JobInbox" target="_blank"><i class="fa fa-facebook fa-2x"></i></a> 
+              </div>
+              <div class='social-link twitter'>
+                <a href="https://twitter.com/inventivelabsco" target="_blank"><i class="fa fa-twitter fa-2x"></i></a> 
+              </div>
+              <div class='social-link linkedin'>
+                <a href="https://www.linkedin.com/company/inventtive/" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a> 
+              </div>
+          
+              <h2 class='office'>Office Address</h2>
+              <span>
+                <i class='fa fa-map-marker'></i>&nbsp; 600, Congress Avenue, <br>
+                &nbsp;&nbsp;&nbsp;Austin, TX 78701
+              </span><br><br>
+              <p><i class='fa fa-phone'></i>&nbsp;1 512-999-0018</p>
+              <a href="mailto:info@job-inbox.com"><i class='fa fa-envelope'></i>&nbsp;info@job-inbox.com</a><br>
+              <a href="mailto:support@job-inbox.com"><i class='fa fa-envelope'></i>&nbsp;support@job-inbox.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='contact-map'>
+  <div id='map'>
+    <iframe
+      
+      frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB9C6EQog9vhhMKUOtl4Y8EsbNKv1BApPQ
+        &q=600+Congress+Avenue,Austin,WA+78701&zoom=14" allowfullscreen>
+    </iframe>
+  </div>
+</div>

@@ -54,6 +54,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/contact' => 'contacts#new'
+
+  resources :contacts
 
   root "pages#home"
 
