@@ -1,413 +1,361 @@
-<div class='container'><br><br>
-  <div class='row'>
-  	<div class='col-sm-4 hidden-xs'>
-  		<ul class="nav nav-tabs nav-stacked" role="tablist">
-			  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Personal Info</a></li>
-		    <li role="presentation"><a href="#bio" aria-controls="bio" role="tab" data-toggle="tab">Bio</a></li>
-		    <li role="presentation"><a href="#resume" aria-controls="resume" role="tab" data-toggle="tab">Résumé and Links</a></li>
-		    <li role="presentation"><a href="#project-imagess" aria-controls="project-images" role="tab" data-toggle="tab">Work and Education</a></li>
-			</ul>
-  	</div>
-  	<div class='col-sm-8  well'>
-  		<div class="tab-content">
-			  <div role="tabpanel" class="tab-pane active" id="home">
-			 	
-			  	<%= form_for @candidate, :html => { :multipart => true } do |f| %>
-					  <%= render "shared/errors", object: @candidate %>
-					  	<div class='row'>
-					  		<div class='col-xs-12 text-center'>
-					  			<p>Profile Photo</p>
-					  		</div><br>
-					  		<div class='col-xs-12'>
-					  			<div class='row'>
-					  				<div class='col-sm-1'></div>
-							  		<div class='col-sm-4 col-xs-5'>
-							  			<% if @candidate.avatar %>
-												<%= image_tag @candidate.avatar_url, class: "image_edit_profile" %>
-											<% else %>
-												<%= profile_image_for@candidate, class: "image_edit_profile" %></p>
-											<% end %>
-							  		</div>
-							  		<div class='col-sm-6 col-xs-7'><br>
-							  			<p>Profile photo add personality to your page.
-											</p>
-											<small>Click on save button to update your profile photo</small>
-											<p><%= f.file_field :avatar, class: "form-control"  %></p>
-							  		</div>
-							  		<div class='col-sm-1'></div>
-							  	</div>
-					  		</div>
-					  	</div><br>
-					  		
-
-					      <div class="form-group">
-					      	<div class='row'>
-					      		<div class='col-sm-3'>
-					      			<%= f.label :name %>
-					      		</div>
-					      		<div class='col-sm-9'>
-					      			<%= f.text_field :name, size: 50, class: "form-control" %>
-					      		</div>
-					      	</div>
-					      </div>
-
-					      <div class="form-group">
-					      	<div class='row'>
-					      		<div class='col-sm-3'>
-					      			<%= f.label :city, "Location:" %>
-					      		</div>
-					      		<div class='col-sm-9'>
-					      			<%= f.text_field :city, size: 50, class: "form-control" %>
-					      		</div>
-					      	</div>
-					      </div>
-
-					      <div class="form-group">
-					      	<div class='row'>
-					      		<div class='col-sm-3'>
-					      			<%= f.label :phone, "Phone*" %>
-					      		</div>
-					      		<div class='col-sm-9'>
-					      			<%= f.text_field :phone, size: 50, class: "form-control" %>
-					      		</div>
-					      	</div>
-					      </div>
-
-
-					      <div class="form-group">
-					        <div class='row'>
-					      		<div class='col-sm-3'>
-					      		
-					      		</div>
-					      		<div class='col-sm-9'>
-					      			<%= f.submit "Save", class: "btn btn-success" %>
-					      		</div>
-					      	</div>
-					          
-					        
-					      </div>
-					<% end %>
-
-			  </div>
-			  <div role="tabpanel" class="tab-pane" id="bio">
-			  	<%= form_for(@candidate) do |f| %>
-					  <%= render "shared/errors", object: @candidate %>
-
-					      <div class="form-group">
-					      	<div class='row'>
-					      		<div class='col-sm-3'>
-					      			<%= f.label :headline %>
-					      		</div>
-					      		<div class='col-sm-9'>
-					      			<%= f.text_field :headline, class: "form-control" %>
-					      		</div>
-					      	</div>
-					      </div>
-
-					      <div class="form-group">
-					      	<div class='row'>
-					      		<div class='col-sm-3'>
-					      			<%= f.label :about, "Short bio" %>
-					      		</div>
-					      		<div class='col-sm-9'>
-					      			<%= f.text_area :about, cols: 40, rows: 7, class: "form-control" %>
-					      		</div>
-					      	</div>
-					      </div>
-
-					      <div class="form-group">
-					        <div class='row'>
-					      		<div class='col-sm-3'>
-					      		
-					      		</div>
-					      		<div class='col-sm-9'>
-					      			<%= f.submit "Save", class: "btn btn-success" %>
-					      		</div>
-					      	</div>   
-					      </div>
-					<% end %>
-
-			  </div>
-			  
-			  <div role="tabpanel" class="tab-pane" id="resume">
-			  	<%= form_for @candidate, :html => { :multipart => true } do |f| %>
-					  <%= render "shared/errors", object: @candidate %>
-					  		<div class='row'>
+<div class="edit-profile">
+	<div class='container'>
+	  <div class='row'>
+	  	<div class='col-sm-4 hidden-xs'>
+	  		<ul class="nav nav-tabs nav-stacked" role="tablist">
+				  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Personal Info</a></li>
+			    <li role="presentation"><a href="#bio" aria-controls="bio" role="tab" data-toggle="tab">Bio</a></li>
+			    <li role="presentation"><a href="#resume" aria-controls="resume" role="tab" data-toggle="tab">Résumé and Links</a></li>
+			    <li role="presentation"><a href="#project-imagess" aria-controls="project-images" role="tab" data-toggle="tab">Work and Education</a></li>
+				</ul>
+	  	</div>
+	  	<div class='col-xs-12 hidden-lg hidden-md hidden-sm'>
+	  		<ul class="nav nav-tabs" role="tablist">
+				  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Personal Info</a></li>
+			    <li role="presentation"><a href="#bio" aria-controls="bio" role="tab" data-toggle="tab">Bio</a></li>
+			    <li role="presentation"><a href="#resume" aria-controls="resume" role="tab" data-toggle="tab">Résumé and Links</a></li>
+			    <li role="presentation"><a href="#project-imagess" aria-controls="project-images" role="tab" data-toggle="tab">Work and Education</a></li>
+				</ul>
+	  	</div>
+	  	
+	  	<div class='col-sm-8 col-xs-12 well'>
+	  		<div class="tab-content">
+				  <div role="tabpanel" class="tab-pane active" id="home">
+				 	
+				  	<%= form_for @candidate, :html => { :multipart => true } do |f| %>
+						  <%= render "shared/errors", object: @candidate %>
+						  	<div class='row'>
 						  		<div class='col-xs-12 text-center'>
-						  			<p>Social Links and Resume</p>
+						  			<p>Profile Photo</p>
+						  		</div><br>
+						  		<div class='col-xs-12'>
+						  			<div class='row'>
+						  				<div class='col-sm-1'></div>
+								  		<div class='col-sm-4 col-xs-5'>
+								  			<% if @candidate.avatar %>
+													<%= image_tag @candidate.avatar_url, class: "image_edit_profile" %>
+												<% else %>
+													<%= profile_image_for@candidate, class: "image_edit_profile" %></p>
+												<% end %>
+								  		</div>
+								  		<div class='col-sm-6 col-xs-7'><br>
+								  			<p>Profile photo add personality to your page.
+												</p>
+												<small>Click on save button to update your profile photo</small>
+												<p><%= f.file_field :avatar, class: "form-control"  %></p>
+								  		</div>
+								  		<div class='col-sm-1'></div>
+								  	</div>
 						  		</div>
 						  	</div><br>
-					       <div class="form-group">
-					      	<div class='row'>
-					      		<div class='col-sm-3'>
-					      			<%= f.label :resume, "Résumé" %>
-					      		</div>
-					      		<div class='col-sm-5'>
-					      			<p><%= f.file_field :resume %></p>
-					      		</div>
-					      		<div class='col-sm-4'>
-					      			<p><%= link_to "resume.pdf", @candidate.resume_url, :target => "_blank" if @candidate.resume_url %></p>
-					      		</div>
-					      	</div>
-					      </div>
+						  		
 
-					      <div class='row'>
-					      		<div class='col-sm-3'>
-					      			<%= f.label :portfolio_url, "Personal Website" %>
-					      		</div>
-					      		<div class='col-sm-9'>
-					      			<%= f.text_field :portfolio_url, class: "form-control" %>
-					      		</div>
-					     
-					      </div><br>
+						      <div class="form-group">
+						      	<div class='row'>
+						      		<div class='col-sm-3'>
+						      			<%= f.label :name %>
+						      		</div>
+						      		<div class='col-sm-9'>
+						      			<%= f.text_field :name, size: 50, class: "form-control" %>
+						      		</div>
+						      	</div>
+						      </div>
 
-					       <div class='row'>
-					      		<div class='col-sm-3'>
-					      			<%= f.label :projects_link, "PortFolio" %>
-					      		</div>
-					      		<div class='col-sm-9'>
-					      			<%= f.text_field :projects_link, class: "form-control" %>
-					      		</div>
-					      	
-					      </div><br>
+						      <div class="form-group">
+						      	<div class='row'>
+						      		<div class='col-sm-3'>
+						      			<%= f.label :city, "Location:" %>
+						      		</div>
+						      		<div class='col-sm-9'>
+						      			<%= f.text_field :city, size: 50, class: "form-control" %>
+						      		</div>
+						      	</div>
+						      </div>
 
-					      
+						      <div class="form-group">
+						      	<div class='row'>
+						      		<div class='col-sm-3'>
+						      			<%= f.label :phone, "Phone*" %>
+						      		</div>
+						      		<div class='col-sm-9'>
+						      			<%= f.text_field :phone, size: 50, class: "form-control" %>
+						      		</div>
+						      	</div>
+						      </div>
 
-					      <div class="form-group">
-					      	<div class='row'>
-					      		<div class='col-sm-3'>
-					      			<%= f.label :linkedin_url %>
-					      		</div>
-					      		<div class='col-sm-9'>
-					      			 <div class="form-inline">
-											  <div class="form-group">
-											    <div class="input-group">
-											      <div class="input-group-addon">http://www.linkedin.com/in/</div>
-											      <%= f.text_field :linkedin_url, size: 50, class: "form-control", placeholder: "username" %>
-											     
-											    </div>
-											  </div>
-											 
-											</div>
-					      		</div>
-					      	</div>
-					      </div>
 
-					       <div class="form-group">
-					      	<div class='row'>
-					      		<div class='col-sm-3'>
-					      			<%= f.label :github_url %>
-					      		</div>
-					      		<div class='col-sm-9'>
-					      			 <div class="form-inline">
-											  <div class="form-group">
-											    <div class="input-group">
-											      <div class="input-group-addon">http://www.github.com/</div>
-											      <%= f.text_field :github_url, size: 50, class: "form-control", placeholder: "username" %>
-											     
-											    </div>
-											  </div>
-											 
-											</div>
-					      		</div>
-					      	</div>
-					      </div>
-					     
-					      <div class="form-group">
-					      	<div class='row'>
-					      		<div class='col-sm-3'>
-					      			<%= f.label :facebook_url %>
-					      		</div>
-					      		<div class='col-sm-9'>
-					      			 <div class="form-inline">
-											  <div class="form-group">
-											    <div class="input-group">
-											      <div class="input-group-addon">http://www.facebook.com/</div>
-											      <%= f.text_field :facebook_url, size: 50, class: "form-control", placeholder: "username" %>
-											     
-											    </div>
-											  </div>
-											 
-											</div>
-					      		</div>
-					      	</div>
-					      </div>
+						      <div class="form-group">
+						        <div class='row'>
+						      		<div class='col-sm-3'>
+						      		
+						      		</div>
+						      		<div class='col-sm-9'>
+						      			<%= f.submit "Save", class: "btn btn-success" %>
+						      		</div>
+						      	</div>
+						          
+						        
+						      </div>
+						<% end %>
 
-					     <div class="form-group">
-					      	<div class='row'>
-					      		<div class='col-sm-3'>
-					      			<%= f.label :twitter_url %>
-					      		</div>
-					      		<div class='col-sm-9'>
-					      			 <div class="form-inline">
-											  <div class="form-group">
-											 
-											    <div class="input-group">
-											      <div class="input-group-addon">http://www.twitter.com/</div>
-											      <%= f.text_field :twitter_url, size: 50, class: "form-control", placeholder: "username" %>
-											     
-											    </div>
-											  </div>
-											 
-											</div>
-					      		</div>
-					      	</div>
-					      </div>
+				  </div>
+				  <div role="tabpanel" class="tab-pane" id="bio">
+				  	<%= form_for(@candidate) do |f| %>
+						  <%= render "shared/errors", object: @candidate %>
 
-					       <div class="form-group">
-					      	<div class='row'>
-					      		<div class='col-sm-3'>
-					      			<%= f.label :dribbble_url %>
-					      		</div>
-					      		<div class='col-sm-9'>
-					      			 <div class="form-inline">
-											  <div class="form-group">
-											    <div class="input-group">
-											      <div class="input-group-addon">http://www.dribbble.com/</div>
-											      <%= f.text_field :dribbble_url, size: 50, class: "form-control", placeholder: "username" %>
-											     
-											    </div>
-											  </div>
-											 
-											</div>
-					      		</div>
-					      	</div>
-					      </div>
-					      <div class="form-group">
-					        <div class='row'>
-					      		<div class='col-sm-3'>
-					      		
-					      		</div>
-					      		<div class='col-sm-9'>
-					      			<%= f.submit "Save", class: "btn btn-success" %>
-					      		</div>
-					      	</div>
-					      </div>    
-					<% end %>
+						      <div class="form-group">
+						      	<div class='row'>
+						      		<div class='col-sm-3'>
+						      			<%= f.label :headline %>
+						      		</div>
+						      		<div class='col-sm-9'>
+						      			<%= f.text_field :headline, class: "form-control" %>
+						      		</div>
+						      	</div>
+						      </div>
 
-			  </div>
+						      <div class="form-group">
+						      	<div class='row'>
+						      		<div class='col-sm-3'>
+						      			<%= f.label :about, "Short bio" %>
+						      		</div>
+						      		<div class='col-sm-9'>
+						      			<%= f.text_area :about, cols: 40, rows: 7, class: "form-control" %>
+						      		</div>
+						      	</div>
+						      </div>
 
-			  <div role="tabpanel" class="tab-pane" id="project-imagess">
-			  	<h1 class='text-center'>Work and Education</h1><br>
-			  	<h2>Work Histrory</h2><br>
-			  	<%= form_for([@candidate, @work]) do |f| %>
-					<%= render "shared/errors", object: @work %>
-					<div class="row">
-						<div class='col-sm-6'>
-							<div class='form-group'>
-								<%= f.text_field :company, class: 'form-control', placeholder: 'Company Name' %>
-							</div>
-						</div>
-						<div class='col-sm-6'>
-							<div class='form-group'>
-								<%= f.text_field :position, class: 'form-control', placeholder: 'Position' %>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class='col-sm-2 col-xs-3'>
-							<div class='form-group'>
-								<%= f.select :start_month, Work::START_MONTH, prompt: "MON", class: "form-control" %>
-								<%#= f.text_field :start_month, class: 'form-control', placeholder: 'Mon' %>
-							</div>
-						</div>
-						<div class='col-sm-2 col-xs-3'>
-							<div class='form-group'>
-								<%= f.select :start_year, Work::START_YEAR, prompt: "YEAR", class: "form-control" %>
-							</div>
-						</div>
-						<div class='col-sm-1 col-xs-1 text-center'> — </div>
-						<div class='col-sm-2 col-xs-3'>
-							<div class='form-group'>
-								<%= f.select :end_month, Work::END_MONTH, prompt: "MON", class: "form-control" %>
-							</div>
-						</div>
-						<div class='col-sm-2 col-xs-3'>
-							<div class='form-group'>
-								<%= f.select :end_year, Work::END_YEAR, prompt: "YEAR", class: "form-control" %>
-							</div>
-						</div>
-						<div class='col-sm-3 col-xs-3'>
-							<div class='form-group'>
-							         <%= f.select :status, Work::STATUS, prompt: "Job Status", class: "form-control" %>
-							</div>
-						</div>
-					</div>
+						      <div class="form-group">
+						        <div class='row'>
+						      		<div class='col-sm-3'>
+						      		
+						      		</div>
+						      		<div class='col-sm-9'>
+						      			<%= f.submit "Save", class: "btn btn-success" %>
+						      		</div>
+						      	</div>   
+						      </div>
+						<% end %>
 
-					<div class="row">
-						
-						<div class='col-sm-12 text-center'>
-							<div class='form-group'>
-								<%= f.text_area :description, cols: 40, rows: 7, class: 'form-control', placeholder: 'Summary' %>
-							</div>
-						</div>
-					</div>
+				  </div>
+				  
+				  <div role="tabpanel" class="tab-pane" id="resume">
+				  	<%= form_for @candidate, :html => { :multipart => true } do |f| %>
+						  <%= render "shared/errors", object: @candidate %>
+						  		<div class='row'>
+							  		<div class='col-xs-12 text-center'>
+							  			<p>Social Links and Resume</p>
+							  		</div>
+							  	</div><br>
+						       <div class="form-group">
+						      	<div class='row'>
+						      		<div class='col-sm-3'>
+						      			<%= f.label :resume, "Résumé" %>
+						      		</div>
+						      		<div class='col-sm-5'>
+						      			<p><%= f.file_field :resume %></p>
+						      		</div>
+						      		<div class='col-sm-4'>
+						      			<p><%= link_to "resume.pdf", @candidate.resume_url, :target => "_blank" if @candidate.resume_url %></p>
+						      		</div>
+						      	</div>
+						      </div>
 
-					<div class="row">
-						
-						<div class='col-sm-10 text-center'>
-							<div class='form-group'>
-								<%= f.submit "ADD", class: 'btn btn-success' %>
-							</div>
-						</div>
-					</div>
-					
+						      <div class='row'>
+						      		<div class='col-sm-3'>
+						      			<%= f.label :portfolio_url, "Personal Website" %>
+						      		</div>
+						      		<div class='col-sm-9'>
+						      			<%= f.text_field :portfolio_url, class: "form-control" %>
+						      		</div>
+						     
+						      </div><br>
 
-			<% end %>
-			<% if @works.any? %>  
-				<% @works.each do |w| %>
-					<div class='row'>
-						<div class='col-sm-3 col-xs-6'>
-							<h5><%= w.company %></h5>
-						</div>
-						<div class='col-sm-3 col-xs-6'>
-							<h5><%= w.position %></h5>
-						</div>
-						<div class='col-sm-4 col-xs-7'>
-							<h5><%= w.start_month %> <%= w.start_year %> — 
-							<% if w.status == "CURRENT" %>
-								<%= "present" %>
-							<% else %>
-								<%= w.end_month %> <%= w.end_year %></h5>
-							<% end %>
-						</div>
-						<div class='col-sm-2 col-xs-5'>
-							<%= link_to "Edit", edit_candidate_work_path(@candidate, w) %> 
-							<%= link_to 'Delete', candidate_work_path(@candidate, w), method: :delete, data: {confirm: "Are You Sure?"} %>
+						       <div class='row'>
+						      		<div class='col-sm-3'>
+						      			<%= f.label :projects_link, "PortFolio" %>
+						      		</div>
+						      		<div class='col-sm-9'>
+						      			<%= f.text_field :projects_link, class: "form-control" %>
+						      		</div>
+						      	
+						      </div><br>
+
+						      
+
+						      <div class="form-group">
+						      	<div class='row'>
+						      		<div class='col-sm-3'>
+						      			<%= f.label :linkedin_url %>
+						      		</div>
+						      		<div class='col-sm-9'>
+						      			 <div class="form-inline">
+												  <div class="form-group">
+												    <div class="input-group">
+												      <div class="input-group-addon">http://www.linkedin.com/in/</div>
+												      <%= f.text_field :linkedin_url, size: 50, class: "form-control", placeholder: "username" %>
+												     
+												    </div>
+												  </div>
+												 
+												</div>
+						      		</div>
+						      	</div>
+						      </div>
+
+						       <div class="form-group">
+						      	<div class='row'>
+						      		<div class='col-sm-3'>
+						      			<%= f.label :github_url %>
+						      		</div>
+						      		<div class='col-sm-9'>
+						      			 <div class="form-inline">
+												  <div class="form-group">
+												    <div class="input-group">
+												      <div class="input-group-addon">http://www.github.com/</div>
+												      <%= f.text_field :github_url, size: 50, class: "form-control", placeholder: "username" %>
+												     
+												    </div>
+												  </div>
+												 
+												</div>
+						      		</div>
+						      	</div>
+						      </div>
+						     
+						      <div class="form-group">
+						      	<div class='row'>
+						      		<div class='col-sm-3'>
+						      			<%= f.label :facebook_url %>
+						      		</div>
+						      		<div class='col-sm-9'>
+						      			 <div class="form-inline">
+												  <div class="form-group">
+												    <div class="input-group">
+												      <div class="input-group-addon">http://www.facebook.com/</div>
+												      <%= f.text_field :facebook_url, size: 50, class: "form-control", placeholder: "username" %>
+												     
+												    </div>
+												  </div>
+												 
+												</div>
+						      		</div>
+						      	</div>
+						      </div>
+
+						     <div class="form-group">
+						      	<div class='row'>
+						      		<div class='col-sm-3'>
+						      			<%= f.label :twitter_url %>
+						      		</div>
+						      		<div class='col-sm-9'>
+						      			 <div class="form-inline">
+												  <div class="form-group">
+												 
+												    <div class="input-group">
+												      <div class="input-group-addon">http://www.twitter.com/</div>
+												      <%= f.text_field :twitter_url, size: 50, class: "form-control", placeholder: "username" %>
+												     
+												    </div>
+												  </div>
+												 
+												</div>
+						      		</div>
+						      	</div>
+						      </div>
+
+						       <div class="form-group">
+						      	<div class='row'>
+						      		<div class='col-sm-3'>
+						      			<%= f.label :dribbble_url %>
+						      		</div>
+						      		<div class='col-sm-9'>
+						      			 <div class="form-inline">
+												  <div class="form-group">
+												    <div class="input-group">
+												      <div class="input-group-addon">http://www.dribbble.com/</div>
+												      <%= f.text_field :dribbble_url, size: 50, class: "form-control", placeholder: "username" %>
+												     
+												    </div>
+												  </div>
+												 
+												</div>
+						      		</div>
+						      	</div>
+						      </div>
+						      <div class="form-group">
+						        <div class='row'>
+						      		<div class='col-sm-3'>
+						      		
+						      		</div>
+						      		<div class='col-sm-9'>
+						      			<%= f.submit "Save", class: "btn btn-success" %>
+						      		</div>
+						      	</div>
+						      </div>    
+						<% end %>
+
+				  </div>
+
+				  <div role="tabpanel" class="tab-pane" id="project-imagess">
+				  <div class="educations-profile">
+				  	<div class="well">
+						  	<h1 class='text-center'>Work and Education</h1><br>
+						  	<h2>Work Histrory</h2><br>
+						  	<%= form_for([@candidate, @work]) do |f| %>
+								<%= render "shared/errors", object: @work %>
+								<div class="row">
+									<div class='col-sm-6'>
+										<div class='form-group'>
+											<%= f.text_field :company, class: 'form-control', placeholder: 'Company Name' %>
+										</div>
+									</div>
+									<div class='col-sm-6'>
+										<div class='form-group'>
+											<%= f.text_field :position, class: 'form-control', placeholder: 'Position' %>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class='col-sm-2 col-xs-3'>
+										<div class='form-group'>
+											<%= f.select :start_month, Work::START_MONTH, prompt: "MON", class: "form-control" %>
+											<%#= f.text_field :start_month, class: 'form-control', placeholder: 'Mon' %>
+										</div>
+									</div>
+									<div class='col-sm-2 col-xs-3'>
+										<div class='form-group'>
+											<%= f.select :start_year, Work::START_YEAR, prompt: "YEAR", class: "form-control" %>
+										</div>
+									</div>
+									<div class='col-sm-1 col-xs-1 text-center'> — </div>
+									<div class='col-sm-2 col-xs-3'>
+										<div class='form-group'>
+											<%= f.select :end_month, Work::END_MONTH, prompt: "MON", class: "form-control" %>
+										</div>
+									</div>
+									<div class='col-sm-2 col-xs-3'>
+										<div class='form-group'>
+											<%= f.select :end_year, Work::END_YEAR, prompt: "YEAR", class: "form-control" %>
+										</div>
+									</div>
+									<div class='col-sm-3 col-xs-3'>
+										<div class='form-group'>
+										         <%= f.select :status, Work::STATUS, prompt: "Job Status", class: "form-control" %>
+										</div>
+									</div>
+								</div>
 							
-						</div>
-						<div class='col-sm-12 col-xs-12'>
-							<%= w.description %>
-						</div>
-					</div><br>	
-				<% end %>
-			<% end %>
 
-
-			<div class='profile-education'>
-				<div class='well'>
-					<h2>Education <span>*</span></h2>
-					<p>Enter "self taught" if you have no formal education</p>
-					<%= form_for([@candidate, @education]) do |f| %>
-						<%= render "shared/errors", object: @education %>
 						<div class="row">
-							<div class='col-sm-5'>
+							
+							<div class='col-sm-12 text-center'>
 								<div class='form-group'>
-									<%= f.text_field :school, class: 'form-control', placeholder: 'University/College' %>
-								</div>
-							</div>
-							<div class='col-sm-5 col-xs-8'>
-								<div class='form-group'>
-									<%= f.text_field :degree, class: 'form-control', placeholder: 'B.S, Computer Science' %>
-								</div>
-							</div>
-							<div class='col-sm-2 col-xs-4'>
-								<div class='form-group'>
-									<%= f.select :year, Education::YEAR, prompt: "YEAR", class: "form-control" %>
+									<%= f.text_area :description, cols: 40, rows: 7, class: 'form-control', placeholder: 'Summary' %>
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="row">
 							
 							<div class='col-sm-10 text-center'>
@@ -416,59 +364,109 @@
 								</div>
 							</div>
 						</div>
-						
-
-					<% end %>
+					</div>
 				</div>
-			</div>	
 
-			<div class='education-content'>
-				<% if @educations.any? %>  
-					<% @educations.each do |e| %>
-						<div class='row'>
-							<div class='col-sm-4 col-xs-6'>
-								<h5><%= e.school %></h5>
+				<% end %>
+				<% if @works.any? %>  
+					<% @works.each do |w| %>
+					<div class="works-profile">
+						<div class='row well'>
+							<div class='col-sm-3 col-xs-6'>
+								<h5><%= w.company %></h5>
 							</div>
-							<div class='col-sm-4 col-xs-6'>
-								<h5><%= e.degree %></h5>
+							<div class='col-sm-3 col-xs-6'>
+								<h5><%= w.position %></h5>
 							</div>
-							<div class='col-sm-2 col-xs-6'>
-								<h5><%= e.year %> 
+							<div class='col-sm-4 col-xs-7'>
+								<h5><%= w.start_month %> <%= w.start_year %> — 
+								<% if w.status == "CURRENT" %>
+									<%= "present" %>
+								<% else %>
+									<%= w.end_month %> <%= w.end_year %></h5>
+								<% end %>
 							</div>
-							<div class='col-sm-2 col-xs-6'>
-								<%= link_to "Edit", edit_candidate_education_path(@candidate, e) %> 
-								<%= link_to 'Delete', candidate_education_path(@candidate, e), method: :delete, data: {confirm: "Are You Sure?"} %>
+							<div class='col-sm-2 col-xs-5'>
+								<%= link_to "Edit", edit_candidate_work_path(@candidate, w) %> 
+								<%= link_to 'Delete', candidate_work_path(@candidate, w), method: :delete, data: {confirm: "Are You Sure?"} %>
 								
 							</div>
-						</div><br>	
+							<div class='col-sm-12 col-xs-12'>
+								<%= w.description %>
+							</div>
+						</div><br>
+					</div>	
 					<% end %>
 				<% end %>
 
+
+				<div class='profile-education'>
+					<div class='well'>
+						<h2>Education <span>*</span></h2>
+						<p>Enter "self taught" if you have no formal education</p>
+						<%= form_for([@candidate, @education]) do |f| %>
+							<%= render "shared/errors", object: @education %>
+							<div class="row">
+								<div class='col-sm-5'>
+									<div class='form-group'>
+										<%= f.text_field :school, class: 'form-control', placeholder: 'University/College' %>
+									</div>
+								</div>
+								<div class='col-sm-5 col-xs-8'>
+									<div class='form-group'>
+										<%= f.text_field :degree, class: 'form-control', placeholder: 'B.S, Computer Science' %>
+									</div>
+								</div>
+								<div class='col-sm-2 col-xs-4'>
+									<div class='form-group'>
+										<%= f.select :year, Education::YEAR, prompt: "YEAR", class: "form-control" %>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								
+								<div class='col-sm-10 text-center'>
+									<div class='form-group'>
+										<%= f.submit "ADD", class: 'btn btn-success' %>
+									</div>
+								</div>
+							</div>
+							
+
+						<% end %>
+					</div>
+				</div>	
+
+				<div class='education-content'>
+					<div class="well">
+						<% if @educations.any? %>  
+							<% @educations.each do |e| %>
+								<div class='row'>
+									<div class='col-sm-4 col-xs-6'>
+										<h5><%= e.school %></h5>
+									</div>
+									<div class='col-sm-4 col-xs-6'>
+										<h5><%= e.degree %></h5>
+									</div>
+									<div class='col-sm-2 col-xs-6'>
+										<h5><%= e.year %></h5> 
+									</div>
+									<div class='col-sm-2 col-xs-6'>
+										<%= link_to "Edit", edit_candidate_education_path(@candidate, e) %> 
+										<%= link_to 'Delete', candidate_education_path(@candidate, e), method: :delete, data: {confirm: "Are You Sure?"} %>
+										
+									</div>
+								</div><br>	
+							<% end %>
+						<% end %>
+					</div>
+				</div>
 			</div>
+				
+	  	</div>
+	  	<br><br>
 		</div>
-			
-  	</div>
-  	<br><br>
 	</div>
-
-
-	 <div class='row'>
-  	<div class='hidden-lg hidden-md hidden-sm col-xs-12'>
-  		<ul class="nav nav-tabs" role="tablist">
-			  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-		    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-		    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-		    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-			</ul>
-  	</div>
-  	<div class='hidden-md hidden-sm col-xs-12'>
-  		<div class="tab-content">
-			  <div role="tabpanel" class="tab-pane active" id="home"></div>
-			  <div role="tabpanel" class="tab-pane" id="profile"></div>
-			  <div role="tabpanel" class="tab-pane" id="messages"></div>
-			  <div role="tabpanel" class="tab-pane" id="settings"></div>
-			</div>
-  	</div>
-  <br><br>
 </div>
-</div>
+	</div>

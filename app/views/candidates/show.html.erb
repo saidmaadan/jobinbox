@@ -1,7 +1,7 @@
 <div class='candidate-main-show'>
 	<div class='container'>
 		<div class='row candidate-show'>
-			<div class='col-md-3 col-sm-4 col-xs-12'>
+			<div class='col-md-3 col-sm-3 col-xs-12'>
 			<br>
 
 				<p>
@@ -31,11 +31,12 @@
 				  <%= link_to "Github", "http://github.com/" + @candidate.github_url, target: "_blank", class: "list-group-item" if @candidate.github_url %>
 				  <%= link_to "Facebook", "http://facebook.com/" + @candidate.facebook_url, target: "_blank", class: "list-group-item" if @candidate.facebook_url %>
 				  <%= link_to "Dribbble", "http://dribbble.com/" + @candidate.dribbble_url, target: "_blank", class: "list-group-item" if @candidate.dribbble_url %>
-				  <a href="#" class="list-group-item"><%= @candidate.linkedin_url %></a>
+				  <%= link_to "Update Profile", profile_info_path(current_candidate), class: "list-group-item" if @candidate.dribbble_url %>
+				  <%= link_to "Settings", edit_candidate_path(current_candidate), class: "list-group-item" if @candidate.dribbble_url %>
 				</div>
 
 			</div>
-			<div class='col-md-6 col-sm-5 col-xs-12 candidate-content'>
+			<div class='col-md-6 col-sm-6 col-xs-12 candidate-content'>
 				<div class='well'>
 					<h2><%= @candidate.name %></h2>
 					<h4><%= @candidate.email_address %></h4>

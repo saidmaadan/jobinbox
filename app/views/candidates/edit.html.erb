@@ -1,4 +1,4 @@
-<div class='container'>
+<div class='container edit-candidates'>
 	<div class='row'>
 		<div class='col-md-3 col-sm-4 hidden-xs'>
 		<br>
@@ -31,16 +31,19 @@
 			  <%= link_to "Github", "http://github.com/" + @candidate.github_url, target: "_blank", class: "list-group-item" if @candidate.github_url %>
 			  <%= link_to "Facebook", "http://facebook.com/" + @candidate.facebook_url, target: "_blank", class: "list-group-item" if @candidate.facebook_url %>
 			  <%= link_to "Dribbble", "http://dribbble.com/" + @candidate.dribbble_url, target: "_blank", class: "list-group-item" if @candidate.dribbble_url %>
-			  <a href="#" class="list-group-item"><%= @candidate.linkedin_url %></a>
+			  <%= link_to "Update Profile", profile_info_path(current_candidate), class: "list-group-item" if @candidate.dribbble_url %>
+				 <%= link_to "Settings", edit_candidate_path(current_candidate), class: "list-group-item" if @candidate.dribbble_url %>
 			</div>
 
 
 		</div>
 		<div class='col-md-8 col-sm-8 col-xs-12 edit-works'>
 
-			<div class='edit-form well'>
-				<h2 class='text-center'>Update Your Account</h2><br>
+			<div class='edit-form'>
+				<div class="well">
+					<h2 class='text-center'>Update Your Account</h2><br>
     			 <%= render 'form' %>
+    		</div>
 			</div>
 		</div>
 		<div class='col-md-1'></div>

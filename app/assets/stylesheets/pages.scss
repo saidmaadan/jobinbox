@@ -37,7 +37,8 @@ p{
   font-size: 10px;
 }
 .body{
-  background-color: #eaeaea;
+  background-color: #fff;
+  //background-color: #eaeaea;
   //font-family: 'Enriqueta', serif;
   font-family: JobInboxFont8, Arial, sans-serif;
   font-size: 16px;
@@ -426,6 +427,13 @@ select{
   }
 }
 //--------------------Candidates----------------------------//
+.candidate-show{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  img{
+    width: 100%;
+  }
+}
 .candidate-new{
   width: 100%;
   height: 100%;
@@ -479,6 +487,54 @@ select{
   background: #fd7700;
   color: #fff;
 }
+.edit-profile{
+  padding-top: 40px;
+  a:hover{
+    background: none;
+  }
+  .nav-tabs {
+    border: none;
+    border-top: none;
+  }
+  .well{
+    background-color: #fff;
+  }
+  .educations-profile{
+    .well{
+      background-color: #ddd;
+    }
+  }
+  .works-profile{
+    .well{
+      background-color: #5cb85c;
+    }
+  }
+  .profile-education{
+    .well{
+      background-color: #ddd;
+    }
+  }
+  .education-content{
+    .well{
+      background-color: #5cb85c;
+      a:hover{
+        background: none;
+      }
+    } 
+  }
+}
+.edit-candidates{
+  margin-top: 20px;
+  img{
+    margin-top: 20px;
+    border-radius: 50%;
+  }
+}
+.edit-form{
+  .well{
+    background-color: #eaeaea;
+  }
+}
 //--------------------Employers----------------------------//
 
 .employers{
@@ -515,19 +571,36 @@ select{
     }
   }
 }
+.employers-edit{
+  padding-bottom: 30px;
+  img{
+    margin-top: 30px;
+    width: 100%;
+  }
+}
 .employers-main{
+  h1{
+    font-size: 35px;
+    margin-bottom: 20px;
+  }
+  img{
+    margin-top: 30px;
+  }
   h2{
     margin-bottom: -12px;
     a{
-      color: #fd7700;
+      color: #5cb85c;
     }
+  }
+  .well{
+    background-color: #eaeaea;
   }
 }
 .employer-jobs{
   h2{
     margin-bottom: 1px;
     a{
-      color: green;
+      color: #5cb85c;
     }
   }
 }
@@ -680,6 +753,7 @@ footer{
     padding-top: 20px;
     padding-bottom: 30px;
     font-size: 15px;
+    background: #eaeaea;
     h2{
       color: #fd7700;
     }
@@ -850,11 +924,13 @@ footer{
 //--------------Contact--------------------//
 
 .contact-map{
-  width: 98%;
-  margin: auto;
+  width: 100%;
+  background-color: #eaeaea;
+  text-align: center;
   #map iframe { 
-    width:100%; 
+    width: 98%; 
     height: 480px;
+    margin: auto;
     padding-top: 20px;
     padding-bottom: 20px;  }
 }
