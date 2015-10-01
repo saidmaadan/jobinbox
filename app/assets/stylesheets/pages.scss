@@ -7,7 +7,8 @@ html, body {
   margin: 0 auto;
   padding: 0;
   height: 100%;
-  font-family: JobInboxFont8, Arial, sans-serif;
+  //font-family: JobInboxFont8, Arial, sans-serif;
+  font-family: 'Enriqueta', serif;
   font-weight: normal;
   font-size: 17px;
   line-height: 21px;
@@ -19,30 +20,29 @@ html, body {
   height: 40px;
 }
 h1, h2, h3, th {
-  font-family: JobInboxFont8, Arial, sans-serif;
-  //font-family: 'Enriqueta', serif;
+  //font-family: JobInboxFont8, Arial, sans-serif;
+  font-family: 'Enriqueta', serif;
   font-weight: 900;
   
 }
 h1 {
-  font-size: 55px;
+  font-size: 45px;
   line-height: 50px;
   color: #333;
 }
 h2 {
   margin-bottom: 12px;
-  font-size: 18px;
+  font-size: 25px;
 }
 p{
-  font-size: 10px;
+  font-size: 14px;
 }
 .body{
   background-color: #fff;
-  //background-color: #eaeaea;
-  //font-family: 'Enriqueta', serif;
-  font-family: JobInboxFont8, Arial, sans-serif;
-  font-size: 16px;
-  color: #666666;
+  font-family: 'Enriqueta', serif;
+  //font-family: JobInboxFont8, Arial, sans-serif;
+  font-size: 15px;
+  color: #333;
   // margin:0;
   // padding:0;
   // width: 100%;
@@ -54,6 +54,10 @@ p{
   // height: 100%;
   // padding-bottom: 50px;
   //font-family: Menlo,Monaco, Consolas, "Courier New", monospace;
+  a{
+    color: #333;
+    font-size: 15px;
+  }
 }
 main{
   margin-top: 120px;
@@ -103,8 +107,13 @@ main{
     color: #fd7700;
   }
 }
+
 .header .btn-default:hover {
-    color: green;
+  color: green;
+
+}
+.header .btn:hover{
+  border: 1px solid orange;
 }
 
 .navbar{
@@ -430,6 +439,10 @@ select{
 .candidate-show{
   margin-top: 30px;
   margin-bottom: 30px;
+  a:hover{
+    background: none;
+    color: #333;
+  }
   img{
     width: 100%;
   }
@@ -736,6 +749,322 @@ select{
     }
   }
 }
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+    z-index: 2;
+    color: #fff;
+    background-color: #fd7700;
+    border-color: #fd7700;
+}
+
+//-----------------------companies----------------------------//
+
+.companies{
+  .jumbotron{
+    width: 100%;
+    height: 100%;
+    background-image: url('https://s3.amazonaws.com/foodplace/uploads/job/imgs/siliconvv.jpg');
+    background-size: cover;
+    text-align: center;
+    padding-bottom: 40px;
+    .companies-h1{
+      width: 60%;
+      margin: 1% auto;
+      background: linear-gradient(200deg, rgba(22, 33, 6, 0) 0%, rgba(54, 154, 165, 0.9) 100%);
+      box-shadow: rgba(0,0,0,0.15) 1px 1px 5px;
+      padding-bottom: 20px;
+      padding-top: 20px;
+      border-radius: 10px;
+      h1{
+        color: #fff;
+        font-weight: 900;
+      }
+    }  
+  }
+}
+
+.companies-top{
+  .jumbotron{
+    width: 100%;
+    height: 100%;
+    background: #eaeaea;
+    text-align: center;
+    margin-top: -50px;
+    padding-top: 50px;
+    padding-bottom: 50px; 
+    h1{
+      //color: #fd7700;
+      color: #fff;
+      font-weight: 900;
+    }
+  }
+}
+.companies-middle{
+  .jumbotron{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    padding-top: 50px;
+    padding-bottom: 50px; 
+    h1{
+      //color: #fd7700;
+      color: #fff;
+      font-weight: 900;
+    }
+    p{
+      font-size: 14px;
+    }
+    .search{
+      img{
+        width: 100%;
+        height: 200px;
+      }
+    }
+    .companylogo img{
+      float: left;
+      width: 90px;
+      height: 80px;
+      padding-right: 10px;
+      padding-bottom: 25px;
+    }
+    a:hover{
+      background: none;
+      color: #fd7700;
+      text-decoration: none;
+    }
+
+  }
+}
+.companies-bottom{
+  .jumbotron{
+    width: 100%;
+    height: 400px;
+    // background-image: url('https://s3.amazonaws.com/foodplace/uploads/job/imgs/siliconvalley.jpg');
+    // background-size: cover;
+    background: #fff;
+    text-align: center;
+    h1{
+      //color: #fd7700;
+      color: #fff;
+      font-weight: 900;
+    }
+  }
+}
+a:hover{
+  background: none;
+}
+.company-imgbg{
+  width: 100%;
+  height: 300px;
+  img{
+  width: 100%;
+  height: 300px;
+  }
+}
+.company_logo img{
+  margin-top: -60px;
+  width: 150px;
+  height: 150px;
+  float: center;
+}
+
+.company-reviewinterview{
+  width: 95%;
+  margin: auto;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  height: 100%;
+  margin-bottom: 20px;
+  margin-top: 10px;
+
+  .review-star{
+    display: inline-block;
+    width: 40%;
+    height: 100%;
+    padding-top: -10px;
+    //border-right: 1px solid #ddd;
+    .stars-rating, img {
+      display: inline;
+      max-width: 40%;
+      height: 30px;
+    }
+  }
+  .review-rating{
+    display: inline-block;
+    width: 30%;
+    height: 100%;
+    padding: 10px;
+    // padding-left: 10px;
+    // padding-right: 10px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+  }
+  .interview-rating{
+    width: 25%;
+    display: inline-block;
+    padding: 10px;
+    //padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 100%;
+    //border-right: 1px solid #ddd
+  }
+
+}
+
+.company-new{
+  margin-top: 40px;
+  .well{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-right: 40px;
+    padding-left: 40px;
+
+  }
+}
+.company-content-tab{
+  // margin-top: 40px;
+  background: #fff;
+  margin-left: -14px;
+  max-height: 1200px;
+  overflow: auto;
+  overflow-x:hidden;
+  .tab-content{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    p{
+    font-size: 16px;
+    color: #666666;
+  }
+  }
+  
+}
+.company-tab{
+  margin-top: 10px;
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: #fff;
+    background-color: #fd7700;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    cursor: default;
+  }
+    .btn-success{
+      background: #fd7700;
+      color: #fff;
+    }
+    .btn-success:hover{
+      background: #fd7700;
+      color: #ddd;
+    }
+}
+.company-content-tab-review{
+  // margin-top: 40px;
+  background: #fff;
+  margin-left: -30px;
+  padding: 60px 20px 40px;
+  max-height: 800px;
+  overflow: auto;
+  overflow-x:hidden;
+  p{
+    font-size: 16px;
+    color: #666666;
+  }
+}
+.company-main{
+  .well{
+    width: 100%;
+    margin: auto;
+    background: #fff;
+  }
+}
+.company-btn .btn-success a{
+  color: #fff;
+}
+.company-btn .btn-success{
+  margin-top: 5px;
+}
+.company-btn .btn-success a:hover{
+  background: none;
+}
+.company-side{
+  margin-top: 20px;
+  .well{
+    background: #fff;
+    padding: 10px 10px;
+    text-align: center;
+    .social-link{
+      display: inline;
+      
+      .fa{
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        color: #fff;
+        padding-top: 5px;
+        margin-left: 5px;
+      }
+      .fa-2x{
+        font-size: 2em;
+      }
+      .fa-twitter{
+        background: #2bb6e9;
+      }
+      .fa-youtube{
+        background: #d9292c;
+      }
+      .fa-linkedin{
+        background: #0079b6;
+      }
+       .fa-facebook{
+        background: #435f9d;
+      }
+      .fa-instagram{
+        background: #004879;
+      }
+      .fa-google-plus{
+        background: #d9292c;
+      }
+      .fa-pinterest-p{
+        background: #c72527;
+      }
+       .fa-github-alt{
+        background: #ddd;
+      }
+    }
+    // .twitter{
+    //   margin-left: 5px;
+    //   margin-right: 5px;
+    // }
+    // .linkedin{
+    //   margin-left: 5px;
+    //   margin-right: 5px;
+    // }
+  }
+}
+.review-form{
+  display: none;
+}
+.show-review{
+  display: none;
+}
+select{
+  height: 80px;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.interview-form .well{
+  //width: 100%;
+  margin: 10px auto;
+  background: #fbfbfb;
+}
+.interview-new .well{
+  //width: 100%;
+  margin-top: 20px;
+  
+}
+
 //----------------------footer-------------------------------//
 footer{
   width: 100%;
@@ -935,32 +1264,39 @@ footer{
     padding-bottom: 20px;  }
 }
 .contact-main-top{
+  font-family: 'Enriqueta', serif;
   width: 100%;
   height: 100%;
   padding-top: 50px;
   padding-bottom: 30px;
   background-color: #fff;
+  h2{
+    font-weight: 900;
+  }
   .office{
     margin-top: 40px; 
   }
   .panel-heading{
     background-color: #fff;
     text-align: center;
-    color: #fd7700;
+    color: #333;
   }
   .btn{
-    background: #fd7700;
+    background: #5cb85c;
+    border: #5cb85c;
   }
   .address-contact{
+    margin-top: 80px;
     margin-left: 40px;
     a{
-        color: #fd7700;
+        color: #333;
     }
     a:hover{
       background: none;
+      color: #5cb85c;
     }
     .fa{
-      color: #fd7700;
+      color: #5cb85c;
     }
     .social-link{
       display: inline;

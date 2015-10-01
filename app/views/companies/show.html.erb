@@ -16,7 +16,7 @@
               <div class='row'>
                 <div class='col-sm-8'>
                   <h2><%= @company.name %></h2>
-                  <%= link_to " #{@company.website}", @company.website, :target => "_blank", class: "fa fa-link " %><br>
+                  <%= link_to " #{@company.website}", @company.website, :target => "_blank" %><br>
                 </div>
                 <div class='col-sm-4'><br>
                   <% if current_employer || current_candidate %>
@@ -111,11 +111,11 @@
 
     <div class='col-sm-3 hidden-xs'> 
       <div class='row company-side'>
-        <% if @company.facebook || @company.twitter || @company.youtube || @company.linkedin %>
+        <%# if @company.facebook || @company.twitter || @company.youtube || @company.linkedin || @company.instagram %>
           <div class='col-sm-12 well'>
             <h2 class='text-center'>Connect with <%= @company.name %></h2>
-        <% else %>
-        <% end %> 
+        <%# else %>
+        <%# end %> 
             <div class='social-link facebook'>
               <%= link_to "", @company.facebook, :target => "_blank", class: "fa fa-facebook fa-2x" if @company.facebook %>
             </div>
@@ -128,6 +128,20 @@
             <div class='social-link linkedin'>
               <%= link_to "", @company.linkedin, :target => "_blank", class: "fa fa-linkedin fa-2x" if @company.linkedin %>
             </div>
+            <div class='social-link instagram'>
+              <%= link_to "", @company.instagram, :target => "_blank", class: "fa fa-instagram fa-2x" if @company.instagram %>
+            </div>
+           <!--  <div class='social-link googleplus'>
+              <%#= link_to "", @company.googleplus, :target => "_blank", class: "fa fa-google-plus fa-2x" if @company.googleplus %>
+            </div>
+            <div class='social-link pinterest'>
+              <%#= link_to "", @company.pinterest, :target => "_blank", class: "fa fa-pinterest-p fa-2x" if @company.pinterest %>
+            </div>
+            <%# if @company.github %>
+              <div class='social-link github'>
+                <%#= link_to "", @company.github, :target => "_blank", class: "fa fa-github-alt fa-2x" %>
+              </div>
+            <%# end %> -->
             
           </div>
          

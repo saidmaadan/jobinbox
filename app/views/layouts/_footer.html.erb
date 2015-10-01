@@ -25,10 +25,18 @@
         <div class='col-sm-2 col-xs-6'>
           <h2>Discover</h2>
           <p><%= link_to "Jobs", jobs_path %></p>
-          <p><%= link_to "Post a Job", new_job_path %></p>
           <p><%= link_to "Companies", companies_path %></p>
-          <p><%= link_to "Developers", candidates_path %></p>
-          <p><%= link_to "Employers", employers_path %></p>
+          <p><%= link_to "Tech News", insights_path %></p>
+          <% if current_candidate %>
+            <p><%= link_to "Post Resume", profile_info_path(current_candidate) %></p>
+            <p><%= link_to "Developers", candidates_path %></p>
+          <% elsif current_employer %> 
+            <p><%= link_to "Post a Job", new_job_path %></p>
+            <p><%= link_to "Developers", candidates_path %></p>
+          <% else %>
+            <p><%= link_to "Sign In", signin_path %></p>
+            <p><%= link_to "Register", register_path %></p>
+          <% end %>
         </div>
         <div class='col-sm-3 hidden-xs'>
           <h2>Tech News & Tips</h2>

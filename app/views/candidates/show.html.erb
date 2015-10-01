@@ -33,6 +33,11 @@
 				  <%= link_to "Dribbble", "http://dribbble.com/" + @candidate.dribbble_url, target: "_blank", class: "list-group-item" if @candidate.dribbble_url %>
 				  <%= link_to "Update Profile", profile_info_path(current_candidate), class: "list-group-item" if @candidate.dribbble_url %>
 				  <%= link_to "Settings", edit_candidate_path(current_candidate), class: "list-group-item" if @candidate.dribbble_url %>
+				  <% if current_candidate_admin? %>
+					<%= link_to "Edit-Admin", edit_candidate_path(@candidate), class: "list-group-item" %>  
+					
+					<%= link_to 'Delete Account-Admin', candidate_path(@candidate), method: :delete, data: {confirm: "Are You Sure?"}, class: "list-group-item" %>
+					<% end %>
 				</div>
 
 			</div>
@@ -108,10 +113,6 @@
 			</div>
 			<div class='col-md-3 col-sm-3 col-xs-12'></div>
 		</div>
-	 	<% if current_candidate_admin? %>
-		<%= link_to "Edit", edit_candidate_path(@candidate) %> | 
-		
-		<%= link_to 'Delete Account', candidate_path(@candidate), method: :delete, data: {confirm: "Are You Sure?"} %>
-		<% end %>
+	 	
 	</div>
 </div>
