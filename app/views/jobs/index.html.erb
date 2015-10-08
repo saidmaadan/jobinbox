@@ -19,65 +19,68 @@
       <% end %>
     </div>
   </div>
-</div>
-<div class="container">
-  <div class='row'>
 
-    <div class='col-sm-9 col-xs-12 jobs-list'>
-      <h1 class='text-center'>All Tech Jobs</h1><hr>
-      
-         <div class="digg_pagination">
-          <div class="page_info">
-            <%= page_entries_info @jobs %> 
+  <div class="container">
+    <div class='row'>
+
+      <div class='col-sm-9 col-xs-12 jobs-list'>
+        <div class="row">
+          <div class="digg_pagination">
+            <div class="col-md-6 col-sm-12 col-xs-12"><br>
+              <div class="page_info">
+                <%= page_entries_info @jobs %> 
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <%= will_paginate @collection, renderer: BootstrapPagination::Rails, class: 'text-center' %> 
+             <%#= will_paginate @jobs, :container => false, class: "paginate-display" %>   
+              <%#= will_paginate @jobs, :page_links => false %> 
+            </div>
           </div>
-           <%= will_paginate @collection, renderer: BootstrapPagination::Rails, class: 'text-center' %> 
-           <%#= will_paginate @jobs, :container => false, class: "paginate-display" %>   
-            <%#= will_paginate @jobs, :page_links => false %> 
         </div>
+                    
+        <% @jobs.each do |job| %>
+          <div class='col-sm-12 well'>
+            <div class='row'>
+              <div class='col-sm-2 col-xs-4 '>
+                <% if job.logo_url %>
+                  <%= image_tag job.logo_url %>
+                <% else %>
+                  <%= image_tag "https://s3.amazonaws.com/inventivelabs/jobinbox/logos/jobinbox1.png" %>
+                <% end %>
+              </div>
+              <div class='col-sm-6 col-xs-8'>
+                <h4><%= job.company_name %></h4>
+                <h5><%= link_to job.title, job %></h5>
+                <%= truncate job.description, length: 100, separator: ' ' %><br>
+                <%= link_to "View full job description", job %>
+              </div>
+              <div class='col-sm-2 col-xs-5'>
+                <%= job.position_type %><br>
+                <%= time_ago_in_words(job.created_at) %> ago
+              </div>
+              <div class='col-sm-2 col-xs-7'>
+               <%= job.city %>, <%= job.state %> <br> <%= job.zip_code %> <%= job.country %>
+              </div> 
+            </div>
+          </div>
+        <% end %>
+      </div>
      
-
-      <% @jobs.each do |job| %>
-        <div class='col-sm-12 well'>
-          <div class='row'>
-            <div class='col-sm-2 col-xs-4 '>
-              <% if job.logo_url %>
-                <%= image_tag job.logo_url %>
-              <% else %>
-                <%= image_tag "https://s3.amazonaws.com/inventivelabs/jobinbox/logos/jobinbox1.png" %>
-              <% end %>
-            </div>
-            <div class='col-sm-6 col-xs-8'>
-              <h4><%= job.company_name %></h4>
-              <h5><%= link_to job.title, job %></h5>
-              <%= truncate job.description, length: 100, separator: ' ' %><br>
-              <%= link_to "View full job description", job %>
-            </div>
-            <div class='col-sm-2 col-xs-5'>
-              <%= job.position_type %><br>
-              <%= time_ago_in_words(job.created_at) %> ago
-            </div>
-            <div class='col-sm-2 col-xs-7'>
-             <%= job.city %>, <%= job.state %> <br> <%= job.zip_code %> <%= job.country %>
-            </div> 
-          </div>
-        </div>
-      <% end %>
-    </div>
-   
-    <div class='col-sm-3 hidden-xs'><br><br>
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- MasmaSpace News -->
-      <ins class="adsbygoogle"
-         style="display:inline-block;width:300px;height:600px"
-         data-ad-client="ca-pub-1207389406711656"
-         data-ad-slot="8952579198"></ins>
-      <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+      <div class='col-sm-3 hidden-xs'><br><br>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- MasmaSpace News -->
+        <ins class="adsbygoogle"
+           style="display:inline-block;width:300px;height:600px"
+           data-ad-client="ca-pub-1207389406711656"
+           data-ad-slot="8952579198"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
     </div>
   </div>
 </div>
-
 
 
 

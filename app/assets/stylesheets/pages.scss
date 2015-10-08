@@ -673,14 +673,14 @@ select{
 
 .jobs-list{
   height: 100%;
-  background: #fff;
+  //background: #;
   margin-top: 0px;
   margin-bottom: 0;
-  padding: 60px 20px;
+  padding: 0px 20px;
   .well{
     margin-top: 5px;
     background: #fdfeff;
-    border: #f1f2f4;
+    border: #f8f8f8;
     padding: 15px;
 
     img{
@@ -691,21 +691,21 @@ select{
     }
   }
   .well:hover{
-      background: #f1f2f4;
-    }  
-  
+    background: #f8f8f8;
+  }    
 }
 
 .job-form-header{
   width: 100%;
-  background: #eaeaea;
+  background: #f8f8f8;
   padding: 30px;
   border-bottom: 2px solid #ddd;
 }
 .jobs-search{
   width: 100%;
   height: 100px;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 15px;
   .jobs-search-form .navbar-form .form-control {
     display: inline-block;
     width: 70%;
@@ -1071,7 +1071,7 @@ footer{
   clear: both;
   bottom: 0;
   left: 0;
-  border-top: 2px solid #ddd;
+  //border-top: 2px solid #ddd;
   //font-family: JobInboxFont7, Arial, sans-serif;
   font-family: 'Enriqueta', serif;
   .footer{
@@ -1197,7 +1197,7 @@ footer{
   .digg_pagination .current {
     font-style: normal;
     font-weight: bold;
-    background: #ddd;
+    //background: #f8f8f8;
     color: #999999;
     border: 1px solid #2e6ab1; }
   .digg_pagination a {
@@ -1208,10 +1208,11 @@ footer{
       color: #fd7700;
       border-color: #fd7700; }
   .digg_pagination .page_info {
-    background: #ddd;
+    // background: #ddd;
+    border: 1px solid #ddd;
     color: #fd7700;
     padding: 0.4em 0.6em;
-    width: 22em;
+    width: 18em;
     margin: auto;
     margin-bottom: 0.3em;
     text-align: center; }
