@@ -1,9 +1,45 @@
-<div class='pages'>
-	<div class='jumbotron'>
-    <div class="container">
-		  <div class="row">
-        <div class='pages-search'>
-          <h1>Find the Right Job</h1>
+ <div class='pages'>
+   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="https://s3.amazonaws.com/inventivelabs/jobinbox/imgs/tech-peep.jpg" alt="JobInbox">
+      </div>
+    
+      <% @companies.each do |company| %>
+        <div class="item">
+          <%= image_tag company.avatar_url alt: company.name %>
+          <div class="carousel-caption">
+            <div class="main-content">
+              <%= image_tag company.logo_url, alt: company.name %>
+             <span> <h4><%= link_to company.name, company %></h4>
+              <p><%= company.industry %></p></span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+
+    <div class="carousel-caption">
+      <div class='pages-search'>
+        <h1>Find the Right Job</h1>
         <div class='text-center'>
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#jobs" aria-controls="jobs" role="tab" data-toggle="tab">Jobs</a></li>
@@ -13,42 +49,38 @@
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="jobs">
               <h2>Search for the Job that's right for you</h2>
-              <div class='page-search-forms'>
-                <%= form_tag search_jobs_path, class: "navbar-form", method: :get do %>  
-                  <%= text_field_tag :search, params[:search], placeholder: "Search for your next career jobs...", class: "form-control" %>
-                  <%= submit_tag 'Tech-Jobs', name: nil, class: "btn btn-success btn-lg" %>
-                <% end %>
-               </div>
+            <div class='page-search-forms'>
+              <%= form_tag search_jobs_path, class: "navbar-form", method: :get do %>  
+                <%= text_field_tag :search, params[:search], placeholder: "Search for your next career jobs...", class: "form-control" %>
+                <%= submit_tag 'Tech-Jobs', name: nil, class: "btn btn-success btn-lg" %>
+              <% end %>
             </div>
-            <div role="tabpanel" class="tab-pane" id="companies">
-              <h2>Search for Companies by Name</h2>
-              <div class='page-search-forms'>
-                <%= form_tag search_companies_path, class: "navbar-form", method: :get do %>  
-                  <%= text_field_tag :search, params[:search], placeholder: "Enter Company Name", class: "form-control" %>
-                  <%= submit_tag 'Companies', name: nil, class: "btn btn-success btn-lg" %>
-                <% end %>
-              </div>
-
+          </div>
+          <div role="tabpanel" class="tab-pane" id="companies">
+            <h2>Search for Companies by Name</h2>
+            <div class='page-search-forms'>
+              <%= form_tag search_companies_path, class: "navbar-form", method: :get do %>  
+                <%= text_field_tag :search, params[:search], placeholder: "Enter Company Name", class: "form-control" %>
+                <%= submit_tag 'Companies', name: nil, class: "btn btn-success btn-lg" %>
+              <% end %>
             </div>
-            <div role="tabpanel" class="tab-pane" id="dev">
-              <h2>Search for Developers by name or job type</h2>
-              <div class='page-search-forms'>
-                <%= form_tag search_candidates_path, class: "navbar-form", method: :get do %>  
-                  <%= text_field_tag :search, params[:search], placeholder: "Enter Company Name", class: "form-control" %>
-                  <%= submit_tag 'Developers', name: nil, class: "btn btn-success btn-lg" %>
-                <% end %>
-              </div>
 
+          </div>
+          <div role="tabpanel" class="tab-pane" id="dev">
+            <h2>Search for Developers by name or job type</h2>
+            <div class='page-search-forms'>
+              <%= form_tag search_candidates_path, class: "navbar-form", method: :get do %>  
+                <%= text_field_tag :search, params[:search], placeholder: "Enter Company Name", class: "form-control" %>
+                <%= submit_tag 'Developers', name: nil, class: "btn btn-success btn-lg" %>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
-
-  			
-      </div>     
-		</div>
-	</div>
+    </div>
+  </div>
 </div>
+
 
 <div class='pages-top'>
   <div class='jumbotron'>
@@ -56,22 +88,21 @@
       <div class="row">
         <h1 class='text-center'>Appy for the job that's right for you.</h1>
         <div class='col-sm-4'>
-          <div class='text-center'><i class='fa fa-search fa-4x'></i>
-          <h2>Search Millions of Job Listings</h2>
-          </div>
+            <i class='fa fa-search fa-3x'></i>
+            <p>Search Millions of Job Listings Search Millions of Job Listings Search Millions of Job Listings Search Millions of Job Listings</p>
         </div>
-        
-        <div class='col-sm-4'>
-          <div class='text-center'><i class='fa fa-briefcase fa-4x'></i>
-          <h2>Know about companies and their culture</h2>
-          </div>
+
+         <div class='col-sm-4'>
+            <i class='fa fa-briefcase fa-3x'></i>
+            <p>Search Millions of Job Listings Search Millions of Job Listings Search Millions of Job Listings Search Millions of Job Listings</p>    
         </div>
 
         <div class='col-sm-4'>
-          <div class='text-center'><i class='fa fa-users fa-4x'></i>
-          <h2>Reads Reviews and Interviews</h2>
-          </div>
+            <i class='fa fa-users fa-3x'></i>
+          
+            <p>Search Millions of Job Listings Search Millions of Job Listings Search Millions of Job Listings Search Millions of Job Listings</p>    
         </div>
+
       </div>
     </div>
   </div>

@@ -1,0 +1,54 @@
+
+ <div class='pages'>
+  <div class='jumbotron'>
+    <div class="container">
+      <div class="row">
+        <div class='pages-search'>
+          <h1>Find the Right Job</h1>
+        <div class='text-center'>
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#jobs" aria-controls="jobs" role="tab" data-toggle="tab">Jobs</a></li>
+            <li role="presentation"><a href="#companies" aria-controls="companies" role="tab" data-toggle="tab">Companies</a></li>
+            <li role="presentation"><a href="#dev" aria-controls="dev" role="tab" data-toggle="tab">Developers</a></li>
+          </ul>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="jobs">
+              <h2>Search for the Job that's right for you</h2>
+              <div class='page-search-forms'>
+                <%= form_tag search_jobs_path, class: "navbar-form", method: :get do %>  
+                  <%= text_field_tag :search, params[:search], placeholder: "Search for your next career jobs...", class: "form-control" %>
+                  <%= submit_tag 'Tech-Jobs', name: nil, class: "btn btn-success btn-lg" %>
+                <% end %>
+               </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="companies">
+              <h2>Search for Companies by Name</h2>
+              <div class='page-search-forms'>
+                <%= form_tag search_companies_path, class: "navbar-form", method: :get do %>  
+                  <%= text_field_tag :search, params[:search], placeholder: "Enter Company Name", class: "form-control" %>
+                  <%= submit_tag 'Companies', name: nil, class: "btn btn-success btn-lg" %>
+                <% end %>
+              </div>
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="dev">
+              <h2>Search for Developers by name or job type</h2>
+              <div class='page-search-forms'>
+                <%= form_tag search_candidates_path, class: "navbar-form", method: :get do %>  
+                  <%= text_field_tag :search, params[:search], placeholder: "Enter Company Name", class: "form-control" %>
+                  <%= submit_tag 'Developers', name: nil, class: "btn btn-success btn-lg" %>
+                <% end %>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+        
+      </div>     
+    </div>
+  </div>
+</div>
+
+ 
