@@ -26,26 +26,27 @@
 
       <div class='col-sm-9 col-xs-12 jobs-list'>
         <div class="row">
-          <div class="digg_pagination">
-            <div class="col-md-6 col-sm-12 col-xs-12"><br>
-              <div class="page_info">
-                <%= page_entries_info @jobs %> 
-              </div>
+          <div class="digg_pagination"><br>
+            <div class="page_info">
+              <%= page_entries_info @jobs %> 
             </div>
-            <div class="col-md-6 col-sm-12 col-xs-12">
-              <%= will_paginate @collection, renderer: BootstrapPagination::Rails, class: 'text-center' %> 
+            <%= will_paginate @collection, renderer: BootstrapPagination::Rails, class: 'text-center' %> 
              <%#= will_paginate @jobs, :container => false, class: "paginate-display" %>   
               <%#= will_paginate @jobs, :page_links => false %> 
-            </div>
           </div>
         </div>
-                    
+                   
         <% @jobs.each do |job| %>
           <div class='col-sm-12 well'>
             <div class='row'>
               <div class='col-sm-2 col-xs-4 '>
+
                 <% if job.logo_url %>
                   <%= image_tag job.logo_url %>
+                
+                  <%# elsif job.company_name = @company.name %>
+                    <%#= image_tag @company.logo_url %>
+                
                 <% else %>
                   <%= image_tag "https://s3.amazonaws.com/inventivelabs/jobinbox/logos/jobinbox1.png" %>
                 <% end %>

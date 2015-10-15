@@ -212,7 +212,8 @@
       </div>
 
       <div class='row company-side'>
-        <a class="twitter-timeline" href="https://twitter.com/<%= @company.twitter %>" data-widget-id="648930984222674944">Tweets by @<%= @company.twitter %></a>
+        <%= (@company.twitter_widget) %>
+        <a class="twitter-timeline" href="https://twitter.com/IBM" data-widget-id="653272632431804416">Tweets by @IBM</a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
       </div>

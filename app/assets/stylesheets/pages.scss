@@ -401,20 +401,43 @@ select{
     }
   }
 }
+
+.pages-middle-one{
+  width: 100%;
+  //margin-top: -40px;
+  .jumbotron{
+    width: 100%;
+    height: 400px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    background-image:url('https://s3.amazonaws.com/inventivelabs/jobinbox/imgs/tech-peep.jpg');
+    background-size: cover;
+    h2{
+      margin-top: 20%;
+      font-family: Roboto, sans-serif;
+      font-size: 46px;
+      font-weight: 400;
+    }
+    h2, .fa{
+      color: #fff;
+    }
+  }
+}
+
 .pages-middle{
   width: 100%;
-  margin-top: -40px;
+  margin-top: 40px;
   .jumbotron{
     width: 100%;
     height: 100%;
     padding-top: 20px;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
     background: #f8f8f8;
     h1{
-      font-size: 40px;
+      font-size: 30px;
       color: #666;
-      padding-top: 20px;
       padding-bottom: 20px; 
+      margin-top: 30px;
     }
     p{
       font-size: 16px;
@@ -425,26 +448,78 @@ select{
 }
 .pages-bottom{
   width: 100%;
+  // height: 100%;
   .jumbotron{
     width: 100%;
-    height: 400px;
+    height: 100%;
     background: #fff;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    h1{
-      font-size: 40px;
-      color: #000;
-      padding-top: 20px;
-      margin-bottom: 60px;     
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: left;
+    h2{
+      font-size: 30px;
+      color: #666;
+      //margin-top: -20px;
     }
-    .fa{
-      margin: auto;
-      color: green;
-       
+    h3{
+      
+      font-weight: 400;
+      a{
+        color: #5cb85c;
+        font-size: 20px;
+      }    
+    }
+    p{
+      font-size: 14px;
+      span{
+        font-weight: bold;   
+      }
     }
   }
 }
-
+.pages-bottom-one{
+  width: 100%;
+  height: 100%;
+  font-family: Lato, 'Tresbuchet MS', sans-serif;
+  text-align: center;
+  color: #323436;
+  word-spacing: 0px;
+  //padding-bottom: 20px;
+  .jumbotrons{
+    width: 100%;
+    height: 450px;
+    img{
+      width: 100%;
+      height: 450px;
+    }
+    h3{
+      color: #323436;
+      span{
+      font-weight: 900;
+      color: #5cb85c;
+      } 
+    }
+  }
+  h1{
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: 400;
+    margin-top: 10%;
+    padding-top: 60px;
+    span{
+      font-size: 61.6px;
+      line-height: 61.6px;
+      font-weight: 900;
+      color: #5cb85c;
+    } 
+  }
+  p{
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: 400;
+    
+  }
+}
 //----------------------Pages-Home-about-------------------------------//
 #carousel-example-generic{
   width: 100%;
@@ -782,7 +857,7 @@ select{
 .employer-show{
   width: 100%;
   height: 100%;
-  background: #eaeaea;
+  background: #f8f8f8;
   color: #000;
   
   bottom: 0;
@@ -794,10 +869,23 @@ select{
     border-radius: 50%;
     
   }
-
+  h1{
+    font-size: 27px;
+    margin-bottom: -12px;
+  }
+  h2{
+    font-size: 18px;
+  }
+  p{
+    color: #666;
+  }
 }
 .employer-main-content{
   background: #fff;
+  h3{
+    font-size: 20px;
+    font-weight: 400;
+  }
 }
 
 .employers-top{
@@ -905,6 +993,18 @@ select{
     width: auto;
     margin-left: -6px;
     height: 55px;
+  }
+}
+.company-content-tab .job-tab{
+  width: 100%;
+  max-height: 500px;
+  overflow: auto;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 30px;
+  h2 a{
+    color: #5cb85c;
   }
 }
 //----------------------session------------------------------//
@@ -1253,6 +1353,7 @@ footer{
     background: #eaeaea;
     h2{
       color: #fd7700;
+      font-size: 20px;
     }
     a{
       color: #333;

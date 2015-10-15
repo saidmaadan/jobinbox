@@ -1,6 +1,7 @@
 class Job < ActiveRecord::Base
   mount_uploader :logo, LogoUploader
 	belongs_to :employer
+  belongs_to :company
 
 	extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
@@ -32,7 +33,7 @@ class Job < ActiveRecord::Base
   EXPERIENCE = ['Internship', 'Entry-level', 'Mid-level', 'Senior-level', "Associate", "Executive", "Director", "CEO", "Not Applicable"]
   PAY_RATE = ['Hourly', 'Weekly', 'Monthly', 'Annually']
   TRAVEL_REQUIRED = ["NO", '0 - 20%', '20 - 40%', '40 - 60%', '60 - 80%', "80 - 100%"]
-  COMPANY_SIZE = ["1 - 10 Employees", "11 - 50 Employees", "51 - 100 Employees", "101 - 200 Employees", "201 - 500 Employees", "501 - 1000 Employees", "1001 - 5000 Employees", "5000+ Employees"]
+  COMPANY_SIZE = ["1 - 10 Employees", "11 - 50 Employees", "51 - 100 Employees", "101 - 200 Employees", "201 - 500 Employees", "501 - 1,000 Employees", "1,001 - 5,000 Employees", "5,001 - 10,000 Employees", "10,001 - 50,000 Employees","50,001 - 100,000 Employees", "100,001 - 200,000 Employees", "200,001 - 300,000 Employees", "300,001+ Employees"]
   
 
 

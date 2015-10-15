@@ -68,24 +68,24 @@
                   </div>     
                 </div>
               </div>
-            <div class='col-sm-8 company-content-tab'>
-          <div class="tab-content">
+            <div class='col-sm-8 company-content-tab '>
+              <div class="tab-content job-tab">
 
-          
-          <% @jobs.each do |job| %>
-            <% if job.company_name == @company.name %>
-              <div class='row'>
-                <div class='col-sm-12'>
-                  <h2><%= link_to job.title, job %></h2>
-                   <p><%= truncate job.description, length: 200, separator: ' ' %></p>
-                   <%= link_to "View full job description", job %>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-         
-              <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, class: 'text-center' %> 
-           
+              
+              <% @jobs.each do |job| %>
+                <% if job.company_name == @company.name %>
+                  <div class='row'>
+                    <div class='col-sm-12'>
+                      <h2><%= link_to job.title, job %></h2>
+                       <p><%= truncate job.description, length: 200, separator: ' ' %></p>
+                       <%= link_to "View full job description", job %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+             
+                  <%#= will_paginate @jobs, renderer: BootstrapPagination::Rails, class: 'text-center' %> 
+               
           </div>   
         </div>
       </div>

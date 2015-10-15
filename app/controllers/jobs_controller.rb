@@ -11,10 +11,12 @@ class JobsController < ApplicationController
 
 	def index
 		@jobs = Job.order("created_at DESC").paginate(:page => params[:page], :per_page => 4)
+		@companies = Company.all
 	end
 
 	def show
 		@job = Job.friendly.find(params[:id])
+		#@company = Company.friendly.find(params[:id])
 	end
 
 	def edit

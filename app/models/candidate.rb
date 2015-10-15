@@ -19,6 +19,7 @@ class Candidate < ActiveRecord::Base
   
   has_many :works
   has_many :educations
+  has_many :jobs
 
   before_create {generate_token(:auth_token)}
 

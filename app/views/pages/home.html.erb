@@ -108,6 +108,45 @@
   </div>
 </div>
 
+<div class='pages-middle-one'>
+  <div class='jumbotron'>
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-sm-6 col-xs-6">
+          <h2>Developers</h2>
+          <i class='fa fa-user fa-4x'></i><br><br>
+          <button class='btn btn-default btn-lg'>Upload Resume</button>
+        </div>
+        <div class="col-sm-6 col-xs-6">
+          <h2>Employers</h2>
+          <i class='fa fa-users fa-4x'></i><br><br>
+          <button class='btn btn-default btn-lg'>Post a Job</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class='pages-bottom-one'>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-sm-8">
+        <div class='jumbotrons'>
+          <div class="row">
+            <div class="hidden-lg hidden-md hidden-sm col-xs-12">
+              <h3>Over <span>500,000 Companies</span> already on Job-Inbox</h3>
+            </div>
+          </div>
+          <img src="https://s3.amazonaws.com/inventivelabs/jobinbox/imgs/companies-presence.jpg" class='img-responsive'> 
+        </div>
+      </div> 
+      <div class="col-md-3 col-sm-4 hidden-xs">
+        <h1>Over <br><span>500,000 Companies</span></h1>
+        <p>already on Job-Inbox</p>
+      </div> 
+    </div>
+  </div>
+</div>
 
 <div class='pages-middle'>
   <div class='jumbotron'>
@@ -134,21 +173,27 @@
   </div>
 </div>
 
+
 <div class='pages-bottom'>
   <div class='jumbotron'>
     <div class="container">
       <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h2 class='text-center'>TechJobs Nationwide</h2>
+          <% if @jobs.any? %>
+            <% @jobs.limit(12).in_groups_of(4) do |group| %>
+              <% group.each do |job| %>
+                <% if job %>
+                  <div class="col-md-3 col-sm-4 col-xs-6">
+                    <h3><%= link_to job.title, job %></h3>
+                    <p><span><%= job.company_name %>&nbsp;|&nbsp;</span><%= job.city if job.city %>,&nbsp;<%= job.state if job.state %></p>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %> 
+        </div> 
       </div>
     </div>
   </div>
 </div>
-
-<!-- <div class='pages-search'>
-        <h2>Search for your dream Job</h2>
-        <div class='page-search-forms'>
-          <%#= form_tag search_jobs_path, class: "navbar-form", method: :get do %>  
-             <%#= text_field_tag :search, params[:search], placeholder: "Search for your next career jobs...", class: "form-control" %>
-              <%#= submit_tag 'Search', name: nil, class: "btn btn-success btn-lg" %>
-          <%# end %>
-        </div>
-      </div>   -->   
