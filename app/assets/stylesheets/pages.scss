@@ -137,7 +137,7 @@ main{
   margin-bottom: 8px;
   background-color: transparent;
   background-image: none;
-  border: 1px solid transparent;
+  //border: 1px solid transparent;
   border-radius: 4px;
 }
 .navbar-inverse .navbar-toggle:hover {
@@ -407,14 +407,14 @@ select{
   //margin-top: -40px;
   .jumbotron{
     width: 100%;
-    height: 400px;
+    height: 450px;
     padding-top: 20px;
     padding-bottom: 30px;
     background-image:url('https://s3.amazonaws.com/inventivelabs/jobinbox/imgs/tech-peep.jpg');
     background-size: cover;
     h2{
       margin-top: 20%;
-      font-family: Roboto, sans-serif;
+      // font-family: Roboto, sans-serif;
       font-size: 46px;
       font-weight: 400;
     }
@@ -454,29 +454,30 @@ select{
     height: 100%;
     background: #fff;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     text-align: left;
-    .job-list{
-      height: 110px;
       h2{
       font-size: 30px;
       color: #666;
       margin-top: -20px;
-    }
-    h3{
-      
-      font-weight: 400;
-      a{
-        color: #5cb85c;
-        font-size: 17px;
-      }    
-    }
-    p{
-      font-size: 14px;
-      span{
-        font-weight: bold;   
       }
-    }
+    .job-list{
+      height: 110px;
+      
+      h3{
+        
+        font-weight: 400;
+        a{
+          color: #5cb85c;
+          font-size: 17px;
+        }    
+      }
+      p{
+        font-size: 14px;
+        span{
+          font-weight: bold;   
+        }
+      }
     }
     
   }
@@ -484,17 +485,18 @@ select{
 .pages-bottom-one{
   width: 100%;
   height: 100%;
-  font-family: Lato, 'Tresbuchet MS', sans-serif;
+  //font-family: Lato, 'Tresbuchet MS', sans-serif;
   text-align: center;
   color: #323436;
   word-spacing: 0px;
   //padding-bottom: 20px;
   .jumbotrons{
     width: 100%;
-    height: 450px;
+    height: 100%;
     img{
       width: 100%;
-      height: 450px;
+      margin-top: 20px;
+      //height: 350px;
     }
     h3{
       color: #323436;
@@ -508,11 +510,11 @@ select{
     font-size: 28px;
     line-height: 28px;
     font-weight: 400;
-    margin-top: 10%;
-    padding-top: 60px;
+    //margin-top: 10%;
+    padding-top: 10px;
     span{
-      font-size: 61.6px;
-      line-height: 61.6px;
+      font-size: 45.6px;
+      line-height: 45.6px;
       font-weight: 900;
       color: #5cb85c;
     } 
@@ -1749,6 +1751,35 @@ footer{
       width: 40%;
       margin-left: -6px;
       height: 45px;
+    }
+  }
+  .pages-bottom{
+    .jumbotron{
+      .job-list{
+        height: 130px;
+      }
+    }
+  }
+  .pages-middle-one{
+    .jumbotron{
+      width: 100%;
+      height: 400px;
+      padding-top: 20px;
+      padding-bottom: 30px;
+      background-image:url('https://s3.amazonaws.com/inventivelabs/jobinbox/imgs/jobinboxer6.jpg');
+      background-size: cover;
+      h2{
+        margin-top: 30%;
+        font-family: Roboto, sans-serif;
+        font-size: 26px;
+        font-weight: 400;
+      }
+      h2, .fa{
+        color: #fd7700;
+      }
+      .fa{
+        font-size: 3em;
+      }
     }
   }
 }
