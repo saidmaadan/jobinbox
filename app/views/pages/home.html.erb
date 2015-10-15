@@ -184,7 +184,7 @@
             <% @jobs.limit(12).in_groups_of(4) do |group| %>
               <% group.each do |job| %>
                 <% if job %>
-                  <div class="col-md-3 col-sm-4 col-xs-6">
+                  <div class="col-md-3 col-sm-4 col-xs-6 job-list">
                     <h3><%= link_to job.title, job %></h3>
                     <p><span><%= job.company_name %>&nbsp;|&nbsp;</span><%= job.city if job.city %>,&nbsp;<%= job.state if job.state %></p>
                   </div>

@@ -456,7 +456,9 @@ select{
     padding-top: 20px;
     padding-bottom: 20px;
     text-align: left;
-    h2{
+    .job-list{
+      height: 110px;
+      h2{
       font-size: 30px;
       color: #666;
       margin-top: -20px;
@@ -475,6 +477,8 @@ select{
         font-weight: bold;   
       }
     }
+    }
+    
   }
 }
 .pages-bottom-one{
