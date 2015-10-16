@@ -88,21 +88,40 @@
       <div class="row">
         <h1 class='text-center'>Appy for the job that's right for you.</h1>
         <div class='col-sm-4'>
-            <i class='fa fa-search fa-3x'></i>
-            <p>Search Millions of Job Listings Search Millions of Job Listings Search Millions of Job Listings Search Millions of Job Listings</p>
-        </div>
-
-         <div class='col-sm-4'>
-            <i class='fa fa-briefcase fa-3x'></i>
-            <p>Search Millions of Job Listings Search Millions of Job Listings Search Millions of Job Listings Search Millions of Job Listings</p>    
+          <div class="row">
+            <div class="col-md-2 col-sm-3 col-xs-2">
+              <img src="https://s3.amazonaws.com/inventivelabs/jobinbox/imgs/profile.png" class='img-responsive'> 
+            </div>
+            <div class="col-md-10 col-sm-9 col-xs-10">
+              <h3 class='text-left'>Create eye catching Profile</h3>
+            <p>Upload your resume and add personality to your page with your profile photo. Express youself what you are looking for and what you have done, add links to your projects. </p>
+            </div>
+          </div>
         </div>
 
         <div class='col-sm-4'>
-            <i class='fa fa-users fa-3x'></i>
-          
-            <p>Search Millions of Job Listings Search Millions of Job Listings Search Millions of Job Listings Search Millions of Job Listings</p>    
+          <div class="row">
+            <div class="col-md-2 col-sm-3 col-xs-2">
+              <img src="https://s3.amazonaws.com/inventivelabs/jobinbox/imgs/search.png" class='img-responsive'>
+            </div>
+            <div class="col-md-10 col-sm-9 col-xs-10">
+              <h3 class='text-left'>Search for Jobs</h3>
+              <p>Search and explore millions of latest jobs across best job boards and employers nationwide.</p>  
+            </div>
+          </div>
         </div>
 
+        <div class='col-sm-4'>
+          <div class="row">
+            <div class="col-md-2 col-sm-3 col-xs-2">
+               <img src="https://s3.amazonaws.com/inventivelabs/jobinbox/imgs/profile1.png" class='img-responsive'>
+            </div>
+            <div class="col-md-10 col-sm-9 col-xs-10">
+              <h3 class='text-left'>Read Reviews from Employees</h3>
+              <p>Get to know more about your future employer and company work ethics and cultures. Read what real employers have to say about them.</p>   
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -115,14 +134,22 @@
         <div class="col-sm-6 col-xs-6">
           <h2>Developers</h2>
           <i class='fa fa-user fa-4x'></i><br><br>
-          <%#= link_to " Upload Resume", profile_info_path(current_candidate), class: 'btn btn-default btn-lg' %>
-          <button class='btn btn-default btn-lg'>Upload Resume</button>
+          <% if current_candidate %>
+            <%= link_to " Upload Resume", profile_info_path(current_candidate), class: 'btn btn-default btn-lg' %>
+          <% else %>
+            <%= link_to "Upload Resume", signin_path, class: 'btn btn-default btn-lg' %>
+          <% end %>
+         <!--  <button class='btn btn-default btn-lg'>Upload Resume</button> -->
         </div>
         <div class="col-sm-6 col-xs-6">
           <h2>Employers</h2>
           <i class='fa fa-users fa-4x'></i><br><br>
-          <%#=  link_to "Post a Job", new_job_path, class: 'btn btn-default btn-lg' %></li>
-          <button class='btn btn-default btn-lg'>Post a Job</button>
+          <% if current_employer %>
+            <%= link_to "Post a Job", new_job_path, class: 'btn btn-default btn-lg' %>
+          <% else %>
+            <%= link_to "Post a Job", signin_path, class: 'btn btn-default btn-lg' %>
+          <% end %>
+          <!-- <button class='btn btn-default btn-lg'>Post a Job</button> -->
         </div>
       </div>
     </div>
@@ -181,7 +208,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h2 class='text-center'>TechJobs Nationwide</h2>
+          <h2 class='text-center'>Latest TechJob Postings</h2>
           <% if @jobs.any? %>
             <% @jobs.limit(12).in_groups_of(4) do |group| %>
               <% group.each do |job| %>

@@ -2,6 +2,7 @@ class Job < ActiveRecord::Base
   mount_uploader :logo, LogoUploader
 	belongs_to :employer
   belongs_to :company
+  has_many :applies
 
 	extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
