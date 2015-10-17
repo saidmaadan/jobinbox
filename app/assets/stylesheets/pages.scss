@@ -933,7 +933,27 @@ select{
 }
 
 //------------------------JOBS----------------------------//
+.job-show{
+  width: 100%;
+  margin-bottom: 30px;
+  .job-top-title{
+    margin-top: 30px;
+    img{
+      height: 100px;
+      margin-top: 20px;
+    }
+    .button{
+      margin-top: 15px;
+      a{
+        color: #fff;
+      }
+    }
+  }
+  .well{
+    margin-top: 20px;
 
+  }
+}
 .jobs-list{
   height: 100%;
   //background: #;
@@ -967,8 +987,8 @@ select{
   width: 100%;
   padding-top: 30px;
   //padding-bottom: 30px;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 15px;
+  //border-bottom: 1px solid #ddd;
+  //margin-bottom: 15px;
 }
 .jobs-search{
   width: 100%;

@@ -1,8 +1,11 @@
 class ApplyMailer < ApplicationMailer
-  def apply_created(current_candidate, job_employer, message, resume)
+  def apply_created(current_candidate, job_employer, name, email, phone, message, resume)
 
     @current_candidate = current_candidate
     @job_employer = job_employer
+    @name = name
+    @email = email
+    @phone = phone
     @message = message
     @resume = resume
 

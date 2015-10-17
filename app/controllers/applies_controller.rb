@@ -18,7 +18,11 @@ class AppliesController < ApplicationController
     @apply.job_id = @job.id
     respond_to do |format|
       if @apply.save
-        ApplyMailer.apply_created(current_candidate, @job.candidate, @apply.message, @apply.resume).deliver
+        name = params[:apply][:name]
+        email = params[:apply][:email]
+        message = params[:apply][:message]
+        resume = params[:apply][:resume]
+        ApplyMailer.apply_created((current_candidate, @job.employer, @apply.message, @apply.resume))||(name, email, message, resume).deliver
         format.html { redirect_to @job, notice: 'You have successfully applied for this job.' }
         format.json { render :show, status: :created, location: @apply }
       else

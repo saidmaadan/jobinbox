@@ -15,6 +15,8 @@ class JobsController < ApplicationController
 	end
 
 	def show
+		@apply = Apply.new
+		@apply.job_id = @job_id
 		@job = Job.friendly.find(params[:id])
 		#@company = Company.friendly.find(params[:id])
 	end
