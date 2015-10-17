@@ -1,4 +1,4 @@
-class ApplyMailer < ApplicationMailer::Base
+class ApplyMailer < ApplicationMailer
   def apply_created(current_candidate, job_employer, message, resume)
 
     @current_candidate = current_candidate
