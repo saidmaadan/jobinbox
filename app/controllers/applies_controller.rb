@@ -22,7 +22,7 @@ class AppliesController < ApplicationController
         email = params[:apply][:email]
         message = params[:apply][:message]
         resume = params[:apply][:resume]
-        ApplyMailer.apply_created((current_candidate, @job.employer, @apply.message, @apply.resume))||(name, email, message, resume).deliver
+        ApplyMailer.apply_created(current_candidate, @job.employer, @apply.message, @apply.resume).deliver
         format.html { redirect_to @job, notice: 'You have successfully applied for this job.' }
         format.json { render :show, status: :created, location: @apply }
       else
