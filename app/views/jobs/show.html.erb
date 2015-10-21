@@ -85,7 +85,7 @@
 			</div>
 		</div>
 		<div class="col-md-3 col-sm-4 col-xs-12">
-			<div class="job-form well">
+			<div class="job-form">
 				<% if @job.email? %>
 					<h4>Apply on JobInbox</h4><hr>
 					<%= form_for [@job, @apply] do |f| %>
@@ -125,9 +125,9 @@
 						  </div>
 							<div class="form-group">
 						    <%#= f.label :message,  %>
-						    <%= f.text_area :message, class: "form-control", value: "'<h3>Dear Hiring Manager</h3>',
+						    <%= f.text_area :message, class: "form-control", value: "Dear Hiring Manager
 
-								'<p>I feel that my skills and experience are a great fit for this position. Please feel free to contact me to arrange an interview. I look forward to learning more about this opportunity.</p>'" %>
+								I feel that my skills and experience are a great fit for this position. Please feel free to contact me to arrange an interview. I look forward to learning more about this opportunity." %>
 						  </div>
 						  <div class="form-group">
 						    <%= f.label :resume %><br>

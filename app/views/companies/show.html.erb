@@ -111,40 +111,40 @@
 
     <div class='col-sm-3 hidden-xs'> 
       <div class='row company-side'>
-        <%# if @company.facebook || @company.twitter || @company.youtube || @company.linkedin || @company.instagram %>
+        <% if @company.facebook? || @company.twitter? || @company.youtube? || @company.linkedin? || @company.instagram? %>
           <div class='col-sm-12 well'>
             <h2 class='text-center'>Connect with <%= @company.name %></h2>
-        <%# else %>
-        <%# end %> 
+        
             <div class='social-link facebook'>
-              <%= link_to "", @company.facebook, :target => "_blank", class: "fa fa-facebook fa-2x" if @company.facebook %>
+              <%= link_to "", @company.facebook, :target => "_blank", class: "fa fa-facebook fa-2x" if @company.facebook? %>
             </div>
             <div class='social-link twitter'>
-              <%= link_to "", @company.twitter, :target => "_blank", class: "fa fa-twitter fa-2x" if @company.twitter %>
+              <%= link_to "", @company.twitter, :target => "_blank", class: "fa fa-twitter fa-2x" if @company.twitter? %>
             </div>
             <div class='social-link youtube'>
-              <%= link_to "", @company.youtube, :target => "_blank", class: "fa fa-youtube fa-2x" if @company.youtube %>
+              <%= link_to "", @company.youtube, :target => "_blank", class: "fa fa-youtube fa-2x" if @company.youtube? %>
             </div>
             <div class='social-link linkedin'>
-              <%= link_to "", @company.linkedin, :target => "_blank", class: "fa fa-linkedin fa-2x" if @company.linkedin %>
+              <%= link_to "", @company.linkedin, :target => "_blank", class: "fa fa-linkedin fa-2x" if @company.linkedin? %>
             </div>
             <div class='social-link instagram'>
-              <%= link_to "", @company.instagram, :target => "_blank", class: "fa fa-instagram fa-2x" if @company.instagram %>
+              <%= link_to "", @company.instagram, :target => "_blank", class: "fa fa-instagram fa-2x" if @company.instagram? %>
             </div>
-           <!--  <div class='social-link googleplus'>
-              <%#= link_to "", @company.googleplus, :target => "_blank", class: "fa fa-google-plus fa-2x" if @company.googleplus %>
+            <div class='social-link googleplus'>
+              <%= link_to "", @company.googleplus, :target => "_blank", class: "fa fa-google-plus fa-2x" if @company.googleplus? %>
             </div>
             <div class='social-link pinterest'>
-              <%#= link_to "", @company.pinterest, :target => "_blank", class: "fa fa-pinterest-p fa-2x" if @company.pinterest %>
+              <%= link_to "", @company.pinterest, :target => "_blank", class: "fa fa-pinterest-p fa-2x" if @company.pinterest? %>
             </div>
-            <%# if @company.github %>
+            <% if @company.github? %>
               <div class='social-link github'>
-                <%#= link_to "", @company.github, :target => "_blank", class: "fa fa-github-alt fa-2x" %>
+                <%= link_to "", @company.github, :target => "_blank", class: "fa fa-github-alt fa-2x" %>
               </div>
-            <%# end %> -->
+            <% end %>
             
           </div>
-         
+         <% else %>
+        <% end %> 
       </div>
 
       <div class='row company-side'>
